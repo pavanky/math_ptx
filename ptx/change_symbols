@@ -1,0 +1,22 @@
+#!/bin/sh
+
+ptx=$1/*.ptx
+
+# Strip the _Z prefix
+sed -i 's/_Z._/_/g' $ptx
+
+# Change the postfixes
+# float   - s (no change)
+# double  - d (no change)
+# int     - i (no change)
+# uint    - u (j -> u)
+# char    - j (c -> j)
+# uchar   - v (h -> v)
+# float2  - c (6float2S_ -> c)
+# double2 - z (7double2S_ -> z)
+
+sed -i 's/jj(/uu(/g' $ptx
+sed -i 's/cc(/jj(/g' $ptx
+sed -i 's/hh(/vv(/g' $ptx
+sed -i 's/6float2S_/cc/g' $ptx
+sed -i 's/7double2S_/zz/g' $ptx
