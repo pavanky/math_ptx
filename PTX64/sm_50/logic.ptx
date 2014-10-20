@@ -189,14 +189,18 @@
 {
 	.reg .pred 	%p<2>;
 	.reg .s32 	%r<2>;
-	.reg .f32 	%f<5>;
+	.reg .f32 	%f<9>;
 
 
 	ld.param.f32 	%f1, [___ltcc_param_0];
-	ld.param.f32 	%f2, [___ltcc_param_1];
-	mul.f32 	%f3, %f1, %f1;
-	mul.f32 	%f4, %f2, %f2;
-	setp.lt.f32	%p1, %f3, %f4;
+	ld.param.f32 	%f2, [___ltcc_param_0+4];
+	ld.param.f32 	%f3, [___ltcc_param_1];
+	ld.param.f32 	%f4, [___ltcc_param_1+4];
+	mul.f32 	%f5, %f2, %f2;
+	fma.rn.f32 	%f6, %f1, %f1, %f5;
+	mul.f32 	%f7, %f4, %f4;
+	fma.rn.f32 	%f8, %f3, %f3, %f7;
+	setp.lt.f32	%p1, %f6, %f8;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
 	ret;
@@ -209,14 +213,18 @@
 {
 	.reg .pred 	%p<2>;
 	.reg .s32 	%r<2>;
-	.reg .f64 	%fd<5>;
+	.reg .f64 	%fd<9>;
 
 
 	ld.param.f64 	%fd1, [___ltzz_param_0];
-	ld.param.f64 	%fd2, [___ltzz_param_1];
-	mul.f64 	%fd3, %fd1, %fd1;
-	mul.f64 	%fd4, %fd2, %fd2;
-	setp.lt.f64	%p1, %fd3, %fd4;
+	ld.param.f64 	%fd2, [___ltzz_param_0+8];
+	ld.param.f64 	%fd3, [___ltzz_param_1];
+	ld.param.f64 	%fd4, [___ltzz_param_1+8];
+	mul.f64 	%fd5, %fd2, %fd2;
+	fma.rn.f64 	%fd6, %fd1, %fd1, %fd5;
+	mul.f64 	%fd7, %fd4, %fd4;
+	fma.rn.f64 	%fd8, %fd3, %fd3, %fd7;
+	setp.lt.f64	%p1, %fd6, %fd8;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
 	ret;
@@ -335,14 +343,18 @@
 {
 	.reg .pred 	%p<2>;
 	.reg .s32 	%r<2>;
-	.reg .f32 	%f<5>;
+	.reg .f32 	%f<9>;
 
 
 	ld.param.f32 	%f1, [___gtcc_param_0];
-	ld.param.f32 	%f2, [___gtcc_param_1];
-	mul.f32 	%f3, %f1, %f1;
-	mul.f32 	%f4, %f2, %f2;
-	setp.gt.f32	%p1, %f3, %f4;
+	ld.param.f32 	%f2, [___gtcc_param_0+4];
+	ld.param.f32 	%f3, [___gtcc_param_1];
+	ld.param.f32 	%f4, [___gtcc_param_1+4];
+	mul.f32 	%f5, %f2, %f2;
+	fma.rn.f32 	%f6, %f1, %f1, %f5;
+	mul.f32 	%f7, %f4, %f4;
+	fma.rn.f32 	%f8, %f3, %f3, %f7;
+	setp.gt.f32	%p1, %f6, %f8;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
 	ret;
@@ -355,14 +367,18 @@
 {
 	.reg .pred 	%p<2>;
 	.reg .s32 	%r<2>;
-	.reg .f64 	%fd<5>;
+	.reg .f64 	%fd<9>;
 
 
 	ld.param.f64 	%fd1, [___gtzz_param_0];
-	ld.param.f64 	%fd2, [___gtzz_param_1];
-	mul.f64 	%fd3, %fd1, %fd1;
-	mul.f64 	%fd4, %fd2, %fd2;
-	setp.gt.f64	%p1, %fd3, %fd4;
+	ld.param.f64 	%fd2, [___gtzz_param_0+8];
+	ld.param.f64 	%fd3, [___gtzz_param_1];
+	ld.param.f64 	%fd4, [___gtzz_param_1+8];
+	mul.f64 	%fd5, %fd2, %fd2;
+	fma.rn.f64 	%fd6, %fd1, %fd1, %fd5;
+	mul.f64 	%fd7, %fd4, %fd4;
+	fma.rn.f64 	%fd8, %fd3, %fd3, %fd7;
+	setp.gt.f64	%p1, %fd6, %fd8;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
 	ret;
@@ -481,14 +497,18 @@
 {
 	.reg .pred 	%p<2>;
 	.reg .s32 	%r<2>;
-	.reg .f32 	%f<5>;
+	.reg .f32 	%f<9>;
 
 
 	ld.param.f32 	%f1, [___lecc_param_0];
-	ld.param.f32 	%f2, [___lecc_param_1];
-	mul.f32 	%f3, %f1, %f1;
-	mul.f32 	%f4, %f2, %f2;
-	setp.le.f32	%p1, %f3, %f4;
+	ld.param.f32 	%f2, [___lecc_param_0+4];
+	ld.param.f32 	%f3, [___lecc_param_1];
+	ld.param.f32 	%f4, [___lecc_param_1+4];
+	mul.f32 	%f5, %f2, %f2;
+	fma.rn.f32 	%f6, %f1, %f1, %f5;
+	mul.f32 	%f7, %f4, %f4;
+	fma.rn.f32 	%f8, %f3, %f3, %f7;
+	setp.le.f32	%p1, %f6, %f8;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
 	ret;
@@ -501,14 +521,18 @@
 {
 	.reg .pred 	%p<2>;
 	.reg .s32 	%r<2>;
-	.reg .f64 	%fd<5>;
+	.reg .f64 	%fd<9>;
 
 
 	ld.param.f64 	%fd1, [___lezz_param_0];
-	ld.param.f64 	%fd2, [___lezz_param_1];
-	mul.f64 	%fd3, %fd1, %fd1;
-	mul.f64 	%fd4, %fd2, %fd2;
-	setp.le.f64	%p1, %fd3, %fd4;
+	ld.param.f64 	%fd2, [___lezz_param_0+8];
+	ld.param.f64 	%fd3, [___lezz_param_1];
+	ld.param.f64 	%fd4, [___lezz_param_1+8];
+	mul.f64 	%fd5, %fd2, %fd2;
+	fma.rn.f64 	%fd6, %fd1, %fd1, %fd5;
+	mul.f64 	%fd7, %fd4, %fd4;
+	fma.rn.f64 	%fd8, %fd3, %fd3, %fd7;
+	setp.le.f64	%p1, %fd6, %fd8;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
 	ret;
@@ -627,14 +651,18 @@
 {
 	.reg .pred 	%p<2>;
 	.reg .s32 	%r<2>;
-	.reg .f32 	%f<5>;
+	.reg .f32 	%f<9>;
 
 
 	ld.param.f32 	%f1, [___gecc_param_0];
-	ld.param.f32 	%f2, [___gecc_param_1];
-	mul.f32 	%f3, %f1, %f1;
-	mul.f32 	%f4, %f2, %f2;
-	setp.ge.f32	%p1, %f3, %f4;
+	ld.param.f32 	%f2, [___gecc_param_0+4];
+	ld.param.f32 	%f3, [___gecc_param_1];
+	ld.param.f32 	%f4, [___gecc_param_1+4];
+	mul.f32 	%f5, %f2, %f2;
+	fma.rn.f32 	%f6, %f1, %f1, %f5;
+	mul.f32 	%f7, %f4, %f4;
+	fma.rn.f32 	%f8, %f3, %f3, %f7;
+	setp.ge.f32	%p1, %f6, %f8;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
 	ret;
@@ -647,14 +675,18 @@
 {
 	.reg .pred 	%p<2>;
 	.reg .s32 	%r<2>;
-	.reg .f64 	%fd<5>;
+	.reg .f64 	%fd<9>;
 
 
 	ld.param.f64 	%fd1, [___gezz_param_0];
-	ld.param.f64 	%fd2, [___gezz_param_1];
-	mul.f64 	%fd3, %fd1, %fd1;
-	mul.f64 	%fd4, %fd2, %fd2;
-	setp.ge.f64	%p1, %fd3, %fd4;
+	ld.param.f64 	%fd2, [___gezz_param_0+8];
+	ld.param.f64 	%fd3, [___gezz_param_1];
+	ld.param.f64 	%fd4, [___gezz_param_1+8];
+	mul.f64 	%fd5, %fd2, %fd2;
+	fma.rn.f64 	%fd6, %fd1, %fd1, %fd5;
+	mul.f64 	%fd7, %fd4, %fd4;
+	fma.rn.f64 	%fd8, %fd3, %fd3, %fd7;
+	setp.ge.f64	%p1, %fd6, %fd8;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
 	ret;

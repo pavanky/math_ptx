@@ -6032,20 +6032,22 @@ BB58_25:
 )
 {
 	.reg .pred 	%p<2>;
-	.reg .f32 	%f<9>;
+	.reg .f32 	%f<11>;
 
 
-	ld.param.f32 	%f1, [___mincc_param_0+4];
-	ld.param.f32 	%f2, [___mincc_param_0];
-	ld.param.f32 	%f3, [___mincc_param_1+4];
-	ld.param.f32 	%f4, [___mincc_param_1];
+	ld.param.f32 	%f1, [___mincc_param_0];
+	ld.param.f32 	%f2, [___mincc_param_0+4];
+	ld.param.f32 	%f3, [___mincc_param_1];
+	ld.param.f32 	%f4, [___mincc_param_1+4];
 	mul.f32 	%f5, %f2, %f2;
-	mul.f32 	%f6, %f4, %f4;
-	setp.lt.f32	%p1, %f5, %f6;
-	selp.f32	%f7, %f1, %f3, %p1;
-	selp.f32	%f8, %f2, %f4, %p1;
-	st.param.f32	[func_retval0+0], %f8;
-	st.param.f32	[func_retval0+4], %f7;
+	fma.rn.f32 	%f6, %f1, %f1, %f5;
+	mul.f32 	%f7, %f4, %f4;
+	fma.rn.f32 	%f8, %f3, %f3, %f7;
+	setp.lt.f32	%p1, %f6, %f8;
+	selp.f32	%f9, %f2, %f4, %p1;
+	selp.f32	%f10, %f1, %f3, %p1;
+	st.param.f32	[func_retval0+0], %f10;
+	st.param.f32	[func_retval0+4], %f9;
 	ret;
 }
 
@@ -6055,20 +6057,22 @@ BB58_25:
 )
 {
 	.reg .pred 	%p<2>;
-	.reg .f64 	%fd<9>;
+	.reg .f64 	%fd<11>;
 
 
-	ld.param.f64 	%fd1, [___minzz_param_0+8];
-	ld.param.f64 	%fd2, [___minzz_param_0];
-	ld.param.f64 	%fd3, [___minzz_param_1+8];
-	ld.param.f64 	%fd4, [___minzz_param_1];
+	ld.param.f64 	%fd1, [___minzz_param_0];
+	ld.param.f64 	%fd2, [___minzz_param_0+8];
+	ld.param.f64 	%fd3, [___minzz_param_1];
+	ld.param.f64 	%fd4, [___minzz_param_1+8];
 	mul.f64 	%fd5, %fd2, %fd2;
-	mul.f64 	%fd6, %fd4, %fd4;
-	setp.lt.f64	%p1, %fd5, %fd6;
-	selp.f64	%fd7, %fd1, %fd3, %p1;
-	selp.f64	%fd8, %fd2, %fd4, %p1;
-	st.param.f64	[func_retval0+0], %fd8;
-	st.param.f64	[func_retval0+8], %fd7;
+	fma.rn.f64 	%fd6, %fd1, %fd1, %fd5;
+	mul.f64 	%fd7, %fd4, %fd4;
+	fma.rn.f64 	%fd8, %fd3, %fd3, %fd7;
+	setp.lt.f64	%p1, %fd6, %fd8;
+	selp.f64	%fd9, %fd2, %fd4, %p1;
+	selp.f64	%fd10, %fd1, %fd3, %p1;
+	st.param.f64	[func_retval0+0], %fd10;
+	st.param.f64	[func_retval0+8], %fd9;
 	ret;
 }
 
@@ -6078,20 +6082,22 @@ BB58_25:
 )
 {
 	.reg .pred 	%p<2>;
-	.reg .f32 	%f<9>;
+	.reg .f32 	%f<11>;
 
 
-	ld.param.f32 	%f1, [___maxcc_param_0+4];
-	ld.param.f32 	%f2, [___maxcc_param_0];
-	ld.param.f32 	%f3, [___maxcc_param_1+4];
-	ld.param.f32 	%f4, [___maxcc_param_1];
+	ld.param.f32 	%f1, [___maxcc_param_0];
+	ld.param.f32 	%f2, [___maxcc_param_0+4];
+	ld.param.f32 	%f3, [___maxcc_param_1];
+	ld.param.f32 	%f4, [___maxcc_param_1+4];
 	mul.f32 	%f5, %f2, %f2;
-	mul.f32 	%f6, %f4, %f4;
-	setp.gt.f32	%p1, %f5, %f6;
-	selp.f32	%f7, %f1, %f3, %p1;
-	selp.f32	%f8, %f2, %f4, %p1;
-	st.param.f32	[func_retval0+0], %f8;
-	st.param.f32	[func_retval0+4], %f7;
+	fma.rn.f32 	%f6, %f1, %f1, %f5;
+	mul.f32 	%f7, %f4, %f4;
+	fma.rn.f32 	%f8, %f3, %f3, %f7;
+	setp.gt.f32	%p1, %f6, %f8;
+	selp.f32	%f9, %f2, %f4, %p1;
+	selp.f32	%f10, %f1, %f3, %p1;
+	st.param.f32	[func_retval0+0], %f10;
+	st.param.f32	[func_retval0+4], %f9;
 	ret;
 }
 
@@ -6101,20 +6107,22 @@ BB58_25:
 )
 {
 	.reg .pred 	%p<2>;
-	.reg .f64 	%fd<9>;
+	.reg .f64 	%fd<11>;
 
 
-	ld.param.f64 	%fd1, [___maxzz_param_0+8];
-	ld.param.f64 	%fd2, [___maxzz_param_0];
-	ld.param.f64 	%fd3, [___maxzz_param_1+8];
-	ld.param.f64 	%fd4, [___maxzz_param_1];
+	ld.param.f64 	%fd1, [___maxzz_param_0];
+	ld.param.f64 	%fd2, [___maxzz_param_0+8];
+	ld.param.f64 	%fd3, [___maxzz_param_1];
+	ld.param.f64 	%fd4, [___maxzz_param_1+8];
 	mul.f64 	%fd5, %fd2, %fd2;
-	mul.f64 	%fd6, %fd4, %fd4;
-	setp.gt.f64	%p1, %fd5, %fd6;
-	selp.f64	%fd7, %fd1, %fd3, %p1;
-	selp.f64	%fd8, %fd2, %fd4, %p1;
-	st.param.f64	[func_retval0+0], %fd8;
-	st.param.f64	[func_retval0+8], %fd7;
+	fma.rn.f64 	%fd6, %fd1, %fd1, %fd5;
+	mul.f64 	%fd7, %fd4, %fd4;
+	fma.rn.f64 	%fd8, %fd3, %fd3, %fd7;
+	setp.gt.f64	%p1, %fd6, %fd8;
+	selp.f64	%fd9, %fd2, %fd4, %p1;
+	selp.f64	%fd10, %fd1, %fd3, %p1;
+	st.param.f64	[func_retval0+0], %fd10;
+	st.param.f64	[func_retval0+8], %fd9;
 	ret;
 }
 
