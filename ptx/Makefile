@@ -6,17 +6,29 @@ SM_50_PTX=$(patsubst %.cu, sm_50/%.ptx, $(SRC))
 
 all: compute_20 compute_30 compute_35 compute_50
 
-compute_20: $(SM_20_PTX)
+compute_20: .compute_20
+
+compute_30: .compute_30
+
+compute_50: .compute_50
+
+compute_35: .compute_35
+
+.compute_20: $(SM_20_PTX)
 	./change_symbols sm_20
+	touch $@
 
-compute_30: $(SM_30_PTX)
+.compute_30: $(SM_30_PTX)
 	./change_symbols sm_30
+	touch $@
 
-compute_50: $(SM_50_PTX)
+.compute_50: $(SM_50_PTX)
 	./change_symbols sm_50
+	touch $@
 
-compute_35: $(SM_35_PTX)
+.compute_35: $(SM_35_PTX)
 	./change_symbols sm_35
+	touch $@
 
 sm_20/%.ptx: %.cu .dirs.20
 	nvcc -ptx -arch=sm_20 $< -o $@
@@ -49,3 +61,4 @@ sm_50/%.ptx: %.cu .dirs.50
 clean:
 	rm -rf sm_20 sm_30 sm_35 sm_50
 	rm -f .dirs.*
+	rm -f .compute*
