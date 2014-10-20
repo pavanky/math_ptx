@@ -26,8 +26,8 @@ MATH(tgamma)
 MATH(lgamma)
 
 
-#define fremainderf(a, b) remainderf((a), (b))
-#define fremainder(a, b) remainder((a), (b))
+#define fremf(a, b) remainderf((a), (b))
+#define frem(a, b) remainder((a), (b))
 
 #define MATH2_BASIC(fn, T)                      \
     __device__ T ___##fn(T a, T b)              \
@@ -49,7 +49,7 @@ MATH(lgamma)
 MATH2(min)
 MATH2(max)
 MATH2(mod)
-MATH2(remainder)
+MATH2(rem)
 
 #define COMPARE_CPLX(fn, op, T)                 \
     __device__ T ___##fn(T a, T b)              \

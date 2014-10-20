@@ -4857,9 +4857,9 @@ BB47_18:
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) _Z12___remainderff(
-	.param .b32 _Z12___remainderff_param_0,
-	.param .b32 _Z12___remainderff_param_1
+.visible .func  (.param .b32 func_retval0) ___remff(
+	.param .b32 ___remff_param_0,
+	.param .b32 ___remff_param_1
 )
 {
 	.reg .pred 	%p<25>;
@@ -4867,8 +4867,8 @@ BB47_18:
 	.reg .f32 	%f<54>;
 
 
-	ld.param.f32 	%f21, [_Z12___remainderff_param_0];
-	ld.param.f32 	%f22, [_Z12___remainderff_param_1];
+	ld.param.f32 	%f21, [___remff_param_0];
+	ld.param.f32 	%f22, [___remff_param_1];
 	abs.f32 	%f51, %f21;
 	setp.gtu.f32	%p1, %f51, 0f7F800000;
 	abs.f32 	%f2, %f22;
@@ -5024,9 +5024,9 @@ BB48_22:
 	bra.uni 	BB48_16;
 }
 
-.visible .func  (.param .b32 func_retval0) _Z12___remainderii(
-	.param .b32 _Z12___remainderii_param_0,
-	.param .b32 _Z12___remainderii_param_1
+.visible .func  (.param .b32 func_retval0) ___remii(
+	.param .b32 ___remii_param_0,
+	.param .b32 ___remii_param_1
 )
 {
 	.reg .pred 	%p<25>;
@@ -5034,8 +5034,8 @@ BB48_22:
 	.reg .f32 	%f<54>;
 
 
-	ld.param.u32 	%r5, [_Z12___remainderii_param_0];
-	ld.param.u32 	%r6, [_Z12___remainderii_param_1];
+	ld.param.u32 	%r5, [___remii_param_0];
+	ld.param.u32 	%r6, [___remii_param_1];
 	cvt.rn.f32.s32	%f1, %r5;
 	abs.f32 	%f51, %f1;
 	cvt.rn.f32.s32	%f3, %r6;
@@ -5194,9 +5194,9 @@ BB49_22:
 	bra.uni 	BB49_16;
 }
 
-.visible .func  (.param .b32 func_retval0) _Z12___remainderuu(
-	.param .b32 _Z12___remainderjj_param_0,
-	.param .b32 _Z12___remainderjj_param_1
+.visible .func  (.param .b32 func_retval0) ___remuu(
+	.param .b32 ___remjj_param_0,
+	.param .b32 ___remjj_param_1
 )
 {
 	.reg .pred 	%p<25>;
@@ -5204,8 +5204,8 @@ BB49_22:
 	.reg .f32 	%f<54>;
 
 
-	ld.param.u32 	%r5, [_Z12___remainderjj_param_0];
-	ld.param.u32 	%r6, [_Z12___remainderjj_param_1];
+	ld.param.u32 	%r5, [___remjj_param_0];
+	ld.param.u32 	%r6, [___remjj_param_1];
 	cvt.rn.f32.u32	%f1, %r5;
 	abs.f32 	%f51, %f1;
 	cvt.rn.f32.u32	%f3, %r6;
@@ -5364,9 +5364,9 @@ BB50_22:
 	bra.uni 	BB50_16;
 }
 
-.visible .func  (.param .b32 func_retval0) _Z12___remainderjj(
-	.param .b32 _Z12___remaindercc_param_0,
-	.param .b32 _Z12___remaindercc_param_1
+.visible .func  (.param .b32 func_retval0) ___remjj(
+	.param .b32 ___remcc_param_0,
+	.param .b32 ___remcc_param_1
 )
 {
 	.reg .pred 	%p<25>;
@@ -5375,10 +5375,10 @@ BB50_22:
 	.reg .f32 	%f<54>;
 
 
-	ld.param.s8 	%rs1, [_Z12___remaindercc_param_0];
+	ld.param.s8 	%rs1, [___remcc_param_0];
 	cvt.rn.f32.s16	%f1, %rs1;
 	abs.f32 	%f51, %f1;
-	ld.param.s8 	%rs2, [_Z12___remaindercc_param_1];
+	ld.param.s8 	%rs2, [___remcc_param_1];
 	cvt.rn.f32.s16	%f3, %rs2;
 	abs.f32 	%f4, %f3;
 	setp.gtu.f32	%p1, %f51, 0f7F800000;
@@ -5536,9 +5536,9 @@ BB51_22:
 	bra.uni 	BB51_16;
 }
 
-.visible .func  (.param .b32 func_retval0) _Z12___remaindervv(
-	.param .b32 _Z12___remainderhh_param_0,
-	.param .b32 _Z12___remainderhh_param_1
+.visible .func  (.param .b32 func_retval0) ___remvv(
+	.param .b32 ___remhh_param_0,
+	.param .b32 ___remhh_param_1
 )
 {
 	.reg .pred 	%p<25>;
@@ -5547,10 +5547,10 @@ BB51_22:
 	.reg .f32 	%f<54>;
 
 
-	ld.param.u8 	%rs1, [_Z12___remainderhh_param_0];
+	ld.param.u8 	%rs1, [___remhh_param_0];
 	cvt.rn.f32.u16	%f1, %rs1;
 	abs.f32 	%f51, %f1;
-	ld.param.u8 	%rs2, [_Z12___remainderhh_param_1];
+	ld.param.u8 	%rs2, [___remhh_param_1];
 	cvt.rn.f32.u16	%f3, %rs2;
 	abs.f32 	%f4, %f3;
 	setp.gtu.f32	%p1, %f51, 0f7F800000;
@@ -5708,9 +5708,9 @@ BB52_22:
 	bra.uni 	BB52_16;
 }
 
-.visible .func  (.param .b64 func_retval0) _Z12___remainderdd(
-	.param .b64 _Z12___remainderdd_param_0,
-	.param .b64 _Z12___remainderdd_param_1
+.visible .func  (.param .b64 func_retval0) ___remdd(
+	.param .b64 ___remdd_param_0,
+	.param .b64 ___remdd_param_1
 )
 {
 	.reg .pred 	%p<24>;
@@ -5718,8 +5718,8 @@ BB52_22:
 	.reg .f64 	%fd<39>;
 
 
-	ld.param.f64 	%fd22, [_Z12___remainderdd_param_0];
-	ld.param.f64 	%fd23, [_Z12___remainderdd_param_1];
+	ld.param.f64 	%fd22, [___remdd_param_0];
+	ld.param.f64 	%fd23, [___remdd_param_1];
 	{
 	.reg .b32 %temp; 
 	mov.b64 	{%temp, %r1}, %fd22;

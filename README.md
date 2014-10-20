@@ -18,7 +18,7 @@ This is an alternative to using `libdeivce` when using NVVM IR. The PTX files ca
   - For complex numbers, everything else checks for absolute values
 
 - `src/numeric.cu`: Numerical operations on numbers
-  - Functions included: `min`, `max`, `ceil`, `floor`, `round`, `remainder`, `mod`, `tgamma`, `lgamma`
+  - Functions included: `min`, `max`, `ceil`, `floor`, `round`, `rem`, `mod`, `tgamma`, `lgamma`
   - Complex numbers supported for `min`, and `max`. Both functions compare absolute values.
 
 - `src/exp.cu`: Exponential and logarithmic functions
