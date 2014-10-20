@@ -13,41 +13,29 @@ SM_50_PTX=$(patsubst src/%.cu, $(ARCH_DIR)/sm_50/%.ptx, $(SRC))
 
 all: compute_20 compute_30 compute_35 compute_50
 
-compute_20: .compute_20
+compute_20: $(SM_20_PTX)
 
-compute_30: .compute_30
+compute_30: $(SM_30_PTX)
 
-compute_50: .compute_50
+compute_50: $(SM_50_PTX)
 
-compute_35: .compute_35
-
-.compute_20: $(SM_20_PTX)
-	./change_symbols $(ARCH_DIR)/sm_20
-	touch $@
-
-.compute_30: $(SM_30_PTX)
-	./change_symbols $(ARCH_DIR)/sm_30
-	touch $@
-
-.compute_50: $(SM_50_PTX)
-	./change_symbols $(ARCH_DIR)/sm_50
-	touch $@
-
-.compute_35: $(SM_35_PTX)
-	./change_symbols $(ARCH_DIR)/sm_35
-	touch $@
+compute_35: $(SM_35_PTX)
 
 $(ARCH_DIR)/sm_20/%.ptx: src/%.cu .dirs.20
 	nvcc -Isrc -ptx -arch=sm_20 $< -o $@
+	./change_symbols $@
 
 $(ARCH_DIR)/sm_30/%.ptx: src/%.cu .dirs.30
 	nvcc -Isrc -ptx -arch=sm_30 $< -o $@
+	./change_symbols $@
 
 $(ARCH_DIR)/sm_35/%.ptx: src/%.cu .dirs.35
 	nvcc -Isrc -ptx -arch=sm_35 $< -o $@
+	./change_symbols $@
 
 $(ARCH_DIR)/sm_50/%.ptx: src/%.cu .dirs.50
 	nvcc -Isrc -ptx -arch=sm_50 $< -o $@
+	./change_symbols $@
 
 .dirs.20:
 	mkdir -p $(ARCH_DIR)/sm_20
@@ -67,5 +55,4 @@ $(ARCH_DIR)/sm_50/%.ptx: src/%.cu .dirs.50
 
 clean:
 	rm -f .dirs.*
-	rm -f .compute*
 	rm -rf $(ARCH_DIR)

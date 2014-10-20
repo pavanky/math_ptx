@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ptx=$1/*.ptx
+ptx=$1
 
 # Strip the _Z prefix
 sed -i 's/_Z._/_/g' $ptx
