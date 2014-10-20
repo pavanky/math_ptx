@@ -34,13 +34,13 @@ sm_20/%.ptx: %.cu .dirs.20
 	nvcc -ptx -arch=sm_20 $< -o $@
 
 sm_30/%.ptx: %.cu .dirs.30
-	nvcc -ptx -arch=sm_20 $< -o $@
+	nvcc -ptx -arch=sm_30 $< -o $@
 
 sm_35/%.ptx: %.cu .dirs.35
-	nvcc -ptx -arch=sm_20 $< -o $@
+	nvcc -ptx -arch=sm_35 $< -o $@
 
 sm_50/%.ptx: %.cu .dirs.50
-	nvcc -ptx -arch=sm_20 $< -o $@
+	nvcc -ptx -arch=sm_50 $< -o $@
 
 .dirs.20:
 	mkdir -p sm_20
