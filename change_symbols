@@ -10,6 +10,9 @@ sed -i 's/_Z._/_/g' $ptx
 sed -i 's/ff(/ss(/g' $ptx
 sed -i 's/ff_/ss_/g' $ptx
 
+sed -i 's/f(/s(/g' $ptx
+sed -i 's/f_/s_/g' $ptx
+
 # double  - d (no change)
 
 # int     - i (no change)
@@ -18,16 +21,27 @@ sed -i 's/ff_/ss_/g' $ptx
 sed -i 's/jj(/uu(/g' $ptx
 sed -i 's/jj_/uu_/g' $ptx
 
+sed -i 's/j(/u(/g' $ptx
+sed -i 's/j_/u_/g' $ptx
+
 # char    - j (c -> j)
 sed -i 's/cc(/jj(/g' $ptx
 sed -i 's/cc_/jj_/g' $ptx
+
+sed -i 's/c(/j(/g' $ptx
+sed -i 's/c_/j_/g' $ptx
 
 # uchar   - v (h -> v)
 sed -i 's/hh(/vv(/g' $ptx
 sed -i 's/hh_/vv_/g' $ptx
 
+sed -i 's/h(/v(/g' $ptx
+sed -i 's/h_/v_/g' $ptx
+
 # float2  - c (6float2S_ -> c)
 sed -i 's/6float2S_/cc/g' $ptx
+sed -i 's/6float2/c/g' $ptx
 
 # double2 - z (7double2S_ -> z)
 sed -i 's/7double2S_/zz/g' $ptx
+sed -i 's/7double2/z/g' $ptx

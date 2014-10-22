@@ -8,33 +8,33 @@
 .target sm_30
 .address_size 64
 
-.func  (.param .b64 func_retval0) __internal_accurate_pow
+.func  (.param .b64 funj_retval0) __internal_accurate_pow
 (
 	.param .b64 __internal_accurate_pow_param_0,
 	.param .b64 __internal_accurate_pow_param_1
 )
 ;
-.func  (.param .b64 func_retval0) __internal_lgamma_pos
+.func  (.param .b64 funj_retval0) __internal_lgamma_pos
 (
 	.param .b64 __internal_lgamma_pos_param_0
 )
 ;
 .const .align 8 .b8 __cudart_sin_cos_coeffs[128] = {186, 94, 120, 249, 101, 219, 229, 61, 70, 210, 176, 44, 241, 229, 90, 190, 146, 227, 172, 105, 227, 29, 199, 62, 161, 98, 219, 25, 160, 1, 42, 191, 24, 8, 17, 17, 17, 17, 129, 63, 84, 85, 85, 85, 85, 85, 197, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 129, 253, 32, 131, 255, 168, 189, 40, 133, 239, 193, 167, 238, 33, 62, 217, 230, 6, 142, 79, 126, 146, 190, 233, 188, 221, 25, 160, 1, 250, 62, 71, 93, 193, 22, 108, 193, 86, 191, 81, 85, 85, 85, 85, 85, 165, 63, 0, 0, 0, 0, 0, 0, 224, 191, 0, 0, 0, 0, 0, 0, 240, 63};
 
-.visible .func  (.param .b32 func_retval0) ___floorf(
-	.param .b32 ___floorf_param_0
+.visible .func  (.param .b32 funj_retval0) ___floors(
+	.param .b32 ___floors_param_0
 )
 {
 	.reg .f32 	%f<3>;
 
 
-	ld.param.f32 	%f1, [___floorf_param_0];
+	ld.param.f32 	%f1, [___floors_param_0];
 	cvt.rmi.f32.f32	%f2, %f1;
-	st.param.f32	[func_retval0+0], %f2;
+	st.param.f32	[funj_retval0+0], %f2;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___floori(
+.visible .func  (.param .b32 funj_retval0) ___floori(
 	.param .b32 ___floori_param_0
 )
 {
@@ -46,28 +46,28 @@
 	cvt.rn.f32.s32	%f1, %r1;
 	cvt.rmi.f32.f32	%f2, %f1;
 	cvt.rzi.s32.f32	%r2, %f2;
-	st.param.b32	[func_retval0+0], %r2;
+	st.param.b32	[funj_retval0+0], %r2;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___floorj(
-	.param .b32 ___floorj_param_0
+.visible .func  (.param .b32 funj_retval0) ___flooru(
+	.param .b32 ___flooru_param_0
 )
 {
 	.reg .s32 	%r<3>;
 	.reg .f32 	%f<3>;
 
 
-	ld.param.u32 	%r1, [___floorj_param_0];
+	ld.param.u32 	%r1, [___flooru_param_0];
 	cvt.rn.f32.u32	%f1, %r1;
 	cvt.rmi.f32.f32	%f2, %f1;
 	cvt.rzi.u32.f32	%r2, %f2;
-	st.param.b32	[func_retval0+0], %r2;
+	st.param.b32	[funj_retval0+0], %r2;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___floorc(
-	.param .b32 ___floorc_param_0
+.visible .func  (.param .b32 funj_retval0) ___floorj(
+	.param .b32 ___floorj_param_0
 )
 {
 	.reg .s16 	%rs<2>;
@@ -75,17 +75,17 @@
 	.reg .f32 	%f<3>;
 
 
-	ld.param.s8 	%rs1, [___floorc_param_0];
+	ld.param.s8 	%rs1, [___floorj_param_0];
 	cvt.rn.f32.s16	%f1, %rs1;
 	cvt.rmi.f32.f32	%f2, %f1;
 	cvt.rzi.s32.f32	%r1, %f2;
 	cvt.s32.s8 	%r2, %r1;
-	st.param.b32	[func_retval0+0], %r2;
+	st.param.b32	[funj_retval0+0], %r2;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___floorh(
-	.param .b32 ___floorh_param_0
+.visible .func  (.param .b32 funj_retval0) ___floorv(
+	.param .b32 ___floorv_param_0
 )
 {
 	.reg .s16 	%rs<2>;
@@ -93,16 +93,16 @@
 	.reg .f32 	%f<3>;
 
 
-	ld.param.u8 	%rs1, [___floorh_param_0];
+	ld.param.u8 	%rs1, [___floorv_param_0];
 	cvt.rn.f32.u16	%f1, %rs1;
 	cvt.rmi.f32.f32	%f2, %f1;
 	cvt.rzi.u32.f32	%r1, %f2;
 	and.b32  	%r2, %r1, 255;
-	st.param.b32	[func_retval0+0], %r2;
+	st.param.b32	[funj_retval0+0], %r2;
 	ret;
 }
 
-.visible .func  (.param .b64 func_retval0) ___floord(
+.visible .func  (.param .b64 funj_retval0) ___floord(
 	.param .b64 ___floord_param_0
 )
 {
@@ -111,24 +111,24 @@
 
 	ld.param.f64 	%fd1, [___floord_param_0];
 	cvt.rmi.f64.f64	%fd2, %fd1;
-	st.param.f64	[func_retval0+0], %fd2;
+	st.param.f64	[funj_retval0+0], %fd2;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___ceilf(
-	.param .b32 ___ceilf_param_0
+.visible .func  (.param .b32 funj_retval0) ___ceils(
+	.param .b32 ___ceils_param_0
 )
 {
 	.reg .f32 	%f<3>;
 
 
-	ld.param.f32 	%f1, [___ceilf_param_0];
+	ld.param.f32 	%f1, [___ceils_param_0];
 	cvt.rpi.f32.f32	%f2, %f1;
-	st.param.f32	[func_retval0+0], %f2;
+	st.param.f32	[funj_retval0+0], %f2;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___ceili(
+.visible .func  (.param .b32 funj_retval0) ___ceili(
 	.param .b32 ___ceili_param_0
 )
 {
@@ -140,28 +140,28 @@
 	cvt.rn.f32.s32	%f1, %r1;
 	cvt.rpi.f32.f32	%f2, %f1;
 	cvt.rzi.s32.f32	%r2, %f2;
-	st.param.b32	[func_retval0+0], %r2;
+	st.param.b32	[funj_retval0+0], %r2;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___ceilj(
-	.param .b32 ___ceilj_param_0
+.visible .func  (.param .b32 funj_retval0) ___ceilu(
+	.param .b32 ___ceilu_param_0
 )
 {
 	.reg .s32 	%r<3>;
 	.reg .f32 	%f<3>;
 
 
-	ld.param.u32 	%r1, [___ceilj_param_0];
+	ld.param.u32 	%r1, [___ceilu_param_0];
 	cvt.rn.f32.u32	%f1, %r1;
 	cvt.rpi.f32.f32	%f2, %f1;
 	cvt.rzi.u32.f32	%r2, %f2;
-	st.param.b32	[func_retval0+0], %r2;
+	st.param.b32	[funj_retval0+0], %r2;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___ceilc(
-	.param .b32 ___ceilc_param_0
+.visible .func  (.param .b32 funj_retval0) ___ceilj(
+	.param .b32 ___ceilj_param_0
 )
 {
 	.reg .s16 	%rs<2>;
@@ -169,17 +169,17 @@
 	.reg .f32 	%f<3>;
 
 
-	ld.param.s8 	%rs1, [___ceilc_param_0];
+	ld.param.s8 	%rs1, [___ceilj_param_0];
 	cvt.rn.f32.s16	%f1, %rs1;
 	cvt.rpi.f32.f32	%f2, %f1;
 	cvt.rzi.s32.f32	%r1, %f2;
 	cvt.s32.s8 	%r2, %r1;
-	st.param.b32	[func_retval0+0], %r2;
+	st.param.b32	[funj_retval0+0], %r2;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___ceilh(
-	.param .b32 ___ceilh_param_0
+.visible .func  (.param .b32 funj_retval0) ___ceilv(
+	.param .b32 ___ceilv_param_0
 )
 {
 	.reg .s16 	%rs<2>;
@@ -187,16 +187,16 @@
 	.reg .f32 	%f<3>;
 
 
-	ld.param.u8 	%rs1, [___ceilh_param_0];
+	ld.param.u8 	%rs1, [___ceilv_param_0];
 	cvt.rn.f32.u16	%f1, %rs1;
 	cvt.rpi.f32.f32	%f2, %f1;
 	cvt.rzi.u32.f32	%r1, %f2;
 	and.b32  	%r2, %r1, 255;
-	st.param.b32	[func_retval0+0], %r2;
+	st.param.b32	[funj_retval0+0], %r2;
 	ret;
 }
 
-.visible .func  (.param .b64 func_retval0) ___ceild(
+.visible .func  (.param .b64 funj_retval0) ___ceild(
 	.param .b64 ___ceild_param_0
 )
 {
@@ -205,12 +205,12 @@
 
 	ld.param.f64 	%fd1, [___ceild_param_0];
 	cvt.rpi.f64.f64	%fd2, %fd1;
-	st.param.f64	[func_retval0+0], %fd2;
+	st.param.f64	[funj_retval0+0], %fd2;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___roundf(
-	.param .b32 ___roundf_param_0
+.visible .func  (.param .b32 funj_retval0) ___rounds(
+	.param .b32 ___rounds_param_0
 )
 {
 	.reg .pred 	%p<3>;
@@ -218,7 +218,7 @@
 	.reg .f32 	%f<10>;
 
 
-	ld.param.f32 	%f4, [___roundf_param_0];
+	ld.param.f32 	%f4, [___rounds_param_0];
 	abs.f32 	%f5, %f4;
 	mov.b32 	 %r1, %f4;
 	and.b32  	%r2, %r1, -2147483648;
@@ -234,11 +234,11 @@
 	cvt.rzi.f32.f32	%f9, %f4;
 
 BB12_2:
-	st.param.f32	[func_retval0+0], %f9;
+	st.param.f32	[funj_retval0+0], %f9;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___roundi(
+.visible .func  (.param .b32 funj_retval0) ___roundi(
 	.param .b32 ___roundi_param_0
 )
 {
@@ -265,12 +265,12 @@ BB12_2:
 
 BB13_2:
 	cvt.rzi.s32.f32	%r5, %f9;
-	st.param.b32	[func_retval0+0], %r5;
+	st.param.b32	[funj_retval0+0], %r5;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___roundj(
-	.param .b32 ___roundj_param_0
+.visible .func  (.param .b32 funj_retval0) ___roundu(
+	.param .b32 ___roundu_param_0
 )
 {
 	.reg .pred 	%p<3>;
@@ -278,7 +278,7 @@ BB13_2:
 	.reg .f32 	%f<10>;
 
 
-	ld.param.u32 	%r1, [___roundj_param_0];
+	ld.param.u32 	%r1, [___roundu_param_0];
 	cvt.rn.f32.u32	%f1, %r1;
 	abs.f32 	%f5, %f1;
 	mov.b32 	 %r2, %f1;
@@ -296,12 +296,12 @@ BB13_2:
 
 BB14_2:
 	cvt.rzi.u32.f32	%r5, %f9;
-	st.param.b32	[func_retval0+0], %r5;
+	st.param.b32	[funj_retval0+0], %r5;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___roundc(
-	.param .b32 ___roundc_param_0
+.visible .func  (.param .b32 funj_retval0) ___roundj(
+	.param .b32 ___roundj_param_0
 )
 {
 	.reg .pred 	%p<3>;
@@ -310,7 +310,7 @@ BB14_2:
 	.reg .f32 	%f<10>;
 
 
-	ld.param.s8 	%rs1, [___roundc_param_0];
+	ld.param.s8 	%rs1, [___roundj_param_0];
 	cvt.rn.f32.s16	%f1, %rs1;
 	abs.f32 	%f5, %f1;
 	mov.b32 	 %r1, %f1;
@@ -329,12 +329,12 @@ BB14_2:
 BB15_2:
 	cvt.rzi.s32.f32	%r4, %f9;
 	cvt.s32.s8 	%r5, %r4;
-	st.param.b32	[func_retval0+0], %r5;
+	st.param.b32	[funj_retval0+0], %r5;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___roundh(
-	.param .b32 ___roundh_param_0
+.visible .func  (.param .b32 funj_retval0) ___roundv(
+	.param .b32 ___roundv_param_0
 )
 {
 	.reg .pred 	%p<3>;
@@ -343,7 +343,7 @@ BB15_2:
 	.reg .f32 	%f<10>;
 
 
-	ld.param.u8 	%rs1, [___roundh_param_0];
+	ld.param.u8 	%rs1, [___roundv_param_0];
 	cvt.rn.f32.u16	%f1, %rs1;
 	abs.f32 	%f5, %f1;
 	mov.b32 	 %r1, %f1;
@@ -362,11 +362,11 @@ BB15_2:
 BB16_2:
 	cvt.rzi.u32.f32	%r4, %f9;
 	and.b32  	%r5, %r4, 255;
-	st.param.b32	[func_retval0+0], %r5;
+	st.param.b32	[funj_retval0+0], %r5;
 	ret;
 }
 
-.visible .func  (.param .b64 func_retval0) ___roundd(
+.visible .func  (.param .b64 funj_retval0) ___roundd(
 	.param .b64 ___roundd_param_0
 )
 {
@@ -401,12 +401,12 @@ BB16_2:
 	mov.b64 	%fd8, {%r1, %r5};
 
 BB17_2:
-	st.param.f64	[func_retval0+0], %fd8;
+	st.param.f64	[funj_retval0+0], %fd8;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___tgammaf(
-	.param .b32 ___tgammaf_param_0
+.visible .func  (.param .b32 funj_retval0) ___tgammas(
+	.param .b32 ___tgammas_param_0
 )
 {
 	.reg .pred 	%p<17>;
@@ -414,7 +414,7 @@ BB17_2:
 	.reg .f32 	%f<99>;
 
 
-	ld.param.f32 	%f24, [___tgammaf_param_0];
+	ld.param.f32 	%f24, [___tgammas_param_0];
 	setp.ltu.f32	%p1, %f24, 0f00000000;
 	@%p1 bra 	BB18_5;
 
@@ -538,11 +538,11 @@ BB18_8:
 	mov.f32 	%f98, 0f80000000;
 
 BB18_12:
-	st.param.f32	[func_retval0+0], %f98;
+	st.param.f32	[funj_retval0+0], %f98;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___tgammai(
+.visible .func  (.param .b32 funj_retval0) ___tgammai(
 	.param .b32 ___tgammai_param_0
 )
 {
@@ -677,12 +677,12 @@ BB19_8:
 
 BB19_12:
 	cvt.rzi.s32.f32	%r4, %f98;
-	st.param.b32	[func_retval0+0], %r4;
+	st.param.b32	[funj_retval0+0], %r4;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___tgammaj(
-	.param .b32 ___tgammaj_param_0
+.visible .func  (.param .b32 funj_retval0) ___tgammau(
+	.param .b32 ___tgammau_param_0
 )
 {
 	.reg .pred 	%p<17>;
@@ -690,7 +690,7 @@ BB19_12:
 	.reg .f32 	%f<99>;
 
 
-	ld.param.u32 	%r1, [___tgammaj_param_0];
+	ld.param.u32 	%r1, [___tgammau_param_0];
 	cvt.rn.f32.u32	%f1, %r1;
 	setp.ltu.f32	%p1, %f1, 0f00000000;
 	@%p1 bra 	BB20_5;
@@ -816,12 +816,12 @@ BB20_8:
 
 BB20_12:
 	cvt.rzi.u32.f32	%r4, %f98;
-	st.param.b32	[func_retval0+0], %r4;
+	st.param.b32	[funj_retval0+0], %r4;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___tgammac(
-	.param .b32 ___tgammac_param_0
+.visible .func  (.param .b32 funj_retval0) ___tgammaj(
+	.param .b32 ___tgammaj_param_0
 )
 {
 	.reg .pred 	%p<17>;
@@ -830,7 +830,7 @@ BB20_12:
 	.reg .f32 	%f<99>;
 
 
-	ld.param.s8 	%rs1, [___tgammac_param_0];
+	ld.param.s8 	%rs1, [___tgammaj_param_0];
 	cvt.rn.f32.s16	%f1, %rs1;
 	setp.lt.s16	%p1, %rs1, 0;
 	@%p1 bra 	BB21_5;
@@ -957,12 +957,12 @@ BB21_8:
 BB21_12:
 	cvt.rzi.s32.f32	%r3, %f98;
 	cvt.s32.s8 	%r4, %r3;
-	st.param.b32	[func_retval0+0], %r4;
+	st.param.b32	[funj_retval0+0], %r4;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___tgammah(
-	.param .b32 ___tgammah_param_0
+.visible .func  (.param .b32 funj_retval0) ___tgammav(
+	.param .b32 ___tgammav_param_0
 )
 {
 	.reg .pred 	%p<8>;
@@ -971,7 +971,7 @@ BB21_12:
 	.reg .f32 	%f<45>;
 
 
-	ld.param.u8 	%rs1, [___tgammah_param_0];
+	ld.param.u8 	%rs1, [___tgammav_param_0];
 	cvt.rn.f32.u16	%f12, %rs1;
 	setp.gt.u16	%p1, %rs1, 36;
 	selp.f32	%f1, 0f42100000, %f12, %p1;
@@ -1023,11 +1023,11 @@ BB22_3:
 	selp.f32	%f37, %f36, %f35, %p2;
 	cvt.rzi.u32.f32	%r1, %f37;
 	and.b32  	%r2, %r1, 255;
-	st.param.b32	[func_retval0+0], %r2;
+	st.param.b32	[funj_retval0+0], %r2;
 	ret;
 }
 
-.visible .func  (.param .b64 func_retval0) ___tgammad(
+.visible .func  (.param .b64 funj_retval0) ___tgammad(
 	.param .b64 ___tgammad_param_0
 )
 {
@@ -1680,12 +1680,12 @@ BB23_42:
 	rcp.rn.f64 	%fd407, %fd378;
 
 BB23_43:
-	st.param.f64	[func_retval0+0], %fd407;
+	st.param.f64	[funj_retval0+0], %fd407;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___lgammaf(
-	.param .b32 ___lgammaf_param_0
+.visible .func  (.param .b32 funj_retval0) ___lgammas(
+	.param .b32 ___lgammas_param_0
 )
 {
 	.reg .pred 	%p<33>;
@@ -1693,7 +1693,7 @@ BB23_43:
 	.reg .f32 	%f<269>;
 
 
-	ld.param.f32 	%f39, [___lgammaf_param_0];
+	ld.param.f32 	%f39, [___lgammas_param_0];
 	abs.f32 	%f1, %f39;
 	setp.ltu.f32	%p1, %f1, 0f40400000;
 	@%p1 bra 	BB24_7;
@@ -2089,11 +2089,11 @@ BB24_36:
 	neg.f32 	%f268, %f267;
 
 BB24_37:
-	st.param.f32	[func_retval0+0], %f268;
+	st.param.f32	[funj_retval0+0], %f268;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___lgammai(
+.visible .func  (.param .b32 funj_retval0) ___lgammai(
 	.param .b32 ___lgammai_param_0
 )
 {
@@ -2500,12 +2500,12 @@ BB25_36:
 
 BB25_37:
 	cvt.rzi.s32.f32	%r21, %f268;
-	st.param.b32	[func_retval0+0], %r21;
+	st.param.b32	[funj_retval0+0], %r21;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___lgammaj(
-	.param .b32 ___lgammaj_param_0
+.visible .func  (.param .b32 funj_retval0) ___lgammau(
+	.param .b32 ___lgammau_param_0
 )
 {
 	.reg .pred 	%p<33>;
@@ -2513,7 +2513,7 @@ BB25_37:
 	.reg .f32 	%f<269>;
 
 
-	ld.param.u32 	%r3, [___lgammaj_param_0];
+	ld.param.u32 	%r3, [___lgammau_param_0];
 	cvt.rn.f32.u32	%f1, %r3;
 	abs.f32 	%f2, %f1;
 	setp.ltu.f32	%p1, %f2, 0f40400000;
@@ -2911,12 +2911,12 @@ BB26_36:
 
 BB26_37:
 	cvt.rzi.u32.f32	%r21, %f268;
-	st.param.b32	[func_retval0+0], %r21;
+	st.param.b32	[funj_retval0+0], %r21;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___lgammac(
-	.param .b32 ___lgammac_param_0
+.visible .func  (.param .b32 funj_retval0) ___lgammaj(
+	.param .b32 ___lgammaj_param_0
 )
 {
 	.reg .pred 	%p<33>;
@@ -2925,7 +2925,7 @@ BB26_37:
 	.reg .f32 	%f<269>;
 
 
-	ld.param.s8 	%rs1, [___lgammac_param_0];
+	ld.param.s8 	%rs1, [___lgammaj_param_0];
 	cvt.rn.f32.s16	%f39, %rs1;
 	abs.f32 	%f1, %f39;
 	setp.ltu.f32	%p1, %f1, 0f40400000;
@@ -3324,12 +3324,12 @@ BB27_36:
 BB27_37:
 	cvt.rzi.s32.f32	%r20, %f268;
 	cvt.s32.s8 	%r21, %r20;
-	st.param.b32	[func_retval0+0], %r21;
+	st.param.b32	[funj_retval0+0], %r21;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___lgammah(
-	.param .b32 ___lgammah_param_0
+.visible .func  (.param .b32 funj_retval0) ___lgammav(
+	.param .b32 ___lgammav_param_0
 )
 {
 	.reg .pred 	%p<16>;
@@ -3338,7 +3338,7 @@ BB27_37:
 	.reg .f32 	%f<164>;
 
 
-	ld.param.u8 	%rs1, [___lgammah_param_0];
+	ld.param.u8 	%rs1, [___lgammav_param_0];
 	cvt.rn.f32.u16	%f16, %rs1;
 	abs.f32 	%f1, %f16;
 	setp.ltu.f32	%p1, %f1, 0f40400000;
@@ -3564,11 +3564,11 @@ BB28_14:
 BB28_15:
 	cvt.rzi.u32.f32	%r9, %f163;
 	and.b32  	%r10, %r9, 255;
-	st.param.b32	[func_retval0+0], %r10;
+	st.param.b32	[funj_retval0+0], %r10;
 	ret;
 }
 
-.visible .func  (.param .b64 func_retval0) ___lgammad(
+.visible .func  (.param .b64 funj_retval0) ___lgammad(
 	.param .b64 ___lgammad_param_0
 )
 {
@@ -3809,11 +3809,11 @@ BB29_23:
 	add.f64 	%fd104, %fd22, %fd22;
 
 BB29_24:
-	st.param.f64	[func_retval0+0], %fd104;
+	st.param.f64	[funj_retval0+0], %fd104;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___minss(
+.visible .func  (.param .b32 funj_retval0) ___minss(
 	.param .b32 ___minss_param_0,
 	.param .b32 ___minss_param_1
 )
@@ -3824,11 +3824,11 @@ BB29_24:
 	ld.param.f32 	%f1, [___minss_param_0];
 	ld.param.f32 	%f2, [___minss_param_1];
 	min.f32 	%f3, %f1, %f2;
-	st.param.f32	[func_retval0+0], %f3;
+	st.param.f32	[funj_retval0+0], %f3;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___minii(
+.visible .func  (.param .b32 funj_retval0) ___minii(
 	.param .b32 ___minii_param_0,
 	.param .b32 ___minii_param_1
 )
@@ -3843,11 +3843,11 @@ BB29_24:
 	cvt.rn.f32.s32	%f2, %r2;
 	min.f32 	%f3, %f1, %f2;
 	cvt.rzi.s32.f32	%r3, %f3;
-	st.param.b32	[func_retval0+0], %r3;
+	st.param.b32	[funj_retval0+0], %r3;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___minuu(
+.visible .func  (.param .b32 funj_retval0) ___minuu(
 	.param .b32 ___minuu_param_0,
 	.param .b32 ___minuu_param_1
 )
@@ -3862,11 +3862,11 @@ BB29_24:
 	cvt.rn.f32.u32	%f2, %r2;
 	min.f32 	%f3, %f1, %f2;
 	cvt.rzi.u32.f32	%r3, %f3;
-	st.param.b32	[func_retval0+0], %r3;
+	st.param.b32	[funj_retval0+0], %r3;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___minjj(
+.visible .func  (.param .b32 funj_retval0) ___minjj(
 	.param .b32 ___minjj_param_0,
 	.param .b32 ___minjj_param_1
 )
@@ -3883,11 +3883,11 @@ BB29_24:
 	min.f32 	%f3, %f1, %f2;
 	cvt.rzi.s32.f32	%r1, %f3;
 	cvt.s32.s8 	%r2, %r1;
-	st.param.b32	[func_retval0+0], %r2;
+	st.param.b32	[funj_retval0+0], %r2;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___minvv(
+.visible .func  (.param .b32 funj_retval0) ___minvv(
 	.param .b32 ___minvv_param_0,
 	.param .b32 ___minvv_param_1
 )
@@ -3904,11 +3904,11 @@ BB29_24:
 	min.f32 	%f3, %f1, %f2;
 	cvt.rzi.u32.f32	%r1, %f3;
 	and.b32  	%r2, %r1, 255;
-	st.param.b32	[func_retval0+0], %r2;
+	st.param.b32	[funj_retval0+0], %r2;
 	ret;
 }
 
-.visible .func  (.param .b64 func_retval0) ___mindd(
+.visible .func  (.param .b64 funj_retval0) ___mindd(
 	.param .b64 ___mindd_param_0,
 	.param .b64 ___mindd_param_1
 )
@@ -3919,11 +3919,11 @@ BB29_24:
 	ld.param.f64 	%fd1, [___mindd_param_0];
 	ld.param.f64 	%fd2, [___mindd_param_1];
 	min.f64 	%fd3, %fd1, %fd2;
-	st.param.f64	[func_retval0+0], %fd3;
+	st.param.f64	[funj_retval0+0], %fd3;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___maxss(
+.visible .func  (.param .b32 funj_retval0) ___maxss(
 	.param .b32 ___maxss_param_0,
 	.param .b32 ___maxss_param_1
 )
@@ -3934,11 +3934,11 @@ BB29_24:
 	ld.param.f32 	%f1, [___maxss_param_0];
 	ld.param.f32 	%f2, [___maxss_param_1];
 	max.f32 	%f3, %f1, %f2;
-	st.param.f32	[func_retval0+0], %f3;
+	st.param.f32	[funj_retval0+0], %f3;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___maxii(
+.visible .func  (.param .b32 funj_retval0) ___maxii(
 	.param .b32 ___maxii_param_0,
 	.param .b32 ___maxii_param_1
 )
@@ -3953,11 +3953,11 @@ BB29_24:
 	cvt.rn.f32.s32	%f2, %r2;
 	max.f32 	%f3, %f1, %f2;
 	cvt.rzi.s32.f32	%r3, %f3;
-	st.param.b32	[func_retval0+0], %r3;
+	st.param.b32	[funj_retval0+0], %r3;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___maxuu(
+.visible .func  (.param .b32 funj_retval0) ___maxuu(
 	.param .b32 ___maxuu_param_0,
 	.param .b32 ___maxuu_param_1
 )
@@ -3972,11 +3972,11 @@ BB29_24:
 	cvt.rn.f32.u32	%f2, %r2;
 	max.f32 	%f3, %f1, %f2;
 	cvt.rzi.u32.f32	%r3, %f3;
-	st.param.b32	[func_retval0+0], %r3;
+	st.param.b32	[funj_retval0+0], %r3;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___maxjj(
+.visible .func  (.param .b32 funj_retval0) ___maxjj(
 	.param .b32 ___maxjj_param_0,
 	.param .b32 ___maxjj_param_1
 )
@@ -3993,11 +3993,11 @@ BB29_24:
 	max.f32 	%f3, %f1, %f2;
 	cvt.rzi.s32.f32	%r1, %f3;
 	cvt.s32.s8 	%r2, %r1;
-	st.param.b32	[func_retval0+0], %r2;
+	st.param.b32	[funj_retval0+0], %r2;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___maxvv(
+.visible .func  (.param .b32 funj_retval0) ___maxvv(
 	.param .b32 ___maxvv_param_0,
 	.param .b32 ___maxvv_param_1
 )
@@ -4014,11 +4014,11 @@ BB29_24:
 	max.f32 	%f3, %f1, %f2;
 	cvt.rzi.u32.f32	%r1, %f3;
 	and.b32  	%r2, %r1, 255;
-	st.param.b32	[func_retval0+0], %r2;
+	st.param.b32	[funj_retval0+0], %r2;
 	ret;
 }
 
-.visible .func  (.param .b64 func_retval0) ___maxdd(
+.visible .func  (.param .b64 funj_retval0) ___maxdd(
 	.param .b64 ___maxdd_param_0,
 	.param .b64 ___maxdd_param_1
 )
@@ -4029,11 +4029,11 @@ BB29_24:
 	ld.param.f64 	%fd1, [___maxdd_param_0];
 	ld.param.f64 	%fd2, [___maxdd_param_1];
 	max.f64 	%fd3, %fd1, %fd2;
-	st.param.f64	[func_retval0+0], %fd3;
+	st.param.f64	[funj_retval0+0], %fd3;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___modss(
+.visible .func  (.param .b32 funj_retval0) ___modss(
 	.param .b32 ___modss_param_0,
 	.param .b32 ___modss_param_1
 )
@@ -4163,11 +4163,11 @@ BB42_13:
 	selp.f32	%f47, %f42, %f41, %p18;
 
 BB42_14:
-	st.param.f32	[func_retval0+0], %f47;
+	st.param.f32	[funj_retval0+0], %f47;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___modii(
+.visible .func  (.param .b32 funj_retval0) ___modii(
 	.param .b32 ___modii_param_0,
 	.param .b32 ___modii_param_1
 )
@@ -4300,11 +4300,11 @@ BB43_13:
 
 BB43_14:
 	cvt.rzi.s32.f32	%r20, %f47;
-	st.param.b32	[func_retval0+0], %r20;
+	st.param.b32	[funj_retval0+0], %r20;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___moduu(
+.visible .func  (.param .b32 funj_retval0) ___moduu(
 	.param .b32 ___moduu_param_0,
 	.param .b32 ___moduu_param_1
 )
@@ -4437,11 +4437,11 @@ BB44_13:
 
 BB44_14:
 	cvt.rzi.u32.f32	%r20, %f47;
-	st.param.b32	[func_retval0+0], %r20;
+	st.param.b32	[funj_retval0+0], %r20;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___modjj(
+.visible .func  (.param .b32 funj_retval0) ___modjj(
 	.param .b32 ___modjj_param_0,
 	.param .b32 ___modjj_param_1
 )
@@ -4576,11 +4576,11 @@ BB45_13:
 BB45_14:
 	cvt.rzi.s32.f32	%r18, %f47;
 	cvt.s32.s8 	%r19, %r18;
-	st.param.b32	[func_retval0+0], %r19;
+	st.param.b32	[funj_retval0+0], %r19;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___modvv(
+.visible .func  (.param .b32 funj_retval0) ___modvv(
 	.param .b32 ___modvv_param_0,
 	.param .b32 ___modvv_param_1
 )
@@ -4715,11 +4715,11 @@ BB46_13:
 BB46_14:
 	cvt.rzi.u32.f32	%r18, %f47;
 	and.b32  	%r19, %r18, 255;
-	st.param.b32	[func_retval0+0], %r19;
+	st.param.b32	[funj_retval0+0], %r19;
 	ret;
 }
 
-.visible .func  (.param .b64 func_retval0) ___moddd(
+.visible .func  (.param .b64 funj_retval0) ___moddd(
 	.param .b64 ___moddd_param_0,
 	.param .b64 ___moddd_param_1
 )
@@ -4878,11 +4878,11 @@ BB47_15:
 	add.f64 	%fd20, %fd20, %fd12;
 
 BB47_16:
-	st.param.f64	[func_retval0+0], %fd20;
+	st.param.f64	[funj_retval0+0], %fd20;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___remss(
+.visible .func  (.param .b32 funj_retval0) ___remss(
 	.param .b32 ___remss_param_0,
 	.param .b32 ___remss_param_1
 )
@@ -5041,7 +5041,7 @@ BB48_20:
 	add.f32 	%f53, %f21, %f22;
 
 BB48_21:
-	st.param.f32	[func_retval0+0], %f53;
+	st.param.f32	[funj_retval0+0], %f53;
 	ret;
 
 BB48_22:
@@ -5049,7 +5049,7 @@ BB48_22:
 	bra.uni 	BB48_16;
 }
 
-.visible .func  (.param .b32 func_retval0) ___remii(
+.visible .func  (.param .b32 funj_retval0) ___remii(
 	.param .b32 ___remii_param_0,
 	.param .b32 ___remii_param_1
 )
@@ -5211,7 +5211,7 @@ BB49_20:
 
 BB49_21:
 	cvt.rzi.s32.f32	%r24, %f53;
-	st.param.b32	[func_retval0+0], %r24;
+	st.param.b32	[funj_retval0+0], %r24;
 	ret;
 
 BB49_22:
@@ -5219,7 +5219,7 @@ BB49_22:
 	bra.uni 	BB49_16;
 }
 
-.visible .func  (.param .b32 func_retval0) ___remuu(
+.visible .func  (.param .b32 funj_retval0) ___remuu(
 	.param .b32 ___remuu_param_0,
 	.param .b32 ___remuu_param_1
 )
@@ -5381,7 +5381,7 @@ BB50_20:
 
 BB50_21:
 	cvt.rzi.u32.f32	%r24, %f53;
-	st.param.b32	[func_retval0+0], %r24;
+	st.param.b32	[funj_retval0+0], %r24;
 	ret;
 
 BB50_22:
@@ -5389,7 +5389,7 @@ BB50_22:
 	bra.uni 	BB50_16;
 }
 
-.visible .func  (.param .b32 func_retval0) ___remjj(
+.visible .func  (.param .b32 funj_retval0) ___remjj(
 	.param .b32 ___remjj_param_0,
 	.param .b32 ___remjj_param_1
 )
@@ -5553,7 +5553,7 @@ BB51_20:
 BB51_21:
 	cvt.rzi.s32.f32	%r22, %f53;
 	cvt.s32.s8 	%r23, %r22;
-	st.param.b32	[func_retval0+0], %r23;
+	st.param.b32	[funj_retval0+0], %r23;
 	ret;
 
 BB51_22:
@@ -5561,7 +5561,7 @@ BB51_22:
 	bra.uni 	BB51_16;
 }
 
-.visible .func  (.param .b32 func_retval0) ___remvv(
+.visible .func  (.param .b32 funj_retval0) ___remvv(
 	.param .b32 ___remvv_param_0,
 	.param .b32 ___remvv_param_1
 )
@@ -5725,7 +5725,7 @@ BB52_20:
 BB52_21:
 	cvt.rzi.u32.f32	%r22, %f53;
 	and.b32  	%r23, %r22, 255;
-	st.param.b32	[func_retval0+0], %r23;
+	st.param.b32	[funj_retval0+0], %r23;
 	ret;
 
 BB52_22:
@@ -5733,7 +5733,7 @@ BB52_22:
 	bra.uni 	BB52_16;
 }
 
-.visible .func  (.param .b64 func_retval0) ___remdd(
+.visible .func  (.param .b64 funj_retval0) ___remdd(
 	.param .b64 ___remdd_param_0,
 	.param .b64 ___remdd_param_1
 )
@@ -5916,11 +5916,11 @@ BB53_20:
 	add.f64 	%fd24, %fd16, %fd17;
 
 BB53_21:
-	st.param.f64	[func_retval0+0], %fd24;
+	st.param.f64	[funj_retval0+0], %fd24;
 	ret;
 }
 
-.visible .func  (.param .align 8 .b8 func_retval0[8]) ___mincc(
+.visible .func  (.param .align 8 .b8 funj_retval0[8]) ___mincc(
 	.param .align 8 .b8 ___mincc_param_0[8],
 	.param .align 8 .b8 ___mincc_param_1[8]
 )
@@ -5940,12 +5940,12 @@ BB53_21:
 	setp.lt.f32	%p1, %f6, %f8;
 	selp.f32	%f9, %f2, %f4, %p1;
 	selp.f32	%f10, %f1, %f3, %p1;
-	st.param.f32	[func_retval0+0], %f10;
-	st.param.f32	[func_retval0+4], %f9;
+	st.param.f32	[funj_retval0+0], %f10;
+	st.param.f32	[funj_retval0+4], %f9;
 	ret;
 }
 
-.visible .func  (.param .align 16 .b8 func_retval0[16]) ___minzz(
+.visible .func  (.param .align 16 .b8 funj_retval0[16]) ___minzz(
 	.param .align 16 .b8 ___minzz_param_0[16],
 	.param .align 16 .b8 ___minzz_param_1[16]
 )
@@ -5965,12 +5965,12 @@ BB53_21:
 	setp.lt.f64	%p1, %fd6, %fd8;
 	selp.f64	%fd9, %fd2, %fd4, %p1;
 	selp.f64	%fd10, %fd1, %fd3, %p1;
-	st.param.f64	[func_retval0+0], %fd10;
-	st.param.f64	[func_retval0+8], %fd9;
+	st.param.f64	[funj_retval0+0], %fd10;
+	st.param.f64	[funj_retval0+8], %fd9;
 	ret;
 }
 
-.visible .func  (.param .align 8 .b8 func_retval0[8]) ___maxcc(
+.visible .func  (.param .align 8 .b8 funj_retval0[8]) ___maxcc(
 	.param .align 8 .b8 ___maxcc_param_0[8],
 	.param .align 8 .b8 ___maxcc_param_1[8]
 )
@@ -5990,12 +5990,12 @@ BB53_21:
 	setp.gt.f32	%p1, %f6, %f8;
 	selp.f32	%f9, %f2, %f4, %p1;
 	selp.f32	%f10, %f1, %f3, %p1;
-	st.param.f32	[func_retval0+0], %f10;
-	st.param.f32	[func_retval0+4], %f9;
+	st.param.f32	[funj_retval0+0], %f10;
+	st.param.f32	[funj_retval0+4], %f9;
 	ret;
 }
 
-.visible .func  (.param .align 16 .b8 func_retval0[16]) ___maxzz(
+.visible .func  (.param .align 16 .b8 funj_retval0[16]) ___maxzz(
 	.param .align 16 .b8 ___maxzz_param_0[16],
 	.param .align 16 .b8 ___maxzz_param_1[16]
 )
@@ -6015,12 +6015,12 @@ BB53_21:
 	setp.gt.f64	%p1, %fd6, %fd8;
 	selp.f64	%fd9, %fd2, %fd4, %p1;
 	selp.f64	%fd10, %fd1, %fd3, %p1;
-	st.param.f64	[func_retval0+0], %fd10;
-	st.param.f64	[func_retval0+8], %fd9;
+	st.param.f64	[funj_retval0+0], %fd10;
+	st.param.f64	[funj_retval0+8], %fd9;
 	ret;
 }
 
-.func  (.param .b64 func_retval0) __internal_accurate_pow(
+.func  (.param .b64 funj_retval0) __internal_accurate_pow(
 	.param .b64 __internal_accurate_pow_param_0,
 	.param .b64 __internal_accurate_pow_param_1
 )
@@ -6286,11 +6286,11 @@ BB58_11:
 	fma.rn.f64 	%fd139, %fd139, %fd5, %fd139;
 
 BB58_12:
-	st.param.f64	[func_retval0+0], %fd139;
+	st.param.f64	[funj_retval0+0], %fd139;
 	ret;
 }
 
-.func  (.param .b64 func_retval0) __internal_lgamma_pos(
+.func  (.param .b64 funj_retval0) __internal_lgamma_pos(
 	.param .b64 __internal_lgamma_pos_param_0
 )
 {
@@ -6762,7 +6762,7 @@ BB59_31:
 	selp.f64	%fd297, %fd24, %fd285, %p21;
 
 BB59_32:
-	st.param.f64	[func_retval0+0], %fd297;
+	st.param.f64	[funj_retval0+0], %fd297;
 	ret;
 }
 

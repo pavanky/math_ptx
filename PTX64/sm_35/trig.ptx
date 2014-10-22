@@ -8,7 +8,7 @@
 .target sm_35
 .address_size 64
 
-.func  (.param .b64 func_retval0) __internal_trig_reduction_slowpathd
+.func  (.param .b64 funj_retval0) __internal_trig_reduction_slowpathd
 (
 	.param .b64 __internal_trig_reduction_slowpathd_param_0,
 	.param .b64 __internal_trig_reduction_slowpathd_param_1
@@ -17,20 +17,20 @@
 .const .align 4 .b8 __cudart_i2opi_f[24] = {65, 144, 67, 60, 153, 149, 98, 219, 192, 221, 52, 245, 209, 87, 39, 252, 41, 21, 68, 78, 110, 131, 249, 162};
 .const .align 8 .b8 __cudart_i2opi_d[144] = {8, 93, 141, 31, 177, 95, 251, 107, 234, 146, 82, 138, 247, 57, 7, 61, 123, 241, 229, 235, 199, 186, 39, 117, 45, 234, 95, 158, 102, 63, 70, 79, 183, 9, 203, 39, 207, 126, 54, 109, 31, 109, 10, 90, 139, 17, 47, 239, 15, 152, 5, 222, 255, 151, 248, 31, 59, 40, 249, 189, 139, 95, 132, 156, 244, 57, 83, 131, 57, 214, 145, 57, 65, 126, 95, 180, 38, 112, 156, 233, 132, 68, 187, 46, 245, 53, 130, 232, 62, 167, 41, 177, 28, 235, 29, 254, 28, 146, 209, 9, 234, 46, 73, 6, 224, 210, 77, 66, 58, 110, 36, 183, 97, 197, 187, 222, 171, 99, 81, 254, 65, 144, 67, 60, 153, 149, 98, 219, 192, 221, 52, 245, 209, 87, 39, 252, 41, 21, 68, 78, 110, 131, 249, 162};
 
-.weak .func  (.param .b32 func_retval0) cudaMalloc(
-	.param .b64 cudaMalloc_param_0,
-	.param .b64 cudaMalloc_param_1
+.weak .func  (.param .b32 funj_retval0) cudaMalloj(
+	.param .b64 cudaMalloj_param_0,
+	.param .b64 cudaMalloj_param_1
 )
 {
 	.reg .s32 	%r<2>;
 
 
 	mov.u32 	%r1, 30;
-	st.param.b32	[func_retval0+0], %r1;
+	st.param.b32	[funj_retval0+0], %r1;
 	ret;
 }
 
-.weak .func  (.param .b32 func_retval0) cudaFuncGetAttributes(
+.weak .func  (.param .b32 funj_retval0) cudaFuncGetAttributes(
 	.param .b64 cudaFuncGetAttributes_param_0,
 	.param .b64 cudaFuncGetAttributes_param_1
 )
@@ -39,11 +39,11 @@
 
 
 	mov.u32 	%r1, 30;
-	st.param.b32	[func_retval0+0], %r1;
+	st.param.b32	[funj_retval0+0], %r1;
 	ret;
 }
 
-.weak .func  (.param .b32 func_retval0) cudaDeviceGetAttribute(
+.weak .func  (.param .b32 funj_retval0) cudaDeviceGetAttribute(
 	.param .b64 cudaDeviceGetAttribute_param_0,
 	.param .b32 cudaDeviceGetAttribute_param_1,
 	.param .b32 cudaDeviceGetAttribute_param_2
@@ -53,11 +53,11 @@
 
 
 	mov.u32 	%r1, 30;
-	st.param.b32	[func_retval0+0], %r1;
+	st.param.b32	[funj_retval0+0], %r1;
 	ret;
 }
 
-.weak .func  (.param .b32 func_retval0) cudaGetDevice(
+.weak .func  (.param .b32 funj_retval0) cudaGetDevice(
 	.param .b64 cudaGetDevice_param_0
 )
 {
@@ -65,11 +65,11 @@
 
 
 	mov.u32 	%r1, 30;
-	st.param.b32	[func_retval0+0], %r1;
+	st.param.b32	[funj_retval0+0], %r1;
 	ret;
 }
 
-.weak .func  (.param .b32 func_retval0) cudaOccupancyMaxActiveBlocksPerMultiprocessor(
+.weak .func  (.param .b32 funj_retval0) cudaOccupancyMaxActiveBlocksPerMultiprocessor(
 	.param .b64 cudaOccupancyMaxActiveBlocksPerMultiprocessor_param_0,
 	.param .b64 cudaOccupancyMaxActiveBlocksPerMultiprocessor_param_1,
 	.param .b32 cudaOccupancyMaxActiveBlocksPerMultiprocessor_param_2,
@@ -80,12 +80,12 @@
 
 
 	mov.u32 	%r1, 30;
-	st.param.b32	[func_retval0+0], %r1;
+	st.param.b32	[funj_retval0+0], %r1;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___sinf(
-	.param .b32 ___sinf_param_0
+.visible .func  (.param .b32 funj_retval0) ___sins(
+	.param .b32 ___sins_param_0
 )
 {
 	.local .align 4 .b8 	__local_depot5[28];
@@ -98,7 +98,7 @@
 
 
 	mov.u64 	%SPL, __local_depot5;
-	ld.param.f32 	%f43, [___sinf_param_0];
+	ld.param.f32 	%f43, [___sins_param_0];
 	add.u64 	%rd7, %SPL, 0;
 	abs.f32 	%f19, %f43;
 	setp.neu.f32	%p1, %f19, 0f7F800000;
@@ -280,11 +280,11 @@ BB5_18:
 	fma.rn.f32 	%f47, %f47, %f42, %f41;
 
 BB5_20:
-	st.param.f32	[func_retval0+0], %f47;
+	st.param.f32	[funj_retval0+0], %f47;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___sini(
+.visible .func  (.param .b32 funj_retval0) ___sini(
 	.param .b32 ___sini_param_0
 )
 {
@@ -482,12 +482,12 @@ BB6_18:
 
 BB6_20:
 	cvt.rzi.s32.f32	%r84, %f47;
-	st.param.b32	[func_retval0+0], %r84;
+	st.param.b32	[funj_retval0+0], %r84;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___sinj(
-	.param .b32 ___sinj_param_0
+.visible .func  (.param .b32 funj_retval0) ___sinu(
+	.param .b32 ___sinu_param_0
 )
 {
 	.local .align 4 .b8 	__local_depot7[28];
@@ -500,7 +500,7 @@ BB6_20:
 
 
 	mov.u64 	%SPL, __local_depot7;
-	ld.param.u32 	%r30, [___sinj_param_0];
+	ld.param.u32 	%r30, [___sinu_param_0];
 	add.u64 	%rd7, %SPL, 0;
 	cvt.rn.f32.u32	%f43, %r30;
 	abs.f32 	%f19, %f43;
@@ -684,12 +684,12 @@ BB7_18:
 
 BB7_20:
 	cvt.rzi.u32.f32	%r84, %f47;
-	st.param.b32	[func_retval0+0], %r84;
+	st.param.b32	[funj_retval0+0], %r84;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___sinc(
-	.param .b32 ___sinc_param_0
+.visible .func  (.param .b32 funj_retval0) ___sinj(
+	.param .b32 ___sinj_param_0
 )
 {
 	.local .align 4 .b8 	__local_depot8[28];
@@ -704,7 +704,7 @@ BB7_20:
 
 	mov.u64 	%SPL, __local_depot8;
 	add.u64 	%rd7, %SPL, 0;
-	ld.param.s8 	%rs1, [___sinc_param_0];
+	ld.param.s8 	%rs1, [___sinj_param_0];
 	cvt.rn.f32.s16	%f43, %rs1;
 	abs.f32 	%f19, %f43;
 	setp.neu.f32	%p1, %f19, 0f7F800000;
@@ -888,12 +888,12 @@ BB8_18:
 BB8_20:
 	cvt.rzi.s32.f32	%r83, %f47;
 	cvt.s32.s8 	%r84, %r83;
-	st.param.b32	[func_retval0+0], %r84;
+	st.param.b32	[funj_retval0+0], %r84;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___sinh(
-	.param .b32 ___sinh_param_0
+.visible .func  (.param .b32 funj_retval0) ___sinv(
+	.param .b32 ___sinv_param_0
 )
 {
 	.local .align 4 .b8 	__local_depot9[28];
@@ -908,7 +908,7 @@ BB8_20:
 
 	mov.u64 	%SPL, __local_depot9;
 	add.u64 	%rd7, %SPL, 0;
-	ld.param.u8 	%rs1, [___sinh_param_0];
+	ld.param.u8 	%rs1, [___sinv_param_0];
 	cvt.rn.f32.u16	%f43, %rs1;
 	abs.f32 	%f19, %f43;
 	setp.neu.f32	%p1, %f19, 0f7F800000;
@@ -1092,11 +1092,11 @@ BB9_18:
 BB9_20:
 	cvt.rzi.u32.f32	%r83, %f47;
 	and.b32  	%r84, %r83, 255;
-	st.param.b32	[func_retval0+0], %r84;
+	st.param.b32	[funj_retval0+0], %r84;
 	ret;
 }
 
-.visible .func  (.param .b64 func_retval0) ___sind(
+.visible .func  (.param .b64 funj_retval0) ___sind(
 	.param .b64 ___sind_param_0
 )
 {
@@ -1211,12 +1211,12 @@ BB10_4:
 	mov.b64 	%fd52, {%r10, %r9};
 
 BB10_6:
-	st.param.f64	[func_retval0+0], %fd52;
+	st.param.f64	[funj_retval0+0], %fd52;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___cosf(
-	.param .b32 ___cosf_param_0
+.visible .func  (.param .b32 funj_retval0) ___coss(
+	.param .b32 ___coss_param_0
 )
 {
 	.local .align 4 .b8 	__local_depot11[28];
@@ -1229,7 +1229,7 @@ BB10_6:
 
 
 	mov.u64 	%SPL, __local_depot11;
-	ld.param.f32 	%f43, [___cosf_param_0];
+	ld.param.f32 	%f43, [___coss_param_0];
 	add.u64 	%rd7, %SPL, 0;
 	abs.f32 	%f19, %f43;
 	setp.neu.f32	%p1, %f19, 0f7F800000;
@@ -1412,11 +1412,11 @@ BB11_18:
 	fma.rn.f32 	%f47, %f47, %f42, %f41;
 
 BB11_20:
-	st.param.f32	[func_retval0+0], %f47;
+	st.param.f32	[funj_retval0+0], %f47;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___cosi(
+.visible .func  (.param .b32 funj_retval0) ___cosi(
 	.param .b32 ___cosi_param_0
 )
 {
@@ -1615,12 +1615,12 @@ BB12_18:
 
 BB12_20:
 	cvt.rzi.s32.f32	%r85, %f47;
-	st.param.b32	[func_retval0+0], %r85;
+	st.param.b32	[funj_retval0+0], %r85;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___cosj(
-	.param .b32 ___cosj_param_0
+.visible .func  (.param .b32 funj_retval0) ___cosu(
+	.param .b32 ___cosu_param_0
 )
 {
 	.local .align 4 .b8 	__local_depot13[28];
@@ -1633,7 +1633,7 @@ BB12_20:
 
 
 	mov.u64 	%SPL, __local_depot13;
-	ld.param.u32 	%r31, [___cosj_param_0];
+	ld.param.u32 	%r31, [___cosu_param_0];
 	add.u64 	%rd7, %SPL, 0;
 	cvt.rn.f32.u32	%f43, %r31;
 	abs.f32 	%f19, %f43;
@@ -1818,12 +1818,12 @@ BB13_18:
 
 BB13_20:
 	cvt.rzi.u32.f32	%r85, %f47;
-	st.param.b32	[func_retval0+0], %r85;
+	st.param.b32	[funj_retval0+0], %r85;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___cosc(
-	.param .b32 ___cosc_param_0
+.visible .func  (.param .b32 funj_retval0) ___cosj(
+	.param .b32 ___cosj_param_0
 )
 {
 	.local .align 4 .b8 	__local_depot14[28];
@@ -1838,7 +1838,7 @@ BB13_20:
 
 	mov.u64 	%SPL, __local_depot14;
 	add.u64 	%rd7, %SPL, 0;
-	ld.param.s8 	%rs1, [___cosc_param_0];
+	ld.param.s8 	%rs1, [___cosj_param_0];
 	cvt.rn.f32.s16	%f43, %rs1;
 	abs.f32 	%f19, %f43;
 	setp.neu.f32	%p1, %f19, 0f7F800000;
@@ -2023,12 +2023,12 @@ BB14_18:
 BB14_20:
 	cvt.rzi.s32.f32	%r84, %f47;
 	cvt.s32.s8 	%r85, %r84;
-	st.param.b32	[func_retval0+0], %r85;
+	st.param.b32	[funj_retval0+0], %r85;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___cosh(
-	.param .b32 ___cosh_param_0
+.visible .func  (.param .b32 funj_retval0) ___cosv(
+	.param .b32 ___cosv_param_0
 )
 {
 	.local .align 4 .b8 	__local_depot15[28];
@@ -2043,7 +2043,7 @@ BB14_20:
 
 	mov.u64 	%SPL, __local_depot15;
 	add.u64 	%rd7, %SPL, 0;
-	ld.param.u8 	%rs1, [___cosh_param_0];
+	ld.param.u8 	%rs1, [___cosv_param_0];
 	cvt.rn.f32.u16	%f43, %rs1;
 	abs.f32 	%f19, %f43;
 	setp.neu.f32	%p1, %f19, 0f7F800000;
@@ -2228,11 +2228,11 @@ BB15_18:
 BB15_20:
 	cvt.rzi.u32.f32	%r84, %f47;
 	and.b32  	%r85, %r84, 255;
-	st.param.b32	[func_retval0+0], %r85;
+	st.param.b32	[funj_retval0+0], %r85;
 	ret;
 }
 
-.visible .func  (.param .b64 func_retval0) ___cosd(
+.visible .func  (.param .b64 funj_retval0) ___cosd(
 	.param .b64 ___cosd_param_0
 )
 {
@@ -2357,12 +2357,12 @@ BB16_4:
 	mov.b64 	%fd53, {%r13, %r12};
 
 BB16_6:
-	st.param.f64	[func_retval0+0], %fd53;
+	st.param.f64	[funj_retval0+0], %fd53;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___tanf(
-	.param .b32 ___tanf_param_0
+.visible .func  (.param .b32 funj_retval0) ___tans(
+	.param .b32 ___tans_param_0
 )
 {
 	.local .align 4 .b8 	__local_depot17[28];
@@ -2375,7 +2375,7 @@ BB16_6:
 
 
 	mov.u64 	%SPL, __local_depot17;
-	ld.param.f32 	%f30, [___tanf_param_0];
+	ld.param.f32 	%f30, [___tans_param_0];
 	add.u64 	%rd7, %SPL, 0;
 	abs.f32 	%f10, %f30;
 	setp.neu.f32	%p1, %f10, 0f7F800000;
@@ -2529,11 +2529,11 @@ BB17_11:
 	div.rn.f32 	%f32, %f29, %f32;
 
 BB17_12:
-	st.param.f32	[func_retval0+0], %f32;
+	st.param.f32	[funj_retval0+0], %f32;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___tani(
+.visible .func  (.param .b32 funj_retval0) ___tani(
 	.param .b32 ___tani_param_0
 )
 {
@@ -2703,12 +2703,12 @@ BB18_11:
 
 BB18_12:
 	cvt.rzi.s32.f32	%r83, %f32;
-	st.param.b32	[func_retval0+0], %r83;
+	st.param.b32	[funj_retval0+0], %r83;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___tanj(
-	.param .b32 ___tanj_param_0
+.visible .func  (.param .b32 funj_retval0) ___tanu(
+	.param .b32 ___tanu_param_0
 )
 {
 	.local .align 4 .b8 	__local_depot19[28];
@@ -2721,7 +2721,7 @@ BB18_12:
 
 
 	mov.u64 	%SPL, __local_depot19;
-	ld.param.u32 	%r29, [___tanj_param_0];
+	ld.param.u32 	%r29, [___tanu_param_0];
 	add.u64 	%rd7, %SPL, 0;
 	cvt.rn.f32.u32	%f30, %r29;
 	abs.f32 	%f10, %f30;
@@ -2877,12 +2877,12 @@ BB19_11:
 
 BB19_12:
 	cvt.rzi.u32.f32	%r83, %f32;
-	st.param.b32	[func_retval0+0], %r83;
+	st.param.b32	[funj_retval0+0], %r83;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___tanc(
-	.param .b32 ___tanc_param_0
+.visible .func  (.param .b32 funj_retval0) ___tanj(
+	.param .b32 ___tanj_param_0
 )
 {
 	.local .align 4 .b8 	__local_depot20[28];
@@ -2897,7 +2897,7 @@ BB19_12:
 
 	mov.u64 	%SPL, __local_depot20;
 	add.u64 	%rd7, %SPL, 0;
-	ld.param.s8 	%rs1, [___tanc_param_0];
+	ld.param.s8 	%rs1, [___tanj_param_0];
 	cvt.rn.f32.s16	%f30, %rs1;
 	abs.f32 	%f10, %f30;
 	setp.neu.f32	%p1, %f10, 0f7F800000;
@@ -3053,12 +3053,12 @@ BB20_11:
 BB20_12:
 	cvt.rzi.s32.f32	%r82, %f32;
 	cvt.s32.s8 	%r83, %r82;
-	st.param.b32	[func_retval0+0], %r83;
+	st.param.b32	[funj_retval0+0], %r83;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___tanh(
-	.param .b32 ___tanh_param_0
+.visible .func  (.param .b32 funj_retval0) ___tanv(
+	.param .b32 ___tanv_param_0
 )
 {
 	.local .align 4 .b8 	__local_depot21[28];
@@ -3073,7 +3073,7 @@ BB20_12:
 
 	mov.u64 	%SPL, __local_depot21;
 	add.u64 	%rd7, %SPL, 0;
-	ld.param.u8 	%rs1, [___tanh_param_0];
+	ld.param.u8 	%rs1, [___tanv_param_0];
 	cvt.rn.f32.u16	%f30, %rs1;
 	abs.f32 	%f10, %f30;
 	setp.neu.f32	%p1, %f10, 0f7F800000;
@@ -3229,11 +3229,11 @@ BB21_11:
 BB21_12:
 	cvt.rzi.u32.f32	%r82, %f32;
 	and.b32  	%r83, %r82, 255;
-	st.param.b32	[func_retval0+0], %r83;
+	st.param.b32	[funj_retval0+0], %r83;
 	ret;
 }
 
-.visible .func  (.param .b64 func_retval0) ___tand(
+.visible .func  (.param .b64 funj_retval0) ___tand(
 	.param .b64 ___tand_param_0
 )
 {
@@ -3353,12 +3353,12 @@ BB22_5:
 	fma.rn.f64 	%fd66, %fd63, %fd61, %fd61;
 
 BB22_6:
-	st.param.f64	[func_retval0+0], %fd66;
+	st.param.f64	[funj_retval0+0], %fd66;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___asinf(
-	.param .b32 ___asinf_param_0
+.visible .func  (.param .b32 funj_retval0) ___asins(
+	.param .b32 ___asins_param_0
 )
 {
 	.reg .pred 	%p<3>;
@@ -3366,7 +3366,7 @@ BB22_6:
 	.reg .f32 	%f<26>;
 
 
-	ld.param.f32 	%f1, [___asinf_param_0];
+	ld.param.f32 	%f1, [___asins_param_0];
 	abs.f32 	%f2, %f1;
 	mov.f32 	%f3, 0f3F800000;
 	sub.f32 	%f4, %f3, %f2;
@@ -3397,11 +3397,11 @@ BB22_6:
 	or.b32  	%r4, %r1, %r3;
 	mov.b32 	 %f24, %r4;
 	selp.f32	%f25, %f23, %f24, %p2;
-	st.param.f32	[func_retval0+0], %f25;
+	st.param.f32	[funj_retval0+0], %f25;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___asini(
+.visible .func  (.param .b32 funj_retval0) ___asini(
 	.param .b32 ___asini_param_0
 )
 {
@@ -3443,12 +3443,12 @@ BB22_6:
 	mov.b32 	 %f24, %r5;
 	selp.f32	%f25, %f23, %f24, %p2;
 	cvt.rzi.s32.f32	%r6, %f25;
-	st.param.b32	[func_retval0+0], %r6;
+	st.param.b32	[funj_retval0+0], %r6;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___asinj(
-	.param .b32 ___asinj_param_0
+.visible .func  (.param .b32 funj_retval0) ___asinu(
+	.param .b32 ___asinu_param_0
 )
 {
 	.reg .pred 	%p<3>;
@@ -3456,7 +3456,7 @@ BB22_6:
 	.reg .f32 	%f<26>;
 
 
-	ld.param.u32 	%r1, [___asinj_param_0];
+	ld.param.u32 	%r1, [___asinu_param_0];
 	cvt.rn.f32.u32	%f1, %r1;
 	abs.f32 	%f2, %f1;
 	mov.f32 	%f3, 0f3F800000;
@@ -3489,12 +3489,12 @@ BB22_6:
 	mov.b32 	 %f24, %r5;
 	selp.f32	%f25, %f23, %f24, %p2;
 	cvt.rzi.u32.f32	%r6, %f25;
-	st.param.b32	[func_retval0+0], %r6;
+	st.param.b32	[funj_retval0+0], %r6;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___asinc(
-	.param .b32 ___asinc_param_0
+.visible .func  (.param .b32 funj_retval0) ___asinj(
+	.param .b32 ___asinj_param_0
 )
 {
 	.reg .pred 	%p<3>;
@@ -3503,7 +3503,7 @@ BB22_6:
 	.reg .f32 	%f<26>;
 
 
-	ld.param.s8 	%rs1, [___asinc_param_0];
+	ld.param.s8 	%rs1, [___asinj_param_0];
 	cvt.rn.f32.s16	%f1, %rs1;
 	abs.f32 	%f2, %f1;
 	mov.f32 	%f3, 0f3F800000;
@@ -3537,12 +3537,12 @@ BB22_6:
 	selp.f32	%f25, %f23, %f24, %p2;
 	cvt.rzi.s32.f32	%r5, %f25;
 	cvt.s32.s8 	%r6, %r5;
-	st.param.b32	[func_retval0+0], %r6;
+	st.param.b32	[funj_retval0+0], %r6;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___asinh(
-	.param .b32 ___asinh_param_0
+.visible .func  (.param .b32 funj_retval0) ___asinv(
+	.param .b32 ___asinv_param_0
 )
 {
 	.reg .pred 	%p<3>;
@@ -3551,7 +3551,7 @@ BB22_6:
 	.reg .f32 	%f<26>;
 
 
-	ld.param.u8 	%rs1, [___asinh_param_0];
+	ld.param.u8 	%rs1, [___asinv_param_0];
 	cvt.rn.f32.u16	%f1, %rs1;
 	abs.f32 	%f2, %f1;
 	mov.f32 	%f3, 0f3F800000;
@@ -3585,11 +3585,11 @@ BB22_6:
 	selp.f32	%f25, %f23, %f24, %p2;
 	cvt.rzi.u32.f32	%r5, %f25;
 	and.b32  	%r6, %r5, 255;
-	st.param.b32	[func_retval0+0], %r6;
+	st.param.b32	[funj_retval0+0], %r6;
 	ret;
 }
 
-.visible .func  (.param .b64 func_retval0) ___asind(
+.visible .func  (.param .b64 funj_retval0) ___asind(
 	.param .b64 ___asind_param_0
 )
 {
@@ -3739,19 +3739,19 @@ BB28_3:
 	mov.b64 	%fd83, {%r11, %r15};
 
 BB28_4:
-	st.param.f64	[func_retval0+0], %fd83;
+	st.param.f64	[funj_retval0+0], %fd83;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___acosf(
-	.param .b32 ___acosf_param_0
+.visible .func  (.param .b32 funj_retval0) ___acoss(
+	.param .b32 ___acoss_param_0
 )
 {
 	.reg .pred 	%p<3>;
 	.reg .f32 	%f<27>;
 
 
-	ld.param.f32 	%f1, [___acosf_param_0];
+	ld.param.f32 	%f1, [___acoss_param_0];
 	abs.f32 	%f2, %f1;
 	mov.f32 	%f3, 0f3F800000;
 	sub.f32 	%f4, %f3, %f2;
@@ -3779,11 +3779,11 @@ BB28_4:
 	mov.f32 	%f24, 0f40490FDB;
 	sub.f32 	%f25, %f24, %f23;
 	selp.f32	%f26, %f25, %f23, %p2;
-	st.param.f32	[func_retval0+0], %f26;
+	st.param.f32	[funj_retval0+0], %f26;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___acosi(
+.visible .func  (.param .b32 funj_retval0) ___acosi(
 	.param .b32 ___acosi_param_0
 )
 {
@@ -3822,12 +3822,12 @@ BB28_4:
 	sub.f32 	%f25, %f24, %f23;
 	selp.f32	%f26, %f25, %f23, %p2;
 	cvt.rzi.s32.f32	%r2, %f26;
-	st.param.b32	[func_retval0+0], %r2;
+	st.param.b32	[funj_retval0+0], %r2;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___acosj(
-	.param .b32 ___acosj_param_0
+.visible .func  (.param .b32 funj_retval0) ___acosu(
+	.param .b32 ___acosu_param_0
 )
 {
 	.reg .pred 	%p<3>;
@@ -3835,7 +3835,7 @@ BB28_4:
 	.reg .f32 	%f<27>;
 
 
-	ld.param.u32 	%r1, [___acosj_param_0];
+	ld.param.u32 	%r1, [___acosu_param_0];
 	cvt.rn.f32.u32	%f1, %r1;
 	abs.f32 	%f2, %f1;
 	mov.f32 	%f3, 0f3F800000;
@@ -3865,12 +3865,12 @@ BB28_4:
 	sub.f32 	%f25, %f24, %f23;
 	selp.f32	%f26, %f25, %f23, %p2;
 	cvt.rzi.u32.f32	%r2, %f26;
-	st.param.b32	[func_retval0+0], %r2;
+	st.param.b32	[funj_retval0+0], %r2;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___acosc(
-	.param .b32 ___acosc_param_0
+.visible .func  (.param .b32 funj_retval0) ___acosj(
+	.param .b32 ___acosj_param_0
 )
 {
 	.reg .pred 	%p<3>;
@@ -3879,7 +3879,7 @@ BB28_4:
 	.reg .f32 	%f<27>;
 
 
-	ld.param.s8 	%rs1, [___acosc_param_0];
+	ld.param.s8 	%rs1, [___acosj_param_0];
 	cvt.rn.f32.s16	%f1, %rs1;
 	abs.f32 	%f2, %f1;
 	mov.f32 	%f3, 0f3F800000;
@@ -3910,12 +3910,12 @@ BB28_4:
 	selp.f32	%f26, %f25, %f23, %p2;
 	cvt.rzi.s32.f32	%r1, %f26;
 	cvt.s32.s8 	%r2, %r1;
-	st.param.b32	[func_retval0+0], %r2;
+	st.param.b32	[funj_retval0+0], %r2;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___acosh(
-	.param .b32 ___acosh_param_0
+.visible .func  (.param .b32 funj_retval0) ___acosv(
+	.param .b32 ___acosv_param_0
 )
 {
 	.reg .pred 	%p<2>;
@@ -3924,7 +3924,7 @@ BB28_4:
 	.reg .f32 	%f<24>;
 
 
-	ld.param.u8 	%rs1, [___acosh_param_0];
+	ld.param.u8 	%rs1, [___acosv_param_0];
 	cvt.rn.f32.u16	%f1, %rs1;
 	abs.f32 	%f2, %f1;
 	mov.f32 	%f3, 0f3F800000;
@@ -3951,11 +3951,11 @@ BB28_4:
 	selp.f32	%f23, %f20, %f22, %p1;
 	cvt.rzi.u32.f32	%r1, %f23;
 	and.b32  	%r2, %r1, 255;
-	st.param.b32	[func_retval0+0], %r2;
+	st.param.b32	[funj_retval0+0], %r2;
 	ret;
 }
 
-.visible .func  (.param .b64 func_retval0) ___acosd(
+.visible .func  (.param .b64 funj_retval0) ___acosd(
 	.param .b64 ___acosd_param_0
 )
 {
@@ -4121,12 +4121,12 @@ BB34_10:
 	add.rn.f64 	%fd94, %fd93, %fd92;
 
 BB34_11:
-	st.param.f64	[func_retval0+0], %fd94;
+	st.param.f64	[funj_retval0+0], %fd94;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___atanf(
-	.param .b32 ___atanf_param_0
+.visible .func  (.param .b32 funj_retval0) ___atans(
+	.param .b32 ___atans_param_0
 )
 {
 	.reg .pred 	%p<4>;
@@ -4134,7 +4134,7 @@ BB34_11:
 	.reg .f32 	%f<26>;
 
 
-	ld.param.f32 	%f4, [___atanf_param_0];
+	ld.param.f32 	%f4, [___atans_param_0];
 	abs.f32 	%f1, %f4;
 	setp.leu.f32	%p1, %f1, 0f3F800000;
 	mov.f32 	%f25, %f1;
@@ -4171,11 +4171,11 @@ BB35_2:
 	mov.b32 	 %f23, %r4;
 	setp.gtu.f32	%p3, %f1, 0f7F800000;
 	selp.f32	%f24, %f22, %f23, %p3;
-	st.param.f32	[func_retval0+0], %f24;
+	st.param.f32	[funj_retval0+0], %f24;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___atani(
+.visible .func  (.param .b32 funj_retval0) ___atani(
 	.param .b32 ___atani_param_0
 )
 {
@@ -4223,12 +4223,12 @@ BB36_2:
 	setp.gtu.f32	%p3, %f2, 0f7F800000;
 	selp.f32	%f24, %f22, %f23, %p3;
 	cvt.rzi.s32.f32	%r6, %f24;
-	st.param.b32	[func_retval0+0], %r6;
+	st.param.b32	[funj_retval0+0], %r6;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___atanj(
-	.param .b32 ___atanj_param_0
+.visible .func  (.param .b32 funj_retval0) ___atanu(
+	.param .b32 ___atanu_param_0
 )
 {
 	.reg .pred 	%p<4>;
@@ -4236,7 +4236,7 @@ BB36_2:
 	.reg .f32 	%f<26>;
 
 
-	ld.param.u32 	%r1, [___atanj_param_0];
+	ld.param.u32 	%r1, [___atanu_param_0];
 	cvt.rn.f32.u32	%f1, %r1;
 	abs.f32 	%f2, %f1;
 	setp.leu.f32	%p1, %f2, 0f3F800000;
@@ -4275,12 +4275,12 @@ BB37_2:
 	setp.gtu.f32	%p3, %f2, 0f7F800000;
 	selp.f32	%f24, %f22, %f23, %p3;
 	cvt.rzi.u32.f32	%r6, %f24;
-	st.param.b32	[func_retval0+0], %r6;
+	st.param.b32	[funj_retval0+0], %r6;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___atanc(
-	.param .b32 ___atanc_param_0
+.visible .func  (.param .b32 funj_retval0) ___atanj(
+	.param .b32 ___atanj_param_0
 )
 {
 	.reg .pred 	%p<4>;
@@ -4289,7 +4289,7 @@ BB37_2:
 	.reg .f32 	%f<26>;
 
 
-	ld.param.s8 	%rs1, [___atanc_param_0];
+	ld.param.s8 	%rs1, [___atanj_param_0];
 	cvt.rn.f32.s16	%f1, %rs1;
 	abs.f32 	%f2, %f1;
 	setp.leu.f32	%p1, %f2, 0f3F800000;
@@ -4329,12 +4329,12 @@ BB38_2:
 	selp.f32	%f24, %f22, %f23, %p3;
 	cvt.rzi.s32.f32	%r5, %f24;
 	cvt.s32.s8 	%r6, %r5;
-	st.param.b32	[func_retval0+0], %r6;
+	st.param.b32	[funj_retval0+0], %r6;
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___atanh(
-	.param .b32 ___atanh_param_0
+.visible .func  (.param .b32 funj_retval0) ___atanv(
+	.param .b32 ___atanv_param_0
 )
 {
 	.reg .pred 	%p<4>;
@@ -4343,7 +4343,7 @@ BB38_2:
 	.reg .f32 	%f<26>;
 
 
-	ld.param.u8 	%rs1, [___atanh_param_0];
+	ld.param.u8 	%rs1, [___atanv_param_0];
 	cvt.rn.f32.u16	%f1, %rs1;
 	abs.f32 	%f2, %f1;
 	setp.leu.f32	%p1, %f2, 0f3F800000;
@@ -4383,11 +4383,11 @@ BB39_2:
 	selp.f32	%f24, %f22, %f23, %p3;
 	cvt.rzi.u32.f32	%r5, %f24;
 	and.b32  	%r6, %r5, 255;
-	st.param.b32	[func_retval0+0], %r6;
+	st.param.b32	[funj_retval0+0], %r6;
 	ret;
 }
 
-.visible .func  (.param .b64 func_retval0) ___atand(
+.visible .func  (.param .b64 funj_retval0) ___atand(
 	.param .b64 ___atand_param_0
 )
 {
@@ -4475,11 +4475,11 @@ BB40_2:
 	and.b32  	%r4, %r3, -2147483648;
 	or.b32  	%r5, %r2, %r4;
 	mov.b64 	%fd55, {%r1, %r5};
-	st.param.f64	[func_retval0+0], %fd55;
+	st.param.f64	[funj_retval0+0], %fd55;
 	ret;
 }
 
-.func  (.param .b64 func_retval0) __internal_trig_reduction_slowpathd(
+.func  (.param .b64 funj_retval0) __internal_trig_reduction_slowpathd(
 	.param .b64 __internal_trig_reduction_slowpathd_param_0,
 	.param .b64 __internal_trig_reduction_slowpathd_param_1
 )
@@ -4702,7 +4702,7 @@ BB41_13:
 	mov.b64 	 %fd4, %rd88;
 
 BB41_14:
-	st.param.f64	[func_retval0+0], %fd4;
+	st.param.f64	[funj_retval0+0], %fd4;
 	ret;
 }
 
