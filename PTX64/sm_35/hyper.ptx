@@ -317,7 +317,7 @@ BB8_3:
 }
 
 .visible .func  (.param .b32 func_retval0) ___sinvv(
-	.param .b32 ___sinhh_param_0
+	.param .b32 ___sinvv_param_0
 )
 {
 	.reg .pred 	%p<3>;
@@ -326,7 +326,7 @@ BB8_3:
 	.reg .f32 	%f<32>;
 
 
-	ld.param.u8 	%rs1, [___sinhh_param_0];
+	ld.param.u8 	%rs1, [___sinvv_param_0];
 	cvt.rn.f32.u16	%f1, %rs1;
 	abs.f32 	%f2, %f1;
 	setp.ltu.f32	%p1, %f2, 0f3F800000;
@@ -649,7 +649,7 @@ BB10_3:
 }
 
 .visible .func  (.param .b32 func_retval0) ___cosvv(
-	.param .b32 ___coshh_param_0
+	.param .b32 ___cosvv_param_0
 )
 {
 	.reg .pred 	%p<2>;
@@ -658,7 +658,7 @@ BB10_3:
 	.reg .f32 	%f<19>;
 
 
-	ld.param.u8 	%rs1, [___coshh_param_0];
+	ld.param.u8 	%rs1, [___cosvv_param_0];
 	cvt.rn.f32.u16	%f3, %rs1;
 	abs.f32 	%f4, %f3;
 	mul.f32 	%f5, %f4, 0f3FB8AA3B;
@@ -1043,7 +1043,7 @@ BB20_3:
 }
 
 .visible .func  (.param .b32 func_retval0) ___tanvv(
-	.param .b32 ___tanhh_param_0
+	.param .b32 ___tanvv_param_0
 )
 {
 	.reg .pred 	%p<4>;
@@ -1052,7 +1052,7 @@ BB20_3:
 	.reg .f32 	%f<33>;
 
 
-	ld.param.u8 	%rs1, [___tanhh_param_0];
+	ld.param.u8 	%rs1, [___tanvv_param_0];
 	cvt.rn.f32.u16	%f1, %rs1;
 	abs.f32 	%f2, %f1;
 	setp.ltu.f32	%p1, %f2, 0f3F0CCCCD;
@@ -1704,7 +1704,7 @@ BB26_7:
 }
 
 .visible .func  (.param .b32 func_retval0) ___asinvv(
-	.param .b32 ___asinhh_param_0
+	.param .b32 ___asinvv_param_0
 )
 {
 	.reg .pred 	%p<11>;
@@ -1713,7 +1713,7 @@ BB26_7:
 	.reg .f32 	%f<62>;
 
 
-	ld.param.u8 	%rs1, [___asinhh_param_0];
+	ld.param.u8 	%rs1, [___asinvv_param_0];
 	cvt.rn.f32.u16	%f1, %rs1;
 	abs.f32 	%f2, %f1;
 	setp.gt.f32	%p1, %f2, 0f7E800000;
@@ -2759,7 +2759,7 @@ BB32_10:
 }
 
 .visible .func  (.param .b32 func_retval0) ___acosvv(
-	.param .b32 ___acoshh_param_0
+	.param .b32 ___acosvv_param_0
 )
 {
 	.reg .pred 	%p<15>;
@@ -2768,7 +2768,7 @@ BB32_10:
 	.reg .f32 	%f<85>;
 
 
-	ld.param.u8 	%rs1, [___acoshh_param_0];
+	ld.param.u8 	%rs1, [___acosvv_param_0];
 	cvt.rn.f32.u16	%f1, %rs1;
 	add.f32 	%f2, %f1, 0fBF800000;
 	mov.b32 	 %r1, %f2;
@@ -3664,7 +3664,7 @@ BB38_5:
 }
 
 .visible .func  (.param .b32 func_retval0) ___atanvv(
-	.param .b32 ___atanhh_param_0
+	.param .b32 ___atanvv_param_0
 )
 {
 	.reg .pred 	%p<11>;
@@ -3673,7 +3673,7 @@ BB38_5:
 	.reg .f32 	%f<59>;
 
 
-	ld.param.u8 	%rs1, [___atanhh_param_0];
+	ld.param.u8 	%rs1, [___atanvv_param_0];
 	cvt.rn.f32.u16	%f1, %rs1;
 	abs.f32 	%f10, %f1;
 	mov.f32 	%f11, 0f3F800000;

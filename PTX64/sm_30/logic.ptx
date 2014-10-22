@@ -9,9 +9,9 @@
 .address_size 64
 
 
-.visible .func  (.param .b32 func_retval0) ___ltff(
-	.param .b32 ___ltff_param_0,
-	.param .b32 ___ltff_param_1
+.visible .func  (.param .b32 func_retval0) ___ltss(
+	.param .b32 ___ltss_param_0,
+	.param .b32 ___ltss_param_1
 )
 {
 	.reg .pred 	%p<2>;
@@ -19,8 +19,8 @@
 	.reg .f32 	%f<3>;
 
 
-	ld.param.f32 	%f1, [___ltff_param_0];
-	ld.param.f32 	%f2, [___ltff_param_1];
+	ld.param.f32 	%f1, [___ltss_param_0];
+	ld.param.f32 	%f2, [___ltss_param_1];
 	setp.lt.f32	%p1, %f1, %f2;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
@@ -63,16 +63,16 @@
 }
 
 .visible .func  (.param .b32 func_retval0) ___ltuu(
-	.param .b32 ___ltjj_param_0,
-	.param .b32 ___ltjj_param_1
+	.param .b32 ___ltuu_param_0,
+	.param .b32 ___ltuu_param_1
 )
 {
 	.reg .pred 	%p<2>;
 	.reg .s32 	%r<4>;
 
 
-	ld.param.u32 	%r1, [___ltjj_param_0];
-	ld.param.u32 	%r2, [___ltjj_param_1];
+	ld.param.u32 	%r1, [___ltuu_param_0];
+	ld.param.u32 	%r2, [___ltuu_param_1];
 	setp.lt.u32	%p1, %r1, %r2;
 	selp.u32	%r3, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r3;
@@ -80,8 +80,8 @@
 }
 
 .visible .func  (.param .b32 func_retval0) ___ltjj(
-	.param .b32 ___ltcc_param_0,
-	.param .b32 ___ltcc_param_1
+	.param .b32 ___ltjj_param_0,
+	.param .b32 ___ltjj_param_1
 )
 {
 	.reg .pred 	%p<2>;
@@ -89,8 +89,8 @@
 	.reg .s32 	%r<2>;
 
 
-	ld.param.s8 	%rs1, [___ltcc_param_1];
-	ld.param.s8 	%rs2, [___ltcc_param_0];
+	ld.param.s8 	%rs1, [___ltjj_param_1];
+	ld.param.s8 	%rs2, [___ltjj_param_0];
 	setp.lt.s16	%p1, %rs2, %rs1;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
@@ -98,8 +98,8 @@
 }
 
 .visible .func  (.param .b32 func_retval0) ___ltvv(
-	.param .b32 ___lthh_param_0,
-	.param .b32 ___lthh_param_1
+	.param .b32 ___ltvv_param_0,
+	.param .b32 ___ltvv_param_1
 )
 {
 	.reg .pred 	%p<2>;
@@ -107,8 +107,8 @@
 	.reg .s32 	%r<2>;
 
 
-	ld.param.u8 	%rs1, [___lthh_param_1];
-	ld.param.u8 	%rs2, [___lthh_param_0];
+	ld.param.u8 	%rs1, [___ltvv_param_1];
+	ld.param.u8 	%rs2, [___ltvv_param_0];
 	setp.lt.u16	%p1, %rs2, %rs1;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
@@ -163,9 +163,9 @@
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___gtff(
-	.param .b32 ___gtff_param_0,
-	.param .b32 ___gtff_param_1
+.visible .func  (.param .b32 func_retval0) ___gtss(
+	.param .b32 ___gtss_param_0,
+	.param .b32 ___gtss_param_1
 )
 {
 	.reg .pred 	%p<2>;
@@ -173,8 +173,8 @@
 	.reg .f32 	%f<3>;
 
 
-	ld.param.f32 	%f1, [___gtff_param_0];
-	ld.param.f32 	%f2, [___gtff_param_1];
+	ld.param.f32 	%f1, [___gtss_param_0];
+	ld.param.f32 	%f2, [___gtss_param_1];
 	setp.gt.f32	%p1, %f1, %f2;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
@@ -217,16 +217,16 @@
 }
 
 .visible .func  (.param .b32 func_retval0) ___gtuu(
-	.param .b32 ___gtjj_param_0,
-	.param .b32 ___gtjj_param_1
+	.param .b32 ___gtuu_param_0,
+	.param .b32 ___gtuu_param_1
 )
 {
 	.reg .pred 	%p<2>;
 	.reg .s32 	%r<4>;
 
 
-	ld.param.u32 	%r1, [___gtjj_param_0];
-	ld.param.u32 	%r2, [___gtjj_param_1];
+	ld.param.u32 	%r1, [___gtuu_param_0];
+	ld.param.u32 	%r2, [___gtuu_param_1];
 	setp.gt.u32	%p1, %r1, %r2;
 	selp.u32	%r3, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r3;
@@ -234,8 +234,8 @@
 }
 
 .visible .func  (.param .b32 func_retval0) ___gtjj(
-	.param .b32 ___gtcc_param_0,
-	.param .b32 ___gtcc_param_1
+	.param .b32 ___gtjj_param_0,
+	.param .b32 ___gtjj_param_1
 )
 {
 	.reg .pred 	%p<2>;
@@ -243,8 +243,8 @@
 	.reg .s32 	%r<2>;
 
 
-	ld.param.s8 	%rs1, [___gtcc_param_1];
-	ld.param.s8 	%rs2, [___gtcc_param_0];
+	ld.param.s8 	%rs1, [___gtjj_param_1];
+	ld.param.s8 	%rs2, [___gtjj_param_0];
 	setp.gt.s16	%p1, %rs2, %rs1;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
@@ -252,8 +252,8 @@
 }
 
 .visible .func  (.param .b32 func_retval0) ___gtvv(
-	.param .b32 ___gthh_param_0,
-	.param .b32 ___gthh_param_1
+	.param .b32 ___gtvv_param_0,
+	.param .b32 ___gtvv_param_1
 )
 {
 	.reg .pred 	%p<2>;
@@ -261,8 +261,8 @@
 	.reg .s32 	%r<2>;
 
 
-	ld.param.u8 	%rs1, [___gthh_param_1];
-	ld.param.u8 	%rs2, [___gthh_param_0];
+	ld.param.u8 	%rs1, [___gtvv_param_1];
+	ld.param.u8 	%rs2, [___gtvv_param_0];
 	setp.gt.u16	%p1, %rs2, %rs1;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
@@ -317,9 +317,9 @@
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___leff(
-	.param .b32 ___leff_param_0,
-	.param .b32 ___leff_param_1
+.visible .func  (.param .b32 func_retval0) ___less(
+	.param .b32 ___less_param_0,
+	.param .b32 ___less_param_1
 )
 {
 	.reg .pred 	%p<2>;
@@ -327,8 +327,8 @@
 	.reg .f32 	%f<3>;
 
 
-	ld.param.f32 	%f1, [___leff_param_0];
-	ld.param.f32 	%f2, [___leff_param_1];
+	ld.param.f32 	%f1, [___less_param_0];
+	ld.param.f32 	%f2, [___less_param_1];
 	setp.le.f32	%p1, %f1, %f2;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
@@ -371,16 +371,16 @@
 }
 
 .visible .func  (.param .b32 func_retval0) ___leuu(
-	.param .b32 ___lejj_param_0,
-	.param .b32 ___lejj_param_1
+	.param .b32 ___leuu_param_0,
+	.param .b32 ___leuu_param_1
 )
 {
 	.reg .pred 	%p<2>;
 	.reg .s32 	%r<4>;
 
 
-	ld.param.u32 	%r1, [___lejj_param_0];
-	ld.param.u32 	%r2, [___lejj_param_1];
+	ld.param.u32 	%r1, [___leuu_param_0];
+	ld.param.u32 	%r2, [___leuu_param_1];
 	setp.le.u32	%p1, %r1, %r2;
 	selp.u32	%r3, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r3;
@@ -388,8 +388,8 @@
 }
 
 .visible .func  (.param .b32 func_retval0) ___lejj(
-	.param .b32 ___lecc_param_0,
-	.param .b32 ___lecc_param_1
+	.param .b32 ___lejj_param_0,
+	.param .b32 ___lejj_param_1
 )
 {
 	.reg .pred 	%p<2>;
@@ -397,8 +397,8 @@
 	.reg .s32 	%r<2>;
 
 
-	ld.param.s8 	%rs1, [___lecc_param_1];
-	ld.param.s8 	%rs2, [___lecc_param_0];
+	ld.param.s8 	%rs1, [___lejj_param_1];
+	ld.param.s8 	%rs2, [___lejj_param_0];
 	setp.le.s16	%p1, %rs2, %rs1;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
@@ -406,8 +406,8 @@
 }
 
 .visible .func  (.param .b32 func_retval0) ___levv(
-	.param .b32 ___lehh_param_0,
-	.param .b32 ___lehh_param_1
+	.param .b32 ___levv_param_0,
+	.param .b32 ___levv_param_1
 )
 {
 	.reg .pred 	%p<2>;
@@ -415,8 +415,8 @@
 	.reg .s32 	%r<2>;
 
 
-	ld.param.u8 	%rs1, [___lehh_param_1];
-	ld.param.u8 	%rs2, [___lehh_param_0];
+	ld.param.u8 	%rs1, [___levv_param_1];
+	ld.param.u8 	%rs2, [___levv_param_0];
 	setp.le.u16	%p1, %rs2, %rs1;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
@@ -471,9 +471,9 @@
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___geff(
-	.param .b32 ___geff_param_0,
-	.param .b32 ___geff_param_1
+.visible .func  (.param .b32 func_retval0) ___gess(
+	.param .b32 ___gess_param_0,
+	.param .b32 ___gess_param_1
 )
 {
 	.reg .pred 	%p<2>;
@@ -481,8 +481,8 @@
 	.reg .f32 	%f<3>;
 
 
-	ld.param.f32 	%f1, [___geff_param_0];
-	ld.param.f32 	%f2, [___geff_param_1];
+	ld.param.f32 	%f1, [___gess_param_0];
+	ld.param.f32 	%f2, [___gess_param_1];
 	setp.ge.f32	%p1, %f1, %f2;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
@@ -525,16 +525,16 @@
 }
 
 .visible .func  (.param .b32 func_retval0) ___geuu(
-	.param .b32 ___gejj_param_0,
-	.param .b32 ___gejj_param_1
+	.param .b32 ___geuu_param_0,
+	.param .b32 ___geuu_param_1
 )
 {
 	.reg .pred 	%p<2>;
 	.reg .s32 	%r<4>;
 
 
-	ld.param.u32 	%r1, [___gejj_param_0];
-	ld.param.u32 	%r2, [___gejj_param_1];
+	ld.param.u32 	%r1, [___geuu_param_0];
+	ld.param.u32 	%r2, [___geuu_param_1];
 	setp.ge.u32	%p1, %r1, %r2;
 	selp.u32	%r3, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r3;
@@ -542,8 +542,8 @@
 }
 
 .visible .func  (.param .b32 func_retval0) ___gejj(
-	.param .b32 ___gecc_param_0,
-	.param .b32 ___gecc_param_1
+	.param .b32 ___gejj_param_0,
+	.param .b32 ___gejj_param_1
 )
 {
 	.reg .pred 	%p<2>;
@@ -551,8 +551,8 @@
 	.reg .s32 	%r<2>;
 
 
-	ld.param.s8 	%rs1, [___gecc_param_1];
-	ld.param.s8 	%rs2, [___gecc_param_0];
+	ld.param.s8 	%rs1, [___gejj_param_1];
+	ld.param.s8 	%rs2, [___gejj_param_0];
 	setp.ge.s16	%p1, %rs2, %rs1;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
@@ -560,8 +560,8 @@
 }
 
 .visible .func  (.param .b32 func_retval0) ___gevv(
-	.param .b32 ___gehh_param_0,
-	.param .b32 ___gehh_param_1
+	.param .b32 ___gevv_param_0,
+	.param .b32 ___gevv_param_1
 )
 {
 	.reg .pred 	%p<2>;
@@ -569,8 +569,8 @@
 	.reg .s32 	%r<2>;
 
 
-	ld.param.u8 	%rs1, [___gehh_param_1];
-	ld.param.u8 	%rs2, [___gehh_param_0];
+	ld.param.u8 	%rs1, [___gevv_param_1];
+	ld.param.u8 	%rs2, [___gevv_param_0];
 	setp.ge.u16	%p1, %rs2, %rs1;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
@@ -625,9 +625,9 @@
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___eqff(
-	.param .b32 ___eqff_param_0,
-	.param .b32 ___eqff_param_1
+.visible .func  (.param .b32 func_retval0) ___eqss(
+	.param .b32 ___eqss_param_0,
+	.param .b32 ___eqss_param_1
 )
 {
 	.reg .pred 	%p<2>;
@@ -635,8 +635,8 @@
 	.reg .f32 	%f<3>;
 
 
-	ld.param.f32 	%f1, [___eqff_param_0];
-	ld.param.f32 	%f2, [___eqff_param_1];
+	ld.param.f32 	%f1, [___eqss_param_0];
+	ld.param.f32 	%f2, [___eqss_param_1];
 	setp.eq.f32	%p1, %f1, %f2;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
@@ -679,16 +679,16 @@
 }
 
 .visible .func  (.param .b32 func_retval0) ___equu(
-	.param .b32 ___eqjj_param_0,
-	.param .b32 ___eqjj_param_1
+	.param .b32 ___equu_param_0,
+	.param .b32 ___equu_param_1
 )
 {
 	.reg .pred 	%p<2>;
 	.reg .s32 	%r<4>;
 
 
-	ld.param.u32 	%r1, [___eqjj_param_0];
-	ld.param.u32 	%r2, [___eqjj_param_1];
+	ld.param.u32 	%r1, [___equu_param_0];
+	ld.param.u32 	%r2, [___equu_param_1];
 	setp.eq.s32	%p1, %r1, %r2;
 	selp.u32	%r3, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r3;
@@ -696,8 +696,8 @@
 }
 
 .visible .func  (.param .b32 func_retval0) ___eqjj(
-	.param .b32 ___eqcc_param_0,
-	.param .b32 ___eqcc_param_1
+	.param .b32 ___eqjj_param_0,
+	.param .b32 ___eqjj_param_1
 )
 {
 	.reg .pred 	%p<2>;
@@ -705,8 +705,8 @@
 	.reg .s32 	%r<2>;
 
 
-	ld.param.s8 	%rs1, [___eqcc_param_0];
-	ld.param.s8 	%rs2, [___eqcc_param_1];
+	ld.param.s8 	%rs1, [___eqjj_param_0];
+	ld.param.s8 	%rs2, [___eqjj_param_1];
 	and.b16  	%rs3, %rs2, 255;
 	and.b16  	%rs4, %rs1, 255;
 	setp.eq.s16	%p1, %rs4, %rs3;
@@ -716,8 +716,8 @@
 }
 
 .visible .func  (.param .b32 func_retval0) ___eqvv(
-	.param .b32 ___eqhh_param_0,
-	.param .b32 ___eqhh_param_1
+	.param .b32 ___eqvv_param_0,
+	.param .b32 ___eqvv_param_1
 )
 {
 	.reg .pred 	%p<2>;
@@ -725,8 +725,8 @@
 	.reg .s32 	%r<2>;
 
 
-	ld.param.u8 	%rs1, [___eqhh_param_1];
-	ld.param.u8 	%rs2, [___eqhh_param_0];
+	ld.param.u8 	%rs1, [___eqvv_param_1];
+	ld.param.u8 	%rs2, [___eqvv_param_0];
 	setp.eq.s16	%p1, %rs2, %rs1;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
@@ -795,9 +795,9 @@ BB39_3:
 	ret;
 }
 
-.visible .func  (.param .b32 func_retval0) ___neqff(
-	.param .b32 ___neqff_param_0,
-	.param .b32 ___neqff_param_1
+.visible .func  (.param .b32 func_retval0) ___neqss(
+	.param .b32 ___neqss_param_0,
+	.param .b32 ___neqss_param_1
 )
 {
 	.reg .pred 	%p<2>;
@@ -805,8 +805,8 @@ BB39_3:
 	.reg .f32 	%f<3>;
 
 
-	ld.param.f32 	%f1, [___neqff_param_0];
-	ld.param.f32 	%f2, [___neqff_param_1];
+	ld.param.f32 	%f1, [___neqss_param_0];
+	ld.param.f32 	%f2, [___neqss_param_1];
 	setp.neu.f32	%p1, %f1, %f2;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;
@@ -849,16 +849,16 @@ BB39_3:
 }
 
 .visible .func  (.param .b32 func_retval0) ___nequu(
-	.param .b32 ___neqjj_param_0,
-	.param .b32 ___neqjj_param_1
+	.param .b32 ___nequu_param_0,
+	.param .b32 ___nequu_param_1
 )
 {
 	.reg .pred 	%p<2>;
 	.reg .s32 	%r<4>;
 
 
-	ld.param.u32 	%r1, [___neqjj_param_0];
-	ld.param.u32 	%r2, [___neqjj_param_1];
+	ld.param.u32 	%r1, [___nequu_param_0];
+	ld.param.u32 	%r2, [___nequu_param_1];
 	setp.ne.s32	%p1, %r1, %r2;
 	selp.u32	%r3, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r3;
@@ -866,8 +866,8 @@ BB39_3:
 }
 
 .visible .func  (.param .b32 func_retval0) ___neqjj(
-	.param .b32 ___neqcc_param_0,
-	.param .b32 ___neqcc_param_1
+	.param .b32 ___neqjj_param_0,
+	.param .b32 ___neqjj_param_1
 )
 {
 	.reg .pred 	%p<2>;
@@ -875,8 +875,8 @@ BB39_3:
 	.reg .s32 	%r<2>;
 
 
-	ld.param.s8 	%rs1, [___neqcc_param_0];
-	ld.param.s8 	%rs2, [___neqcc_param_1];
+	ld.param.s8 	%rs1, [___neqjj_param_0];
+	ld.param.s8 	%rs2, [___neqjj_param_1];
 	and.b16  	%rs3, %rs2, 255;
 	and.b16  	%rs4, %rs1, 255;
 	setp.ne.s16	%p1, %rs4, %rs3;
@@ -886,8 +886,8 @@ BB39_3:
 }
 
 .visible .func  (.param .b32 func_retval0) ___neqvv(
-	.param .b32 ___neqhh_param_0,
-	.param .b32 ___neqhh_param_1
+	.param .b32 ___neqvv_param_0,
+	.param .b32 ___neqvv_param_1
 )
 {
 	.reg .pred 	%p<2>;
@@ -895,8 +895,8 @@ BB39_3:
 	.reg .s32 	%r<2>;
 
 
-	ld.param.u8 	%rs1, [___neqhh_param_1];
-	ld.param.u8 	%rs2, [___neqhh_param_0];
+	ld.param.u8 	%rs1, [___neqvv_param_1];
+	ld.param.u8 	%rs2, [___neqvv_param_0];
 	setp.ne.s16	%p1, %rs2, %rs1;
 	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[func_retval0+0], %r1;

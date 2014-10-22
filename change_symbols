@@ -6,17 +6,28 @@ ptx=$1
 sed -i 's/_Z._/_/g' $ptx
 
 # Change the postfixes
-# float   - s (no change)
-# double  - d (no change)
-# int     - i (no change)
-# uint    - u (j -> u)
-# char    - j (c -> j)
-# uchar   - v (h -> v)
-# float2  - c (6float2S_ -> c)
-# double2 - z (7double2S_ -> z)
+# float   - s (f -> s)
+sed -i 's/ff(/ss(/g' $ptx
+sed -i 's/ff_/ss_/g' $ptx
 
+# double  - d (no change)
+
+# int     - i (no change)
+
+# uint    - u (j -> u)
 sed -i 's/jj(/uu(/g' $ptx
+sed -i 's/jj_/uu_/g' $ptx
+
+# char    - j (c -> j)
 sed -i 's/cc(/jj(/g' $ptx
+sed -i 's/cc_/jj_/g' $ptx
+
+# uchar   - v (h -> v)
 sed -i 's/hh(/vv(/g' $ptx
+sed -i 's/hh_/vv_/g' $ptx
+
+# float2  - c (6float2S_ -> c)
 sed -i 's/6float2S_/cc/g' $ptx
+
+# double2 - z (7double2S_ -> z)
 sed -i 's/7double2S_/zz/g' $ptx
