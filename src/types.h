@@ -1,4 +1,5 @@
 #include <cuComplex.h>
+#include <math_functions.h>
 typedef unsigned char uchar;
 typedef unsigned int uint;
 typedef cuFloatComplex cfloat;
