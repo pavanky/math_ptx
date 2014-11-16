@@ -2,6 +2,8 @@
 
 #define CAST_BASIC(FN, To, Ti) __device__ To FN(Ti in) { return (To) in; }
 
+#define CAST_BASIC_BOOL(FN, To, Ti) __device__ To FN(Ti in) { return (To)(in != 0); }
+
 #define CAST(T, X)                              \
     CAST_BASIC(___mk##X, T, float)              \
     CAST_BASIC(___mk##X, T, double)             \
@@ -14,8 +16,14 @@ CAST(float, S)
 CAST(double, D)
 CAST(int, I)
 CAST(uint, U)
-CAST(char, J)
 CAST(uchar, V)
+
+CAST_BASIC_BOOL(___mkJ, char, float)
+CAST_BASIC_BOOL(___mkJ, char, double)
+CAST_BASIC_BOOL(___mkJ, char, int)
+CAST_BASIC_BOOL(___mkJ, char, uint)
+CAST_BASIC_BOOL(___mkJ, char, char)
+CAST_BASIC_BOOL(___mkJ, char, uchar)
 
 #define CPLX_BASIC(FN, To, Tr, Ti)              \
     __device__ To FN(Ti in)                     \

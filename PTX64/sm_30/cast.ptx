@@ -333,89 +333,6 @@
 	ret;
 }
 
-.visible .func  (.param .b32 funj_retval0) ___mkJs(
-	.param .b32 ___mkJs_param_0
-)
-{
-	.reg .s32 	%r<3>;
-	.reg .f32 	%f<2>;
-
-
-	ld.param.f32 	%f1, [___mkJs_param_0];
-	cvt.rzi.s32.f32	%r1, %f1;
-	cvt.s32.s8 	%r2, %r1;
-	st.param.b32	[funj_retval0+0], %r2;
-	ret;
-}
-
-.visible .func  (.param .b32 funj_retval0) ___mkJd(
-	.param .b64 ___mkJd_param_0
-)
-{
-	.reg .s32 	%r<3>;
-	.reg .f64 	%fd<2>;
-
-
-	ld.param.f64 	%fd1, [___mkJd_param_0];
-	cvt.rzi.s32.f64	%r1, %fd1;
-	cvt.s32.s8 	%r2, %r1;
-	st.param.b32	[funj_retval0+0], %r2;
-	ret;
-}
-
-.visible .func  (.param .b32 funj_retval0) ___mkJi(
-	.param .b32 ___mkJi_param_0
-)
-{
-	.reg .s32 	%r<2>;
-
-
-	ld.param.s8 	%r1, [___mkJi_param_0];
-	st.param.b32	[funj_retval0+0], %r1;
-	ret;
-}
-
-.visible .func  (.param .b32 funj_retval0) ___mkJu(
-	.param .b32 ___mkJu_param_0
-)
-{
-	.reg .s32 	%r<2>;
-
-
-	ld.param.s8 	%r1, [___mkJu_param_0];
-	st.param.b32	[funj_retval0+0], %r1;
-	ret;
-}
-
-.visible .func  (.param .b32 funj_retval0) ___mkJj(
-	.param .b32 ___mkJj_param_0
-)
-{
-	.reg .s16 	%rs<2>;
-	.reg .s32 	%r<2>;
-
-
-	ld.param.s8 	%rs1, [___mkJj_param_0];
-	cvt.s32.s16	%r1, %rs1;
-	st.param.b32	[funj_retval0+0], %r1;
-	ret;
-}
-
-.visible .func  (.param .b32 funj_retval0) ___mkJv(
-	.param .b32 ___mkJv_param_0
-)
-{
-	.reg .s16 	%rs<2>;
-	.reg .s32 	%r<3>;
-
-
-	ld.param.u8 	%rs1, [___mkJv_param_0];
-	cvt.u32.u16	%r1, %rs1;
-	cvt.s32.s8 	%r2, %r1;
-	st.param.b32	[funj_retval0+0], %r2;
-	ret;
-}
-
 .visible .func  (.param .b32 funj_retval0) ___mkVs(
 	.param .b32 ___mkVs_param_0
 )
@@ -495,6 +412,101 @@
 
 	ld.param.u8 	%rs1, [___mkVv_param_0];
 	cvt.u32.u16	%r1, %rs1;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___mkJs(
+	.param .b32 ___mkJs_param_0
+)
+{
+	.reg .pred 	%p<2>;
+	.reg .s32 	%r<2>;
+	.reg .f32 	%f<2>;
+
+
+	ld.param.f32 	%f1, [___mkJs_param_0];
+	setp.neu.f32	%p1, %f1, 0f00000000;
+	selp.u32	%r1, 1, 0, %p1;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___mkJd(
+	.param .b64 ___mkJd_param_0
+)
+{
+	.reg .pred 	%p<2>;
+	.reg .s32 	%r<2>;
+	.reg .f64 	%fd<2>;
+
+
+	ld.param.f64 	%fd1, [___mkJd_param_0];
+	setp.neu.f64	%p1, %fd1, 0d0000000000000000;
+	selp.u32	%r1, 1, 0, %p1;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___mkJi(
+	.param .b32 ___mkJi_param_0
+)
+{
+	.reg .pred 	%p<2>;
+	.reg .s32 	%r<3>;
+
+
+	ld.param.u32 	%r1, [___mkJi_param_0];
+	setp.ne.s32	%p1, %r1, 0;
+	selp.u32	%r2, 1, 0, %p1;
+	st.param.b32	[funj_retval0+0], %r2;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___mkJu(
+	.param .b32 ___mkJu_param_0
+)
+{
+	.reg .pred 	%p<2>;
+	.reg .s32 	%r<3>;
+
+
+	ld.param.u32 	%r1, [___mkJu_param_0];
+	setp.ne.s32	%p1, %r1, 0;
+	selp.u32	%r2, 1, 0, %p1;
+	st.param.b32	[funj_retval0+0], %r2;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___mkJj(
+	.param .b32 ___mkJj_param_0
+)
+{
+	.reg .pred 	%p<2>;
+	.reg .s16 	%rs<3>;
+	.reg .s32 	%r<2>;
+
+
+	ld.param.s8 	%rs1, [___mkJj_param_0];
+	and.b16  	%rs2, %rs1, 255;
+	setp.ne.s16	%p1, %rs2, 0;
+	selp.u32	%r1, 1, 0, %p1;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___mkJv(
+	.param .b32 ___mkJv_param_0
+)
+{
+	.reg .pred 	%p<2>;
+	.reg .s16 	%rs<2>;
+	.reg .s32 	%r<2>;
+
+
+	ld.param.u8 	%rs1, [___mkJv_param_0];
+	setp.ne.s16	%p1, %rs1, 0;
+	selp.u32	%r1, 1, 0, %p1;
 	st.param.b32	[funj_retval0+0], %r1;
 	ret;
 }
