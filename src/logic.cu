@@ -29,6 +29,8 @@ LOGIC(lt, <)
 LOGIC(gt, >)
 LOGIC(le, <=)
 LOGIC(ge, >=)
+LOGIC(and, &&)
+LOGIC(or, ||)
 
 #define LOGIC_EQ(fn, op, op2)                       \
     LOGIC_BASIC(fn, op, float)                      \
@@ -50,3 +52,23 @@ LOGIC(ge, >=)
 
 LOGIC_EQ(eq, ==, &&)
 LOGIC_EQ(neq, !=, ||)
+
+#define NOT_FN(T)                                   \
+    __device__ bool ___not(T in) { return !in; }    \
+
+NOT_FN(float)
+NOT_FN(double)
+NOT_FN(int)
+NOT_FN(uint)
+NOT_FN(char)
+NOT_FN(uchar)
+
+#define BIT_FN(T)                                               \
+    __device__ T ___bitand (T lhs, T rhs) { return lhs & rhs; } \
+    __device__ T ___bitor  (T lhs, T rhs) { return lhs | rhs; } \
+    __device__ T ___bitxor (T lhs, T rhs) { return lhs ^ rhs; } \
+
+BIT_FN(int)
+BIT_FN(char)
+BIT_FN(uchar)
+BIT_FN(uint)

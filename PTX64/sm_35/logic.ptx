@@ -692,6 +692,417 @@
 	ret;
 }
 
+.visible .func  (.param .b32 funj_retval0) ___andss(
+	.param .b32 ___andss_param_0,
+	.param .b32 ___andss_param_1
+)
+{
+	.reg .pred 	%p<3>;
+	.reg .s16 	%rs<5>;
+	.reg .s32 	%r<2>;
+	.reg .f32 	%f<3>;
+
+
+	ld.param.f32 	%f2, [___andss_param_0];
+	ld.param.f32 	%f1, [___andss_param_1];
+	setp.neu.f32	%p1, %f2, 0f00000000;
+	@%p1 bra 	BB37_2;
+
+	mov.u16 	%rs4, 0;
+	bra.uni 	BB37_3;
+
+BB37_2:
+	setp.neu.f32	%p2, %f1, 0f00000000;
+	selp.u16	%rs4, 1, 0, %p2;
+
+BB37_3:
+	cvt.u32.u16	%r1, %rs4;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___anddd(
+	.param .b64 ___anddd_param_0,
+	.param .b64 ___anddd_param_1
+)
+{
+	.reg .pred 	%p<3>;
+	.reg .s16 	%rs<5>;
+	.reg .s32 	%r<2>;
+	.reg .f64 	%fd<3>;
+
+
+	ld.param.f64 	%fd2, [___anddd_param_0];
+	ld.param.f64 	%fd1, [___anddd_param_1];
+	setp.neu.f64	%p1, %fd2, 0d0000000000000000;
+	@%p1 bra 	BB38_2;
+
+	mov.u16 	%rs4, 0;
+	bra.uni 	BB38_3;
+
+BB38_2:
+	setp.neu.f64	%p2, %fd1, 0d0000000000000000;
+	selp.u16	%rs4, 1, 0, %p2;
+
+BB38_3:
+	cvt.u32.u16	%r1, %rs4;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___andii(
+	.param .b32 ___andii_param_0,
+	.param .b32 ___andii_param_1
+)
+{
+	.reg .pred 	%p<4>;
+	.reg .s32 	%r<4>;
+
+
+	ld.param.u32 	%r1, [___andii_param_0];
+	ld.param.u32 	%r2, [___andii_param_1];
+	setp.ne.s32	%p1, %r2, 0;
+	setp.ne.s32	%p2, %r1, 0;
+	and.pred  	%p3, %p1, %p2;
+	selp.u32	%r3, 1, 0, %p3;
+	st.param.b32	[funj_retval0+0], %r3;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___anduu(
+	.param .b32 ___anduu_param_0,
+	.param .b32 ___anduu_param_1
+)
+{
+	.reg .pred 	%p<4>;
+	.reg .s32 	%r<4>;
+
+
+	ld.param.u32 	%r1, [___anduu_param_0];
+	ld.param.u32 	%r2, [___anduu_param_1];
+	setp.ne.s32	%p1, %r2, 0;
+	setp.ne.s32	%p2, %r1, 0;
+	and.pred  	%p3, %p1, %p2;
+	selp.u32	%r3, 1, 0, %p3;
+	st.param.b32	[funj_retval0+0], %r3;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___andjj(
+	.param .b32 ___andjj_param_0,
+	.param .b32 ___andjj_param_1
+)
+{
+	.reg .pred 	%p<4>;
+	.reg .s16 	%rs<5>;
+	.reg .s32 	%r<2>;
+
+
+	ld.param.s8 	%rs1, [___andjj_param_0];
+	ld.param.s8 	%rs2, [___andjj_param_1];
+	and.b16  	%rs3, %rs2, 255;
+	setp.ne.s16	%p1, %rs3, 0;
+	and.b16  	%rs4, %rs1, 255;
+	setp.ne.s16	%p2, %rs4, 0;
+	and.pred  	%p3, %p1, %p2;
+	selp.u32	%r1, 1, 0, %p3;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___andvv(
+	.param .b32 ___andvv_param_0,
+	.param .b32 ___andvv_param_1
+)
+{
+	.reg .pred 	%p<4>;
+	.reg .s16 	%rs<3>;
+	.reg .s32 	%r<2>;
+
+
+	ld.param.u8 	%rs1, [___andvv_param_1];
+	setp.ne.s16	%p1, %rs1, 0;
+	ld.param.u8 	%rs2, [___andvv_param_0];
+	setp.ne.s16	%p2, %rs2, 0;
+	and.pred  	%p3, %p1, %p2;
+	selp.u32	%r1, 1, 0, %p3;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___andcc(
+	.param .align 8 .b8 ___andcc_param_0[8],
+	.param .align 8 .b8 ___andcc_param_1[8]
+)
+{
+	.reg .pred 	%p<3>;
+	.reg .s16 	%rs<5>;
+	.reg .s32 	%r<2>;
+	.reg .f32 	%f<9>;
+
+
+	ld.param.f32 	%f3, [___andcc_param_0];
+	ld.param.f32 	%f4, [___andcc_param_0+4];
+	ld.param.f32 	%f2, [___andcc_param_1+4];
+	ld.param.f32 	%f1, [___andcc_param_1];
+	mul.f32 	%f5, %f4, %f4;
+	fma.rn.f32 	%f6, %f3, %f3, %f5;
+	setp.neu.f32	%p1, %f6, 0f00000000;
+	@%p1 bra 	BB43_2;
+
+	mov.u16 	%rs4, 0;
+	bra.uni 	BB43_3;
+
+BB43_2:
+	mul.f32 	%f7, %f2, %f2;
+	fma.rn.f32 	%f8, %f1, %f1, %f7;
+	setp.neu.f32	%p2, %f8, 0f00000000;
+	selp.u16	%rs4, 1, 0, %p2;
+
+BB43_3:
+	cvt.u32.u16	%r1, %rs4;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___andzz(
+	.param .align 16 .b8 ___andzz_param_0[16],
+	.param .align 16 .b8 ___andzz_param_1[16]
+)
+{
+	.reg .pred 	%p<3>;
+	.reg .s16 	%rs<5>;
+	.reg .s32 	%r<2>;
+	.reg .f64 	%fd<9>;
+
+
+	ld.param.f64 	%fd3, [___andzz_param_0];
+	ld.param.f64 	%fd4, [___andzz_param_0+8];
+	ld.param.f64 	%fd2, [___andzz_param_1+8];
+	ld.param.f64 	%fd1, [___andzz_param_1];
+	mul.f64 	%fd5, %fd4, %fd4;
+	fma.rn.f64 	%fd6, %fd3, %fd3, %fd5;
+	setp.neu.f64	%p1, %fd6, 0d0000000000000000;
+	@%p1 bra 	BB44_2;
+
+	mov.u16 	%rs4, 0;
+	bra.uni 	BB44_3;
+
+BB44_2:
+	mul.f64 	%fd7, %fd2, %fd2;
+	fma.rn.f64 	%fd8, %fd1, %fd1, %fd7;
+	setp.neu.f64	%p2, %fd8, 0d0000000000000000;
+	selp.u16	%rs4, 1, 0, %p2;
+
+BB44_3:
+	cvt.u32.u16	%r1, %rs4;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___orss(
+	.param .b32 ___orss_param_0,
+	.param .b32 ___orss_param_1
+)
+{
+	.reg .pred 	%p<3>;
+	.reg .s16 	%rs<5>;
+	.reg .s32 	%r<2>;
+	.reg .f32 	%f<3>;
+
+
+	ld.param.f32 	%f2, [___orss_param_0];
+	ld.param.f32 	%f1, [___orss_param_1];
+	setp.eq.f32	%p1, %f2, 0f00000000;
+	@%p1 bra 	BB45_2;
+
+	mov.u16 	%rs4, 1;
+	bra.uni 	BB45_3;
+
+BB45_2:
+	setp.neu.f32	%p2, %f1, 0f00000000;
+	selp.u16	%rs4, 1, 0, %p2;
+
+BB45_3:
+	cvt.u32.u16	%r1, %rs4;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___ordd(
+	.param .b64 ___ordd_param_0,
+	.param .b64 ___ordd_param_1
+)
+{
+	.reg .pred 	%p<3>;
+	.reg .s16 	%rs<5>;
+	.reg .s32 	%r<2>;
+	.reg .f64 	%fd<3>;
+
+
+	ld.param.f64 	%fd2, [___ordd_param_0];
+	ld.param.f64 	%fd1, [___ordd_param_1];
+	setp.eq.f64	%p1, %fd2, 0d0000000000000000;
+	@%p1 bra 	BB46_2;
+
+	mov.u16 	%rs4, 1;
+	bra.uni 	BB46_3;
+
+BB46_2:
+	setp.neu.f64	%p2, %fd1, 0d0000000000000000;
+	selp.u16	%rs4, 1, 0, %p2;
+
+BB46_3:
+	cvt.u32.u16	%r1, %rs4;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___orii(
+	.param .b32 ___orii_param_0,
+	.param .b32 ___orii_param_1
+)
+{
+	.reg .pred 	%p<2>;
+	.reg .s32 	%r<5>;
+
+
+	ld.param.u32 	%r1, [___orii_param_0];
+	ld.param.u32 	%r2, [___orii_param_1];
+	or.b32  	%r3, %r2, %r1;
+	setp.ne.s32	%p1, %r3, 0;
+	selp.u32	%r4, 1, 0, %p1;
+	st.param.b32	[funj_retval0+0], %r4;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___oruu(
+	.param .b32 ___oruu_param_0,
+	.param .b32 ___oruu_param_1
+)
+{
+	.reg .pred 	%p<2>;
+	.reg .s32 	%r<5>;
+
+
+	ld.param.u32 	%r1, [___oruu_param_0];
+	ld.param.u32 	%r2, [___oruu_param_1];
+	or.b32  	%r3, %r2, %r1;
+	setp.ne.s32	%p1, %r3, 0;
+	selp.u32	%r4, 1, 0, %p1;
+	st.param.b32	[funj_retval0+0], %r4;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___orjj(
+	.param .b32 ___orjj_param_0,
+	.param .b32 ___orjj_param_1
+)
+{
+	.reg .pred 	%p<2>;
+	.reg .s16 	%rs<5>;
+	.reg .s32 	%r<2>;
+
+
+	ld.param.s8 	%rs1, [___orjj_param_0];
+	ld.param.s8 	%rs2, [___orjj_param_1];
+	or.b16  	%rs3, %rs2, %rs1;
+	and.b16  	%rs4, %rs3, 255;
+	setp.ne.s16	%p1, %rs4, 0;
+	selp.u32	%r1, 1, 0, %p1;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___orvv(
+	.param .b32 ___orvv_param_0,
+	.param .b32 ___orvv_param_1
+)
+{
+	.reg .pred 	%p<2>;
+	.reg .s16 	%rs<4>;
+	.reg .s32 	%r<2>;
+
+
+	ld.param.u8 	%rs1, [___orvv_param_0];
+	ld.param.u8 	%rs2, [___orvv_param_1];
+	or.b16  	%rs3, %rs2, %rs1;
+	setp.ne.s16	%p1, %rs3, 0;
+	selp.u32	%r1, 1, 0, %p1;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___orcc(
+	.param .align 8 .b8 ___orcc_param_0[8],
+	.param .align 8 .b8 ___orcc_param_1[8]
+)
+{
+	.reg .pred 	%p<3>;
+	.reg .s16 	%rs<5>;
+	.reg .s32 	%r<2>;
+	.reg .f32 	%f<9>;
+
+
+	ld.param.f32 	%f3, [___orcc_param_0];
+	ld.param.f32 	%f4, [___orcc_param_0+4];
+	ld.param.f32 	%f2, [___orcc_param_1+4];
+	ld.param.f32 	%f1, [___orcc_param_1];
+	mul.f32 	%f5, %f4, %f4;
+	fma.rn.f32 	%f6, %f3, %f3, %f5;
+	setp.eq.f32	%p1, %f6, 0f00000000;
+	@%p1 bra 	BB51_2;
+
+	mov.u16 	%rs4, 1;
+	bra.uni 	BB51_3;
+
+BB51_2:
+	mul.f32 	%f7, %f2, %f2;
+	fma.rn.f32 	%f8, %f1, %f1, %f7;
+	setp.neu.f32	%p2, %f8, 0f00000000;
+	selp.u16	%rs4, 1, 0, %p2;
+
+BB51_3:
+	cvt.u32.u16	%r1, %rs4;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___orzz(
+	.param .align 16 .b8 ___orzz_param_0[16],
+	.param .align 16 .b8 ___orzz_param_1[16]
+)
+{
+	.reg .pred 	%p<3>;
+	.reg .s16 	%rs<5>;
+	.reg .s32 	%r<2>;
+	.reg .f64 	%fd<9>;
+
+
+	ld.param.f64 	%fd3, [___orzz_param_0];
+	ld.param.f64 	%fd4, [___orzz_param_0+8];
+	ld.param.f64 	%fd2, [___orzz_param_1+8];
+	ld.param.f64 	%fd1, [___orzz_param_1];
+	mul.f64 	%fd5, %fd4, %fd4;
+	fma.rn.f64 	%fd6, %fd3, %fd3, %fd5;
+	setp.eq.f64	%p1, %fd6, 0d0000000000000000;
+	@%p1 bra 	BB52_2;
+
+	mov.u16 	%rs4, 1;
+	bra.uni 	BB52_3;
+
+BB52_2:
+	mul.f64 	%fd7, %fd2, %fd2;
+	fma.rn.f64 	%fd8, %fd1, %fd1, %fd7;
+	setp.neu.f64	%p2, %fd8, 0d0000000000000000;
+	selp.u16	%rs4, 1, 0, %p2;
+
+BB52_3:
+	cvt.u32.u16	%r1, %rs4;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
 .visible .func  (.param .b32 funj_retval0) ___eqss(
 	.param .b32 ___eqss_param_0,
 	.param .b32 ___eqss_param_1
@@ -816,16 +1227,16 @@
 	ld.param.f32 	%f4, [___eqcc_param_1+4];
 	ld.param.f32 	%f3, [___eqcc_param_1];
 	setp.eq.f32	%p1, %f1, %f3;
-	@%p1 bra 	BB43_2;
+	@%p1 bra 	BB59_2;
 
 	mov.u16 	%rs4, 0;
-	bra.uni 	BB43_3;
+	bra.uni 	BB59_3;
 
-BB43_2:
+BB59_2:
 	setp.eq.f32	%p2, %f2, %f4;
 	selp.u16	%rs4, 1, 0, %p2;
 
-BB43_3:
+BB59_3:
 	cvt.u32.u16	%r1, %rs4;
 	st.param.b32	[funj_retval0+0], %r1;
 	ret;
@@ -847,16 +1258,16 @@ BB43_3:
 	ld.param.f64 	%fd4, [___eqzz_param_1+8];
 	ld.param.f64 	%fd3, [___eqzz_param_1];
 	setp.eq.f64	%p1, %fd1, %fd3;
-	@%p1 bra 	BB44_2;
+	@%p1 bra 	BB60_2;
 
 	mov.u16 	%rs4, 0;
-	bra.uni 	BB44_3;
+	bra.uni 	BB60_3;
 
-BB44_2:
+BB60_2:
 	setp.eq.f64	%p2, %fd2, %fd4;
 	selp.u16	%rs4, 1, 0, %p2;
 
-BB44_3:
+BB60_3:
 	cvt.u32.u16	%r1, %rs4;
 	st.param.b32	[funj_retval0+0], %r1;
 	ret;
@@ -986,16 +1397,16 @@ BB44_3:
 	ld.param.f32 	%f4, [___neqcc_param_1+4];
 	ld.param.f32 	%f3, [___neqcc_param_1];
 	setp.eq.f32	%p1, %f1, %f3;
-	@%p1 bra 	BB51_2;
+	@%p1 bra 	BB67_2;
 
 	mov.u16 	%rs4, 1;
-	bra.uni 	BB51_3;
+	bra.uni 	BB67_3;
 
-BB51_2:
+BB67_2:
 	setp.neu.f32	%p2, %f2, %f4;
 	selp.u16	%rs4, 1, 0, %p2;
 
-BB51_3:
+BB67_3:
 	cvt.u32.u16	%r1, %rs4;
 	st.param.b32	[funj_retval0+0], %r1;
 	ret;
@@ -1017,18 +1428,308 @@ BB51_3:
 	ld.param.f64 	%fd4, [___neqzz_param_1+8];
 	ld.param.f64 	%fd3, [___neqzz_param_1];
 	setp.eq.f64	%p1, %fd1, %fd3;
-	@%p1 bra 	BB52_2;
+	@%p1 bra 	BB68_2;
 
 	mov.u16 	%rs4, 1;
-	bra.uni 	BB52_3;
+	bra.uni 	BB68_3;
 
-BB52_2:
+BB68_2:
 	setp.neu.f64	%p2, %fd2, %fd4;
 	selp.u16	%rs4, 1, 0, %p2;
 
-BB52_3:
+BB68_3:
 	cvt.u32.u16	%r1, %rs4;
 	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___nots(
+	.param .b32 ___nots_param_0
+)
+{
+	.reg .pred 	%p<2>;
+	.reg .s32 	%r<2>;
+	.reg .f32 	%f<2>;
+
+
+	ld.param.f32 	%f1, [___nots_param_0];
+	setp.eq.f32	%p1, %f1, 0f00000000;
+	selp.u32	%r1, 1, 0, %p1;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___notd(
+	.param .b64 ___notd_param_0
+)
+{
+	.reg .pred 	%p<2>;
+	.reg .s32 	%r<2>;
+	.reg .f64 	%fd<2>;
+
+
+	ld.param.f64 	%fd1, [___notd_param_0];
+	setp.eq.f64	%p1, %fd1, 0d0000000000000000;
+	selp.u32	%r1, 1, 0, %p1;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___noti(
+	.param .b32 ___noti_param_0
+)
+{
+	.reg .pred 	%p<2>;
+	.reg .s32 	%r<3>;
+
+
+	ld.param.u32 	%r1, [___noti_param_0];
+	setp.eq.s32	%p1, %r1, 0;
+	selp.u32	%r2, 1, 0, %p1;
+	st.param.b32	[funj_retval0+0], %r2;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___notu(
+	.param .b32 ___notu_param_0
+)
+{
+	.reg .pred 	%p<2>;
+	.reg .s32 	%r<3>;
+
+
+	ld.param.u32 	%r1, [___notu_param_0];
+	setp.eq.s32	%p1, %r1, 0;
+	selp.u32	%r2, 1, 0, %p1;
+	st.param.b32	[funj_retval0+0], %r2;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___notj(
+	.param .b32 ___notj_param_0
+)
+{
+	.reg .pred 	%p<2>;
+	.reg .s16 	%rs<3>;
+	.reg .s32 	%r<2>;
+
+
+	ld.param.s8 	%rs1, [___notj_param_0];
+	and.b16  	%rs2, %rs1, 255;
+	setp.eq.s16	%p1, %rs2, 0;
+	selp.u32	%r1, 1, 0, %p1;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___notv(
+	.param .b32 ___notv_param_0
+)
+{
+	.reg .pred 	%p<2>;
+	.reg .s16 	%rs<2>;
+	.reg .s32 	%r<2>;
+
+
+	ld.param.u8 	%rs1, [___notv_param_0];
+	setp.eq.s16	%p1, %rs1, 0;
+	selp.u32	%r1, 1, 0, %p1;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___bitandii(
+	.param .b32 ___bitandii_param_0,
+	.param .b32 ___bitandii_param_1
+)
+{
+	.reg .s32 	%r<4>;
+
+
+	ld.param.u32 	%r1, [___bitandii_param_0];
+	ld.param.u32 	%r2, [___bitandii_param_1];
+	and.b32  	%r3, %r2, %r1;
+	st.param.b32	[funj_retval0+0], %r3;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___bitorii(
+	.param .b32 ___bitorii_param_0,
+	.param .b32 ___bitorii_param_1
+)
+{
+	.reg .s32 	%r<4>;
+
+
+	ld.param.u32 	%r1, [___bitorii_param_0];
+	ld.param.u32 	%r2, [___bitorii_param_1];
+	or.b32  	%r3, %r2, %r1;
+	st.param.b32	[funj_retval0+0], %r3;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___bitxorii(
+	.param .b32 ___bitxorii_param_0,
+	.param .b32 ___bitxorii_param_1
+)
+{
+	.reg .s32 	%r<4>;
+
+
+	ld.param.u32 	%r1, [___bitxorii_param_0];
+	ld.param.u32 	%r2, [___bitxorii_param_1];
+	xor.b32  	%r3, %r2, %r1;
+	st.param.b32	[funj_retval0+0], %r3;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___bitandjj(
+	.param .b32 ___bitandjj_param_0,
+	.param .b32 ___bitandjj_param_1
+)
+{
+	.reg .s16 	%rs<4>;
+	.reg .s32 	%r<3>;
+
+
+	ld.param.s8 	%rs1, [___bitandjj_param_0];
+	ld.param.s8 	%rs2, [___bitandjj_param_1];
+	and.b16  	%rs3, %rs2, %rs1;
+	cvt.u32.u16	%r1, %rs3;
+	cvt.s32.s8 	%r2, %r1;
+	st.param.b32	[funj_retval0+0], %r2;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___bitorjj(
+	.param .b32 ___bitorjj_param_0,
+	.param .b32 ___bitorjj_param_1
+)
+{
+	.reg .s16 	%rs<4>;
+	.reg .s32 	%r<3>;
+
+
+	ld.param.s8 	%rs1, [___bitorjj_param_0];
+	ld.param.s8 	%rs2, [___bitorjj_param_1];
+	or.b16  	%rs3, %rs2, %rs1;
+	cvt.u32.u16	%r1, %rs3;
+	cvt.s32.s8 	%r2, %r1;
+	st.param.b32	[funj_retval0+0], %r2;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___bitxorjj(
+	.param .b32 ___bitxorjj_param_0,
+	.param .b32 ___bitxorjj_param_1
+)
+{
+	.reg .s16 	%rs<4>;
+	.reg .s32 	%r<3>;
+
+
+	ld.param.s8 	%rs1, [___bitxorjj_param_0];
+	ld.param.s8 	%rs2, [___bitxorjj_param_1];
+	xor.b16  	%rs3, %rs2, %rs1;
+	cvt.u32.u16	%r1, %rs3;
+	cvt.s32.s8 	%r2, %r1;
+	st.param.b32	[funj_retval0+0], %r2;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___bitandvv(
+	.param .b32 ___bitandvv_param_0,
+	.param .b32 ___bitandvv_param_1
+)
+{
+	.reg .s16 	%rs<4>;
+	.reg .s32 	%r<2>;
+
+
+	ld.param.u8 	%rs1, [___bitandvv_param_0];
+	ld.param.u8 	%rs2, [___bitandvv_param_1];
+	and.b16  	%rs3, %rs2, %rs1;
+	cvt.u32.u16	%r1, %rs3;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___bitorvv(
+	.param .b32 ___bitorvv_param_0,
+	.param .b32 ___bitorvv_param_1
+)
+{
+	.reg .s16 	%rs<4>;
+	.reg .s32 	%r<2>;
+
+
+	ld.param.u8 	%rs1, [___bitorvv_param_0];
+	ld.param.u8 	%rs2, [___bitorvv_param_1];
+	or.b16  	%rs3, %rs2, %rs1;
+	cvt.u32.u16	%r1, %rs3;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___bitxorvv(
+	.param .b32 ___bitxorvv_param_0,
+	.param .b32 ___bitxorvv_param_1
+)
+{
+	.reg .s16 	%rs<4>;
+	.reg .s32 	%r<2>;
+
+
+	ld.param.u8 	%rs1, [___bitxorvv_param_0];
+	ld.param.u8 	%rs2, [___bitxorvv_param_1];
+	xor.b16  	%rs3, %rs2, %rs1;
+	cvt.u32.u16	%r1, %rs3;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___bitanduu(
+	.param .b32 ___bitanduu_param_0,
+	.param .b32 ___bitanduu_param_1
+)
+{
+	.reg .s32 	%r<4>;
+
+
+	ld.param.u32 	%r1, [___bitanduu_param_0];
+	ld.param.u32 	%r2, [___bitanduu_param_1];
+	and.b32  	%r3, %r2, %r1;
+	st.param.b32	[funj_retval0+0], %r3;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___bitoruu(
+	.param .b32 ___bitoruu_param_0,
+	.param .b32 ___bitoruu_param_1
+)
+{
+	.reg .s32 	%r<4>;
+
+
+	ld.param.u32 	%r1, [___bitoruu_param_0];
+	ld.param.u32 	%r2, [___bitoruu_param_1];
+	or.b32  	%r3, %r2, %r1;
+	st.param.b32	[funj_retval0+0], %r3;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___bitxoruu(
+	.param .b32 ___bitxoruu_param_0,
+	.param .b32 ___bitxoruu_param_1
+)
+{
+	.reg .s32 	%r<4>;
+
+
+	ld.param.u32 	%r1, [___bitxoruu_param_0];
+	ld.param.u32 	%r2, [___bitxoruu_param_1];
+	xor.b32  	%r3, %r2, %r1;
+	st.param.b32	[funj_retval0+0], %r3;
 	ret;
 }
 
