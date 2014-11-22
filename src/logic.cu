@@ -72,3 +72,11 @@ BIT_FN(int)
 BIT_FN(char)
 BIT_FN(uchar)
 BIT_FN(uint)
+
+__device__ char ___isNaN(float in) { return isnan(in); }
+__device__ char ___isINF(float in) { return isinf(in); }
+__device__ char ___iszero(float in) { return (in == 0); }
+
+__device__ char ___isNaN(double in) { return isnan(in); }
+__device__ char ___isINF(double in) { return isinf(in); }
+__device__ char ___iszero(double in) { return (in == 0); }

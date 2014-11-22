@@ -44,12 +44,12 @@ CPLX_CAST(cfloat, float, C)
 CPLX_CAST(cdouble, double, Z)
 
 
-__device__ float ___realC(cfloat in) { return in.x; }
-__device__ double ___realZ(cdouble in) { return in.x; }
+__device__ float ___real(cfloat in) { return in.x; }
+__device__ double ___real(cdouble in) { return in.x; }
 
 
-__device__ float ___imagC(cfloat in) { return 0; }
-__device__ double ___imagZ(cdouble in) { return 0; }
+__device__ float ___imag(cfloat in) { return 0; }
+__device__ double ___imag(cdouble in) { return 0; }
 
-__device__ cfloat ___cplxC(float l, float r) { cfloat out = {l, r}; return out; }
-__device__ cdouble ___cplxZ(double l, double r) { cdouble out = {l, r}; return out; }
+__device__ cfloat ___cplx(float l, float r) { cfloat out = {l, r}; return out; }
+__device__ cdouble ___cplx(double l, double r) { cdouble out = {l, r}; return out; }

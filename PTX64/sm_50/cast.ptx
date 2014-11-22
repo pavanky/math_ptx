@@ -766,32 +766,32 @@
 	ret;
 }
 
-.visible .func  (.param .b32 funj_retval0) ___realCc(
-	.param .align 8 .b8 ___realCc_param_0[8]
+.visible .func  (.param .b32 funj_retval0) ___realc(
+	.param .align 8 .b8 ___realc_param_0[8]
 )
 {
 	.reg .f32 	%f<2>;
 
 
-	ld.param.f32 	%f1, [___realCc_param_0];
+	ld.param.f32 	%f1, [___realc_param_0];
 	st.param.f32	[funj_retval0+0], %f1;
 	ret;
 }
 
-.visible .func  (.param .b64 funj_retval0) ___realZz(
-	.param .align 16 .b8 ___realZz_param_0[16]
+.visible .func  (.param .b64 funj_retval0) ___realz(
+	.param .align 16 .b8 ___realz_param_0[16]
 )
 {
 	.reg .f64 	%fd<2>;
 
 
-	ld.param.f64 	%fd1, [___realZz_param_0];
+	ld.param.f64 	%fd1, [___realz_param_0];
 	st.param.f64	[funj_retval0+0], %fd1;
 	ret;
 }
 
-.visible .func  (.param .b32 funj_retval0) ___imagCc(
-	.param .align 8 .b8 ___imagCc_param_0[8]
+.visible .func  (.param .b32 funj_retval0) ___imagc(
+	.param .align 8 .b8 ___imagc_param_0[8]
 )
 {
 	.reg .f32 	%f<2>;
@@ -802,8 +802,8 @@
 	ret;
 }
 
-.visible .func  (.param .b64 funj_retval0) ___imagZz(
-	.param .align 16 .b8 ___imagZz_param_0[16]
+.visible .func  (.param .b64 funj_retval0) ___imagz(
+	.param .align 16 .b8 ___imagz_param_0[16]
 )
 {
 	.reg .f64 	%fd<2>;
@@ -814,31 +814,31 @@
 	ret;
 }
 
-.visible .func  (.param .align 8 .b8 funj_retval0[8]) ___cplxCss(
-	.param .b32 ___cplxCss_param_0,
-	.param .b32 ___cplxCss_param_1
+.visible .func  (.param .align 8 .b8 funj_retval0[8]) ___cplxss(
+	.param .b32 ___cplxss_param_0,
+	.param .b32 ___cplxss_param_1
 )
 {
 	.reg .f32 	%f<3>;
 
 
-	ld.param.f32 	%f1, [___cplxCss_param_0];
-	ld.param.f32 	%f2, [___cplxCss_param_1];
+	ld.param.f32 	%f1, [___cplxss_param_0];
+	ld.param.f32 	%f2, [___cplxss_param_1];
 	st.param.f32	[funj_retval0+0], %f1;
 	st.param.f32	[funj_retval0+4], %f2;
 	ret;
 }
 
-.visible .func  (.param .align 16 .b8 funj_retval0[16]) ___cplxZdd(
-	.param .b64 ___cplxZdd_param_0,
-	.param .b64 ___cplxZdd_param_1
+.visible .func  (.param .align 16 .b8 funj_retval0[16]) ___cplxdd(
+	.param .b64 ___cplxdd_param_0,
+	.param .b64 ___cplxdd_param_1
 )
 {
 	.reg .f64 	%fd<3>;
 
 
-	ld.param.f64 	%fd1, [___cplxZdd_param_0];
-	ld.param.f64 	%fd2, [___cplxZdd_param_1];
+	ld.param.f64 	%fd1, [___cplxdd_param_0];
+	ld.param.f64 	%fd2, [___cplxdd_param_1];
 	st.param.f64	[funj_retval0+0], %fd1;
 	st.param.f64	[funj_retval0+8], %fd2;
 	ret;
