@@ -48,8 +48,8 @@ __device__ float ___real(cfloat in) { return in.x; }
 __device__ double ___real(cdouble in) { return in.x; }
 
 
-__device__ float ___imag(cfloat in) { return 0; }
-__device__ double ___imag(cdouble in) { return 0; }
+__device__ float ___imag(cfloat in) { return in.y; }
+__device__ double ___imag(cdouble in) { return in.y; }
 
 __device__ cfloat ___cplx(float l, float r) { cfloat out = {l, r}; return out; }
 __device__ cdouble ___cplx(double l, double r) { cdouble out = {l, r}; return out; }
