@@ -777,4 +777,34 @@
 	ret;
 }
 
+.visible .func  (.param .align 8 .b8 funj_retval0[8]) ___conjc(
+	.param .align 8 .b8 ___conjc_param_0[8]
+)
+{
+	.reg .f32 	%f<4>;
+
+
+	ld.param.f32 	%f1, [___conjc_param_0];
+	ld.param.f32 	%f2, [___conjc_param_0+4];
+	neg.f32 	%f3, %f2;
+	st.param.f32	[funj_retval0+0], %f1;
+	st.param.f32	[funj_retval0+4], %f3;
+	ret;
+}
+
+.visible .func  (.param .align 16 .b8 funj_retval0[16]) ___conjz(
+	.param .align 16 .b8 ___conjz_param_0[16]
+)
+{
+	.reg .f64 	%fd<4>;
+
+
+	ld.param.f64 	%fd1, [___conjz_param_0];
+	ld.param.f64 	%fd2, [___conjz_param_0+8];
+	neg.f64 	%fd3, %fd2;
+	st.param.f64	[funj_retval0+0], %fd1;
+	st.param.f64	[funj_retval0+8], %fd3;
+	ret;
+}
+
 
