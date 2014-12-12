@@ -691,8 +691,8 @@ BB16_3:
 	ret;
 }
 
-.visible .func  (.param .b32 funj_retval0) ___erss(
-	.param .b32 ___erss_param_0
+.visible .func  (.param .b32 funj_retval0) ___erfs(
+	.param .b32 ___erfs_param_0
 )
 {
 	.reg .pred 	%p<3>;
@@ -700,7 +700,7 @@ BB16_3:
 	.reg .f32 	%f<37>;
 
 
-	ld.param.f32 	%f5, [___erss_param_0];
+	ld.param.f32 	%f5, [___erfs_param_0];
 	abs.f32 	%f1, %f5;
 	setp.ltu.f32	%p1, %f1, 0f3F800000;
 	@%p1 bra 	BB17_2;

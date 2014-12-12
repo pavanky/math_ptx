@@ -45,3 +45,6 @@ sed -i 's/6float2/c/g' $ptx
 # double2 - z (7double2S_ -> z)
 sed -i 's/7double2S_/zz/g' $ptx
 sed -i 's/7double2/z/g' $ptx
+
+# Fixing a false positive
+sed -i 's/erss/erfs/g' $ptx
