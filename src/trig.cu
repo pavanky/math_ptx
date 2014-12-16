@@ -26,3 +26,20 @@ MATH(tan)
 MATH(asin)
 MATH(acos)
 MATH(atan)
+
+#define ATAN2(T)                                \
+    __device__ T ___atan2(T x, T y)             \
+    {                                           \
+        return atan2((float)x, (float)y);       \
+    }                                           \
+
+ATAN2(float)
+ATAN2(int)
+ATAN2(uint)
+ATAN2(char)
+ATAN2(uchar)
+
+__device__ double ___atan2(double x, double y)
+{
+    return atan2(x, y);
+}
