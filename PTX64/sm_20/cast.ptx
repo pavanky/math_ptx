@@ -699,6 +699,40 @@
 	ret;
 }
 
+.visible .func  (.param .align 8 .b8 funj_retval0[8]) ___mkCz(
+	.param .align 16 .b8 ___mkCz_param_0[16]
+)
+{
+	.reg .f32 	%f<3>;
+	.reg .f64 	%fd<3>;
+
+
+	ld.param.f64 	%fd1, [___mkCz_param_0+8];
+	ld.param.f64 	%fd2, [___mkCz_param_0];
+	cvt.rn.f32.f64	%f1, %fd2;
+	cvt.rn.f32.f64	%f2, %fd1;
+	st.param.f32	[funj_retval0+0], %f1;
+	st.param.f32	[funj_retval0+4], %f2;
+	ret;
+}
+
+.visible .func  (.param .align 16 .b8 funj_retval0[16]) ___mkZc(
+	.param .align 8 .b8 ___mkZc_param_0[8]
+)
+{
+	.reg .f32 	%f<3>;
+	.reg .f64 	%fd<3>;
+
+
+	ld.param.f32 	%f1, [___mkZc_param_0];
+	cvt.f64.f32	%fd1, %f1;
+	st.param.f64	[funj_retval0+0], %fd1;
+	ld.param.f32 	%f2, [___mkZc_param_0+4];
+	cvt.f64.f32	%fd2, %f2;
+	st.param.f64	[funj_retval0+8], %fd2;
+	ret;
+}
+
 .visible .func  (.param .b32 funj_retval0) ___realc(
 	.param .align 8 .b8 ___realc_param_0[8]
 )
