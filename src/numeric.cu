@@ -93,6 +93,16 @@ MATH2(max)
 MATH2(mod)
 MATH2(rem)
 
+__device__ float ___hypot(float a, float b)
+{
+    return hypot(a, b);
+}
+
+__device__ double ___hypot(double a, double b)
+{
+    return hypot(a, b);
+}
+
 #define COMPARE_CPLX(fn, op, T)                 \
     __device__ T ___##fn(T a, T b)              \
     {                                           \
