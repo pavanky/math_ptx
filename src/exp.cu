@@ -49,3 +49,23 @@ MATH(cbrt)
     }                                               \
 
 MATH2(pow)
+
+__device__ cfloat ___pow(cfloat a, float b)
+{
+    float R = cuCabsf(a);
+    float Theta = atan2(a.y, a.x);
+    float R_b = powf(R, b);
+    float Theta_b = Theta * b;
+    cfloat res = {R_b * cosf(Theta_b), R_b * sinf(Theta_b)};
+    return res;
+}
+
+__device__ cdouble ___pow(cdouble a, float b)
+{
+    float R = cuCabs(a);
+    float Theta = atan2(a.y, a.x);
+    float R_b = pow(R, b);
+    float Theta_b = Theta * b;
+    cdouble res = {R_b * cos(Theta_b), R_b * sin(Theta_b)};
+    return res;
+}
