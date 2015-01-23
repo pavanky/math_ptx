@@ -65,10 +65,12 @@ MATH_CAST(lgamma, uchar, float)
 __device__ float ___abs(cfloat a) { return cuCabsf(a); }
 __device__ double ___abs(cdouble a) { return cuCabs(a); }
 
-template<typename T> __device__ T rem(T a, T b) { return remainderf((float)(a), (float)(b)); }
+template<typename T> __device__ T rem(T a, T b) { return a % b; }
+__device__ float rem(float a, float b) { return remainderf(a, b); }
 __device__ double rem(double a, double b) { return remainder(a, b); }
 
-template<typename T> __device__ T mod(T a, T b) { return fmodf((float)(a), (float)(b)); }
+template<typename T> __device__ T mod(T a, T b) { return a % b; }
+__device__ float mod(float a, float b) { return fmodf(a, b); }
 __device__ double mod(double a, double b) { return fmod(a, b); }
 
 #define MATH2_BASIC(fn, T)                      \

@@ -3834,6 +3834,173 @@ BB35_15:
 	ret;
 }
 
+.visible .func  (.param .b32 funj_retval0) _Z3remss(
+	.param .b32 _Z3remss_param_0,
+	.param .b32 _Z3remss_param_1
+)
+{
+	.reg .pred 	%p<25>;
+	.reg .s32 	%r<23>;
+	.reg .f32 	%f<54>;
+
+
+	ld.param.f32 	%f21, [_Z3remss_param_0];
+	ld.param.f32 	%f22, [_Z3remss_param_1];
+	abs.f32 	%f51, %f21;
+	setp.gtu.f32	%p1, %f51, 0f7F800000;
+	abs.f32 	%f2, %f22;
+	setp.gtu.f32	%p2, %f2, 0f7F800000;
+	or.pred  	%p3, %p1, %p2;
+	@%p3 bra 	BB38_20;
+
+	setp.eq.f32	%p4, %f51, 0f7F800000;
+	setp.eq.f32	%p5, %f2, 0f00000000;
+	or.pred  	%p6, %p4, %p5;
+	@!%p6 bra 	BB38_3;
+	bra.uni 	BB38_2;
+
+BB38_2:
+	mov.f32 	%f53, 0f7FFFFFFF;
+	bra.uni 	BB38_21;
+
+BB38_3:
+	setp.ge.f32	%p7, %f51, %f2;
+	@%p7 bra 	BB38_5;
+
+	mov.u32 	%r22, 0;
+	bra.uni 	BB38_16;
+
+BB38_5:
+	lg2.approx.f32 	%f23, %f51;
+	cvt.rzi.s32.f32	%r5, %f23;
+	lg2.approx.f32 	%f24, %f2;
+	cvt.rzi.s32.f32	%r6, %f24;
+	sub.s32 	%r1, %r5, %r6;
+	abs.f32 	%f3, %f2;
+	setp.eq.f32	%p8, %f3, 0f00000000;
+	setp.eq.f32	%p9, %f3, 0f7F800000;
+	or.pred  	%p10, %p8, %p9;
+	setp.eq.s32	%p11, %r5, %r6;
+	or.pred  	%p12, %p10, %p11;
+	@%p12 bra 	BB38_11;
+
+	abs.s32 	%r2, %r1;
+	setp.lt.s32	%p13, %r2, 126;
+	@%p13 bra 	BB38_10;
+
+	setp.lt.s32	%p14, %r2, 252;
+	@%p14 bra 	BB38_9;
+
+	shr.s32 	%r7, %r1, 31;
+	shr.u32 	%r8, %r7, 30;
+	add.s32 	%r9, %r1, %r8;
+	shr.s32 	%r10, %r9, 2;
+	cvt.rn.f32.s32	%f26, %r10;
+	// inline asm
+	ex2.approx.ftz.f32 %f25,%f26;
+	// inline asm
+	mul.f32 	%f29, %f2, %f25;
+	mul.f32 	%f30, %f29, %f25;
+	mul.f32 	%f31, %f30, %f25;
+	mad.lo.s32 	%r11, %r10, -3, %r1;
+	cvt.rn.f32.s32	%f28, %r11;
+	// inline asm
+	ex2.approx.ftz.f32 %f27,%f28;
+	// inline asm
+	mul.f32 	%f44, %f31, %f27;
+	bra.uni 	BB38_12;
+
+BB38_9:
+	shr.u32 	%r12, %r1, 31;
+	add.s32 	%r13, %r1, %r12;
+	shr.s32 	%r14, %r13, 1;
+	cvt.rn.f32.s32	%f33, %r14;
+	// inline asm
+	ex2.approx.ftz.f32 %f32,%f33;
+	// inline asm
+	mul.f32 	%f36, %f2, %f32;
+	sub.s32 	%r15, %r1, %r14;
+	cvt.rn.f32.s32	%f35, %r15;
+	// inline asm
+	ex2.approx.ftz.f32 %f34,%f35;
+	// inline asm
+	mul.f32 	%f44, %f36, %f34;
+	bra.uni 	BB38_12;
+
+BB38_10:
+	cvt.rn.f32.s32	%f38, %r1;
+	// inline asm
+	ex2.approx.ftz.f32 %f37,%f38;
+	// inline asm
+	mul.f32 	%f44, %f2, %f37;
+	bra.uni 	BB38_12;
+
+BB38_11:
+	setp.leu.f32	%p15, %f3, 0f00000000;
+	add.f32 	%f39, %f2, %f2;
+	selp.f32	%f44, %f39, %f2, %p15;
+
+BB38_12:
+	mul.f32 	%f40, %f51, 0f3F000000;
+	setp.gtu.f32	%p16, %f44, %f40;
+	add.f32 	%f41, %f44, %f44;
+	selp.f32	%f45, %f44, %f41, %p16;
+	setp.ge.f32	%p17, %f45, %f2;
+	@%p17 bra 	BB38_13;
+	bra.uni 	BB38_22;
+
+BB38_13:
+	mov.f32 	%f52, %f51;
+
+BB38_14:
+	mov.f32 	%f10, %f52;
+	mov.f32 	%f11, %f45;
+	sub.f32 	%f42, %f10, %f11;
+	setp.ltu.f32	%p18, %f10, %f11;
+	selp.f32	%f52, %f10, %f42, %p18;
+	mul.f32 	%f45, %f11, 0f3F000000;
+	setp.ge.f32	%p19, %f45, %f2;
+	@%p19 bra 	BB38_14;
+
+	setp.ge.f32	%p20, %f10, %f11;
+	selp.u32	%r22, 1, 0, %p20;
+	mov.f32 	%f51, %f52;
+
+BB38_16:
+	mov.f32 	%f50, %f51;
+	add.f32 	%f15, %f50, %f50;
+	setp.gt.f32	%p21, %f15, %f2;
+	@%p21 bra 	BB38_18;
+
+	setp.eq.f32	%p22, %f15, %f2;
+	setp.ne.s32	%p23, %r22, 0;
+	and.pred  	%p24, %p22, %p23;
+	@!%p24 bra 	BB38_19;
+	bra.uni 	BB38_18;
+
+BB38_18:
+	sub.f32 	%f50, %f50, %f2;
+
+BB38_19:
+	mov.b32 	 %r18, %f21;
+	and.b32  	%r19, %r18, -2147483648;
+	mov.b32 	 %r20, %f50;
+	xor.b32  	%r21, %r20, %r19;
+	mov.b32 	 %f53, %r21;
+	bra.uni 	BB38_21;
+
+BB38_20:
+	add.f32 	%f53, %f21, %f22;
+
+BB38_21:
+	st.param.f32	[funj_retval0+0], %f53;
+	ret;
+
+BB38_22:
+	mov.u32 	%r22, 0;
+	bra.uni 	BB38_16;
+}
+
 .visible .func  (.param .b64 funj_retval0) _Z3remdd(
 	.param .b64 _Z3remdd_param_0,
 	.param .b64 _Z3remdd_param_1
@@ -3869,40 +4036,40 @@ BB35_15:
 	setp.gt.u32	%p1, %r12, 2146435071;
 	setp.gt.u32	%p2, %r31, 2146435071;
 	or.pred  	%p3, %p1, %p2;
-	@%p3 bra 	BB38_22;
+	@%p3 bra 	BB39_22;
 
 	setp.neu.f64	%p4, %fd2, 0d0000000000000000;
-	@%p4 bra 	BB38_3;
+	@%p4 bra 	BB39_3;
 
 	mov.f64 	%fd38, 0dFFF8000000000000;
-	bra.uni 	BB38_25;
+	bra.uni 	BB39_25;
 
-BB38_3:
+BB39_3:
 	setp.ge.f64	%p5, %fd37, %fd2;
-	@%p5 bra 	BB38_5;
+	@%p5 bra 	BB39_5;
 
 	mov.u32 	%r34, 0;
-	bra.uni 	BB38_18;
+	bra.uni 	BB39_18;
 
-BB38_5:
+BB39_5:
 	{
 	.reg .b32 %temp; 
 	mov.b64 	{%temp, %r15}, %fd2;
 	}
 	setp.lt.s32	%p6, %r15, 1048576;
-	@%p6 bra 	BB38_7;
+	@%p6 bra 	BB39_7;
 
 	mov.f64 	%fd33, 0d0000000000000000;
-	bra.uni 	BB38_11;
+	bra.uni 	BB39_11;
 
-BB38_7:
+BB39_7:
 	setp.geu.f64	%p7, %fd2, %fd37;
 	mov.f64 	%fd34, %fd2;
-	@%p7 bra 	BB38_10;
+	@%p7 bra 	BB39_10;
 
 	mov.f64 	%fd35, %fd2;
 
-BB38_9:
+BB39_9:
 	add.f64 	%fd35, %fd35, %fd35;
 	setp.lt.f64	%p8, %fd35, %fd37;
 	{
@@ -3913,9 +4080,9 @@ BB38_9:
 	and.pred  	%p10, %p8, %p9;
 	mov.f64 	%fd29, %fd35;
 	mov.f64 	%fd34, %fd29;
-	@%p10 bra 	BB38_9;
+	@%p10 bra 	BB39_9;
 
-BB38_10:
+BB39_10:
 	mov.f64 	%fd30, %fd34;
 	mov.f64 	%fd33, %fd30;
 	{
@@ -3927,34 +4094,34 @@ BB38_10:
 	mov.b64 	{%r32, %temp}, %fd33;
 	}
 
-BB38_11:
+BB39_11:
 	mov.f64 	%fd32, %fd33;
 	{
 	.reg .b32 %temp; 
 	mov.b64 	{%temp, %r17}, %fd37;
 	}
 	setp.lt.s32	%p11, %r17, 1048576;
-	@%p11 bra 	BB38_13;
+	@%p11 bra 	BB39_13;
 
 	and.b32  	%r18, %r31, 1048575;
 	and.b32  	%r19, %r1, 2146435072;
 	or.b32  	%r20, %r18, %r19;
 	mov.b64 	%fd32, {%r32, %r20};
 
-BB38_13:
+BB39_13:
 	mul.f64 	%fd25, %fd32, 0d3FE0000000000000;
 	setp.gt.f64	%p12, %fd32, %fd37;
 	selp.f64	%fd36, %fd25, %fd32, %p12;
 	setp.ge.f64	%p13, %fd36, %fd2;
-	@%p13 bra 	BB38_15;
+	@%p13 bra 	BB39_15;
 
 	mov.u32 	%r34, 0;
-	bra.uni 	BB38_18;
+	bra.uni 	BB39_18;
 
-BB38_15:
+BB39_15:
 	mov.u32 	%r33, -1;
 
-BB38_16:
+BB39_16:
 	setp.ltu.f64	%p14, %fd37, %fd36;
 	selp.u32	%r22, 1, 0, %p14;
 	shl.b32 	%r23, %r33, 1;
@@ -3963,26 +4130,26 @@ BB38_16:
 	selp.f64	%fd37, %fd37, %fd26, %p14;
 	mul.f64 	%fd36, %fd36, 0d3FE0000000000000;
 	setp.ge.f64	%p15, %fd36, %fd2;
-	@%p15 bra 	BB38_16;
+	@%p15 bra 	BB39_16;
 
 	not.b32 	%r24, %r33;
 	and.b32  	%r34, %r24, 1;
 
-BB38_18:
+BB39_18:
 	add.f64 	%fd15, %fd37, %fd37;
 	setp.gt.f64	%p16, %fd15, %fd2;
-	@%p16 bra 	BB38_20;
+	@%p16 bra 	BB39_20;
 
 	setp.eq.f64	%p17, %fd15, %fd2;
 	setp.ne.s32	%p18, %r34, 0;
 	and.pred  	%p19, %p17, %p18;
-	@!%p19 bra 	BB38_21;
-	bra.uni 	BB38_20;
+	@!%p19 bra 	BB39_21;
+	bra.uni 	BB39_20;
 
-BB38_20:
+BB39_20:
 	sub.f64 	%fd37, %fd37, %fd2;
 
-BB38_21:
+BB39_21:
 	and.b32  	%r27, %r1, -2147483648;
 	{
 	.reg .b32 %temp; 
@@ -3994,23 +4161,157 @@ BB38_21:
 	mov.b64 	{%r30, %temp}, %fd37;
 	}
 	mov.b64 	%fd38, {%r30, %r29};
-	bra.uni 	BB38_25;
+	bra.uni 	BB39_25;
 
-BB38_22:
+BB39_22:
 	setp.gtu.f64	%p20, %fd37, 0d7FF0000000000000;
 	setp.gtu.f64	%p21, %fd2, 0d7FF0000000000000;
 	or.pred  	%p22, %p20, %p21;
-	@%p22 bra 	BB38_24;
+	@%p22 bra 	BB39_24;
 
 	setp.eq.f64	%p23, %fd37, 0d7FF0000000000000;
 	selp.f64	%fd38, 0dFFF8000000000000, %fd22, %p23;
-	bra.uni 	BB38_25;
+	bra.uni 	BB39_25;
 
-BB38_24:
+BB39_24:
 	add.f64 	%fd38, %fd22, %fd23;
 
-BB38_25:
+BB39_25:
 	st.param.f64	[funj_retval0+0], %fd38;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) _Z3modss(
+	.param .b32 _Z3modss_param_0,
+	.param .b32 _Z3modss_param_1
+)
+{
+	.reg .pred 	%p<19>;
+	.reg .s32 	%r<18>;
+	.reg .f32 	%f<48>;
+
+
+	ld.param.f32 	%f18, [_Z3modss_param_0];
+	ld.param.f32 	%f19, [_Z3modss_param_1];
+	abs.f32 	%f46, %f18;
+	setp.eq.f32	%p1, %f46, 0f7F800000;
+	abs.f32 	%f2, %f19;
+	setp.eq.f32	%p2, %f2, 0f00000000;
+	or.pred  	%p3, %p1, %p2;
+	@!%p3 bra 	BB40_2;
+	bra.uni 	BB40_1;
+
+BB40_1:
+	mov.f32 	%f47, 0f7FFFFFFF;
+	bra.uni 	BB40_14;
+
+BB40_2:
+	setp.ltu.f32	%p4, %f46, %f2;
+	@%p4 bra 	BB40_13;
+
+	lg2.approx.f32 	%f20, %f46;
+	cvt.rzi.s32.f32	%r3, %f20;
+	lg2.approx.f32 	%f21, %f2;
+	cvt.rzi.s32.f32	%r4, %f21;
+	sub.s32 	%r1, %r3, %r4;
+	abs.f32 	%f3, %f2;
+	setp.eq.f32	%p5, %f3, 0f00000000;
+	setp.eq.f32	%p6, %f3, 0f7F800000;
+	or.pred  	%p7, %p5, %p6;
+	setp.eq.s32	%p8, %r3, %r4;
+	or.pred  	%p9, %p7, %p8;
+	@%p9 bra 	BB40_9;
+
+	abs.s32 	%r2, %r1;
+	setp.lt.s32	%p10, %r2, 126;
+	@%p10 bra 	BB40_8;
+
+	setp.lt.s32	%p11, %r2, 252;
+	@%p11 bra 	BB40_7;
+
+	shr.s32 	%r5, %r1, 31;
+	shr.u32 	%r6, %r5, 30;
+	add.s32 	%r7, %r1, %r6;
+	shr.s32 	%r8, %r7, 2;
+	cvt.rn.f32.s32	%f23, %r8;
+	// inline asm
+	ex2.approx.ftz.f32 %f22,%f23;
+	// inline asm
+	mul.f32 	%f26, %f2, %f22;
+	mul.f32 	%f27, %f26, %f22;
+	mul.f32 	%f28, %f27, %f22;
+	mad.lo.s32 	%r9, %r8, -3, %r1;
+	cvt.rn.f32.s32	%f25, %r9;
+	// inline asm
+	ex2.approx.ftz.f32 %f24,%f25;
+	// inline asm
+	mul.f32 	%f44, %f28, %f24;
+	bra.uni 	BB40_10;
+
+BB40_7:
+	shr.u32 	%r10, %r1, 31;
+	add.s32 	%r11, %r1, %r10;
+	shr.s32 	%r12, %r11, 1;
+	cvt.rn.f32.s32	%f30, %r12;
+	// inline asm
+	ex2.approx.ftz.f32 %f29,%f30;
+	// inline asm
+	mul.f32 	%f33, %f2, %f29;
+	sub.s32 	%r13, %r1, %r12;
+	cvt.rn.f32.s32	%f32, %r13;
+	// inline asm
+	ex2.approx.ftz.f32 %f31,%f32;
+	// inline asm
+	mul.f32 	%f44, %f33, %f31;
+	bra.uni 	BB40_10;
+
+BB40_8:
+	cvt.rn.f32.s32	%f35, %r1;
+	// inline asm
+	ex2.approx.ftz.f32 %f34,%f35;
+	// inline asm
+	mul.f32 	%f44, %f2, %f34;
+	bra.uni 	BB40_10;
+
+BB40_9:
+	setp.leu.f32	%p12, %f3, 0f00000000;
+	add.f32 	%f36, %f2, %f2;
+	selp.f32	%f44, %f36, %f2, %p12;
+
+BB40_10:
+	mul.f32 	%f37, %f46, 0f3F000000;
+	setp.gtu.f32	%p13, %f44, %f37;
+	add.f32 	%f38, %f44, %f44;
+	selp.f32	%f45, %f44, %f38, %p13;
+	setp.ltu.f32	%p14, %f45, %f2;
+	@%p14 bra 	BB40_12;
+
+BB40_11:
+	sub.f32 	%f39, %f46, %f45;
+	setp.ltu.f32	%p15, %f46, %f45;
+	selp.f32	%f46, %f46, %f39, %p15;
+	mul.f32 	%f45, %f45, 0f3F000000;
+	setp.ge.f32	%p16, %f45, %f2;
+	@%p16 bra 	BB40_11;
+
+BB40_12:
+	mov.b32 	 %r14, %f18;
+	and.b32  	%r15, %r14, -2147483648;
+	mov.b32 	 %r16, %f46;
+	or.b32  	%r17, %r16, %r15;
+	mov.b32 	 %f47, %r17;
+	bra.uni 	BB40_14;
+
+BB40_13:
+	setp.gtu.f32	%p17, %f2, 0f7F800000;
+	add.f32 	%f40, %f18, %f19;
+	selp.f32	%f41, %f40, %f18, %p17;
+	add.f32 	%f42, %f41, %f18;
+	setp.leu.f32	%p18, %f46, 0f00000000;
+	selp.f32	%f47, %f42, %f41, %p18;
+
+BB40_14:
+	st.param.f32	[funj_retval0+0], %f47;
 	ret;
 }
 
@@ -4049,36 +4350,36 @@ BB38_25:
 	setp.gt.u32	%p1, %r8, 2146435071;
 	setp.gt.u32	%p2, %r21, 2146435071;
 	or.pred  	%p3, %p1, %p2;
-	@%p3 bra 	BB39_15;
+	@%p3 bra 	BB41_15;
 
 	setp.neu.f64	%p4, %fd2, 0d0000000000000000;
-	@%p4 bra 	BB39_3;
+	@%p4 bra 	BB41_3;
 
 	mov.f64 	%fd35, 0dFFF8000000000000;
-	bra.uni 	BB39_18;
+	bra.uni 	BB41_18;
 
-BB39_3:
+BB41_3:
 	setp.ltu.f64	%p5, %fd34, %fd2;
-	@%p5 bra 	BB39_18;
+	@%p5 bra 	BB41_18;
 
 	{
 	.reg .b32 %temp; 
 	mov.b64 	{%temp, %r11}, %fd2;
 	}
 	setp.lt.s32	%p6, %r11, 1048576;
-	@%p6 bra 	BB39_6;
+	@%p6 bra 	BB41_6;
 
 	mov.f64 	%fd30, 0d0000000000000000;
-	bra.uni 	BB39_10;
+	bra.uni 	BB41_10;
 
-BB39_6:
+BB41_6:
 	setp.geu.f64	%p7, %fd2, %fd34;
 	mov.f64 	%fd31, %fd2;
-	@%p7 bra 	BB39_9;
+	@%p7 bra 	BB41_9;
 
 	mov.f64 	%fd32, %fd2;
 
-BB39_8:
+BB41_8:
 	add.f64 	%fd32, %fd32, %fd32;
 	setp.lt.f64	%p8, %fd32, %fd34;
 	{
@@ -4089,9 +4390,9 @@ BB39_8:
 	and.pred  	%p10, %p8, %p9;
 	mov.f64 	%fd26, %fd32;
 	mov.f64 	%fd31, %fd26;
-	@%p10 bra 	BB39_8;
+	@%p10 bra 	BB41_8;
 
-BB39_9:
+BB41_9:
 	mov.f64 	%fd27, %fd31;
 	mov.f64 	%fd30, %fd27;
 	{
@@ -4103,36 +4404,36 @@ BB39_9:
 	mov.b64 	{%r22, %temp}, %fd30;
 	}
 
-BB39_10:
+BB41_10:
 	mov.f64 	%fd29, %fd30;
 	{
 	.reg .b32 %temp; 
 	mov.b64 	{%temp, %r13}, %fd34;
 	}
 	setp.lt.s32	%p11, %r13, 1048576;
-	@%p11 bra 	BB39_12;
+	@%p11 bra 	BB41_12;
 
 	and.b32  	%r14, %r21, 1048575;
 	and.b32  	%r15, %r1, 2146435072;
 	or.b32  	%r16, %r14, %r15;
 	mov.b64 	%fd29, {%r22, %r16};
 
-BB39_12:
+BB41_12:
 	mul.f64 	%fd22, %fd29, 0d3FE0000000000000;
 	setp.gt.f64	%p12, %fd29, %fd34;
 	selp.f64	%fd33, %fd22, %fd29, %p12;
 	setp.ltu.f64	%p13, %fd33, %fd2;
-	@%p13 bra 	BB39_14;
+	@%p13 bra 	BB41_14;
 
-BB39_13:
+BB41_13:
 	sub.f64 	%fd23, %fd34, %fd33;
 	setp.ltu.f64	%p14, %fd34, %fd33;
 	selp.f64	%fd34, %fd34, %fd23, %p14;
 	mul.f64 	%fd33, %fd33, 0d3FE0000000000000;
 	setp.ge.f64	%p15, %fd33, %fd2;
-	@%p15 bra 	BB39_13;
+	@%p15 bra 	BB41_13;
 
-BB39_14:
+BB41_14:
 	and.b32  	%r17, %r1, -2147483648;
 	{
 	.reg .b32 %temp; 
@@ -4144,22 +4445,22 @@ BB39_14:
 	mov.b64 	{%r20, %temp}, %fd34;
 	}
 	mov.b64 	%fd35, {%r20, %r19};
-	bra.uni 	BB39_18;
+	bra.uni 	BB41_18;
 
-BB39_15:
+BB41_15:
 	setp.gtu.f64	%p16, %fd34, 0d7FF0000000000000;
 	setp.gtu.f64	%p17, %fd2, 0d7FF0000000000000;
 	or.pred  	%p18, %p16, %p17;
-	@%p18 bra 	BB39_17;
+	@%p18 bra 	BB41_17;
 
 	setp.eq.f64	%p19, %fd34, 0d7FF0000000000000;
 	selp.f64	%fd35, 0dFFF8000000000000, %fd35, %p19;
-	bra.uni 	BB39_18;
+	bra.uni 	BB41_18;
 
-BB39_17:
+BB41_17:
 	add.f64 	%fd35, %fd35, %fd20;
 
-BB39_18:
+BB41_18:
 	st.param.f64	[funj_retval0+0], %fd35;
 	ret;
 }
@@ -4437,276 +4738,6 @@ BB39_18:
 	abs.f32 	%f2, %f19;
 	setp.eq.f32	%p2, %f2, 0f00000000;
 	or.pred  	%p3, %p1, %p2;
-	@!%p3 bra 	BB56_2;
-	bra.uni 	BB56_1;
-
-BB56_1:
-	mov.f32 	%f47, 0f7FFFFFFF;
-	bra.uni 	BB56_14;
-
-BB56_2:
-	setp.ltu.f32	%p4, %f46, %f2;
-	@%p4 bra 	BB56_13;
-
-	lg2.approx.f32 	%f20, %f46;
-	cvt.rzi.s32.f32	%r3, %f20;
-	lg2.approx.f32 	%f21, %f2;
-	cvt.rzi.s32.f32	%r4, %f21;
-	sub.s32 	%r1, %r3, %r4;
-	abs.f32 	%f3, %f2;
-	setp.eq.f32	%p5, %f3, 0f00000000;
-	setp.eq.f32	%p6, %f3, 0f7F800000;
-	or.pred  	%p7, %p5, %p6;
-	setp.eq.s32	%p8, %r3, %r4;
-	or.pred  	%p9, %p7, %p8;
-	@%p9 bra 	BB56_9;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p10, %r2, 126;
-	@%p10 bra 	BB56_8;
-
-	setp.lt.s32	%p11, %r2, 252;
-	@%p11 bra 	BB56_7;
-
-	shr.s32 	%r5, %r1, 31;
-	shr.u32 	%r6, %r5, 30;
-	add.s32 	%r7, %r1, %r6;
-	shr.s32 	%r8, %r7, 2;
-	cvt.rn.f32.s32	%f23, %r8;
-	// inline asm
-	ex2.approx.ftz.f32 %f22,%f23;
-	// inline asm
-	mul.f32 	%f26, %f2, %f22;
-	mul.f32 	%f27, %f26, %f22;
-	mul.f32 	%f28, %f27, %f22;
-	mad.lo.s32 	%r9, %r8, -3, %r1;
-	cvt.rn.f32.s32	%f25, %r9;
-	// inline asm
-	ex2.approx.ftz.f32 %f24,%f25;
-	// inline asm
-	mul.f32 	%f44, %f28, %f24;
-	bra.uni 	BB56_10;
-
-BB56_7:
-	shr.u32 	%r10, %r1, 31;
-	add.s32 	%r11, %r1, %r10;
-	shr.s32 	%r12, %r11, 1;
-	cvt.rn.f32.s32	%f30, %r12;
-	// inline asm
-	ex2.approx.ftz.f32 %f29,%f30;
-	// inline asm
-	mul.f32 	%f33, %f2, %f29;
-	sub.s32 	%r13, %r1, %r12;
-	cvt.rn.f32.s32	%f32, %r13;
-	// inline asm
-	ex2.approx.ftz.f32 %f31,%f32;
-	// inline asm
-	mul.f32 	%f44, %f33, %f31;
-	bra.uni 	BB56_10;
-
-BB56_8:
-	cvt.rn.f32.s32	%f35, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f2, %f34;
-	bra.uni 	BB56_10;
-
-BB56_9:
-	setp.leu.f32	%p12, %f3, 0f00000000;
-	add.f32 	%f36, %f2, %f2;
-	selp.f32	%f44, %f36, %f2, %p12;
-
-BB56_10:
-	mul.f32 	%f37, %f46, 0f3F000000;
-	setp.gtu.f32	%p13, %f44, %f37;
-	add.f32 	%f38, %f44, %f44;
-	selp.f32	%f45, %f44, %f38, %p13;
-	setp.ltu.f32	%p14, %f45, %f2;
-	@%p14 bra 	BB56_12;
-
-BB56_11:
-	sub.f32 	%f39, %f46, %f45;
-	setp.ltu.f32	%p15, %f46, %f45;
-	selp.f32	%f46, %f46, %f39, %p15;
-	mul.f32 	%f45, %f45, 0f3F000000;
-	setp.ge.f32	%p16, %f45, %f2;
-	@%p16 bra 	BB56_11;
-
-BB56_12:
-	mov.b32 	 %r14, %f18;
-	and.b32  	%r15, %r14, -2147483648;
-	mov.b32 	 %r16, %f46;
-	or.b32  	%r17, %r16, %r15;
-	mov.b32 	 %f47, %r17;
-	bra.uni 	BB56_14;
-
-BB56_13:
-	setp.gtu.f32	%p17, %f2, 0f7F800000;
-	add.f32 	%f40, %f18, %f19;
-	selp.f32	%f41, %f40, %f18, %p17;
-	add.f32 	%f42, %f41, %f18;
-	setp.leu.f32	%p18, %f46, 0f00000000;
-	selp.f32	%f47, %f42, %f41, %p18;
-
-BB56_14:
-	st.param.f32	[funj_retval0+0], %f47;
-	ret;
-}
-
-.visible .func  (.param .b32 funj_retval0) _Z3modIfET_S0_S0_(
-	.param .b32 _Z3modIfET_S0_S0__param_0,
-	.param .b32 _Z3modIfET_S0_S0__param_1
-)
-{
-	.reg .pred 	%p<19>;
-	.reg .s32 	%r<18>;
-	.reg .f32 	%f<48>;
-
-
-	ld.param.f32 	%f18, [_Z3modIfET_S0_S0__param_0];
-	ld.param.f32 	%f19, [_Z3modIfET_S0_S0__param_1];
-	abs.f32 	%f46, %f18;
-	setp.eq.f32	%p1, %f46, 0f7F800000;
-	abs.f32 	%f2, %f19;
-	setp.eq.f32	%p2, %f2, 0f00000000;
-	or.pred  	%p3, %p1, %p2;
-	@!%p3 bra 	BB57_2;
-	bra.uni 	BB57_1;
-
-BB57_1:
-	mov.f32 	%f47, 0f7FFFFFFF;
-	bra.uni 	BB57_14;
-
-BB57_2:
-	setp.ltu.f32	%p4, %f46, %f2;
-	@%p4 bra 	BB57_13;
-
-	lg2.approx.f32 	%f20, %f46;
-	cvt.rzi.s32.f32	%r3, %f20;
-	lg2.approx.f32 	%f21, %f2;
-	cvt.rzi.s32.f32	%r4, %f21;
-	sub.s32 	%r1, %r3, %r4;
-	abs.f32 	%f3, %f2;
-	setp.eq.f32	%p5, %f3, 0f00000000;
-	setp.eq.f32	%p6, %f3, 0f7F800000;
-	or.pred  	%p7, %p5, %p6;
-	setp.eq.s32	%p8, %r3, %r4;
-	or.pred  	%p9, %p7, %p8;
-	@%p9 bra 	BB57_9;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p10, %r2, 126;
-	@%p10 bra 	BB57_8;
-
-	setp.lt.s32	%p11, %r2, 252;
-	@%p11 bra 	BB57_7;
-
-	shr.s32 	%r5, %r1, 31;
-	shr.u32 	%r6, %r5, 30;
-	add.s32 	%r7, %r1, %r6;
-	shr.s32 	%r8, %r7, 2;
-	cvt.rn.f32.s32	%f23, %r8;
-	// inline asm
-	ex2.approx.ftz.f32 %f22,%f23;
-	// inline asm
-	mul.f32 	%f26, %f2, %f22;
-	mul.f32 	%f27, %f26, %f22;
-	mul.f32 	%f28, %f27, %f22;
-	mad.lo.s32 	%r9, %r8, -3, %r1;
-	cvt.rn.f32.s32	%f25, %r9;
-	// inline asm
-	ex2.approx.ftz.f32 %f24,%f25;
-	// inline asm
-	mul.f32 	%f44, %f28, %f24;
-	bra.uni 	BB57_10;
-
-BB57_7:
-	shr.u32 	%r10, %r1, 31;
-	add.s32 	%r11, %r1, %r10;
-	shr.s32 	%r12, %r11, 1;
-	cvt.rn.f32.s32	%f30, %r12;
-	// inline asm
-	ex2.approx.ftz.f32 %f29,%f30;
-	// inline asm
-	mul.f32 	%f33, %f2, %f29;
-	sub.s32 	%r13, %r1, %r12;
-	cvt.rn.f32.s32	%f32, %r13;
-	// inline asm
-	ex2.approx.ftz.f32 %f31,%f32;
-	// inline asm
-	mul.f32 	%f44, %f33, %f31;
-	bra.uni 	BB57_10;
-
-BB57_8:
-	cvt.rn.f32.s32	%f35, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f2, %f34;
-	bra.uni 	BB57_10;
-
-BB57_9:
-	setp.leu.f32	%p12, %f3, 0f00000000;
-	add.f32 	%f36, %f2, %f2;
-	selp.f32	%f44, %f36, %f2, %p12;
-
-BB57_10:
-	mul.f32 	%f37, %f46, 0f3F000000;
-	setp.gtu.f32	%p13, %f44, %f37;
-	add.f32 	%f38, %f44, %f44;
-	selp.f32	%f45, %f44, %f38, %p13;
-	setp.ltu.f32	%p14, %f45, %f2;
-	@%p14 bra 	BB57_12;
-
-BB57_11:
-	sub.f32 	%f39, %f46, %f45;
-	setp.ltu.f32	%p15, %f46, %f45;
-	selp.f32	%f46, %f46, %f39, %p15;
-	mul.f32 	%f45, %f45, 0f3F000000;
-	setp.ge.f32	%p16, %f45, %f2;
-	@%p16 bra 	BB57_11;
-
-BB57_12:
-	mov.b32 	 %r14, %f18;
-	and.b32  	%r15, %r14, -2147483648;
-	mov.b32 	 %r16, %f46;
-	or.b32  	%r17, %r16, %r15;
-	mov.b32 	 %f47, %r17;
-	bra.uni 	BB57_14;
-
-BB57_13:
-	setp.gtu.f32	%p17, %f2, 0f7F800000;
-	add.f32 	%f40, %f18, %f19;
-	selp.f32	%f41, %f40, %f18, %p17;
-	add.f32 	%f42, %f41, %f18;
-	setp.leu.f32	%p18, %f46, 0f00000000;
-	selp.f32	%f47, %f42, %f41, %p18;
-
-BB57_14:
-	st.param.f32	[funj_retval0+0], %f47;
-	ret;
-}
-
-.visible .func  (.param .b32 funj_retval0) ___modii(
-	.param .b32 ___modii_param_0,
-	.param .b32 ___modii_param_1
-)
-{
-	.reg .pred 	%p<19>;
-	.reg .s32 	%r<21>;
-	.reg .f32 	%f<48>;
-
-
-	ld.param.u32 	%r3, [___modii_param_0];
-	ld.param.u32 	%r4, [___modii_param_1];
-	cvt.rn.f32.s32	%f1, %r3;
-	abs.f32 	%f46, %f1;
-	cvt.rn.f32.s32	%f3, %r4;
-	abs.f32 	%f4, %f3;
-	setp.eq.f32	%p1, %f46, 0f7F800000;
-	setp.eq.f32	%p2, %f4, 0f00000000;
-	or.pred  	%p3, %p1, %p2;
 	@!%p3 bra 	BB58_2;
 	bra.uni 	BB58_1;
 
@@ -4715,19 +4746,19 @@ BB58_1:
 	bra.uni 	BB58_14;
 
 BB58_2:
-	setp.ltu.f32	%p4, %f46, %f4;
+	setp.ltu.f32	%p4, %f46, %f2;
 	@%p4 bra 	BB58_13;
 
 	lg2.approx.f32 	%f20, %f46;
-	cvt.rzi.s32.f32	%r5, %f20;
-	lg2.approx.f32 	%f21, %f4;
-	cvt.rzi.s32.f32	%r6, %f21;
-	sub.s32 	%r1, %r5, %r6;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p5, %f5, 0f00000000;
-	setp.eq.f32	%p6, %f5, 0f7F800000;
+	cvt.rzi.s32.f32	%r3, %f20;
+	lg2.approx.f32 	%f21, %f2;
+	cvt.rzi.s32.f32	%r4, %f21;
+	sub.s32 	%r1, %r3, %r4;
+	abs.f32 	%f3, %f2;
+	setp.eq.f32	%p5, %f3, 0f00000000;
+	setp.eq.f32	%p6, %f3, 0f7F800000;
 	or.pred  	%p7, %p5, %p6;
-	setp.eq.s32	%p8, %r5, %r6;
+	setp.eq.s32	%p8, %r3, %r4;
 	or.pred  	%p9, %p7, %p8;
 	@%p9 bra 	BB58_9;
 
@@ -4738,19 +4769,19 @@ BB58_2:
 	setp.lt.s32	%p11, %r2, 252;
 	@%p11 bra 	BB58_7;
 
-	shr.s32 	%r7, %r1, 31;
-	shr.u32 	%r8, %r7, 30;
-	add.s32 	%r9, %r1, %r8;
-	shr.s32 	%r10, %r9, 2;
-	cvt.rn.f32.s32	%f23, %r10;
+	shr.s32 	%r5, %r1, 31;
+	shr.u32 	%r6, %r5, 30;
+	add.s32 	%r7, %r1, %r6;
+	shr.s32 	%r8, %r7, 2;
+	cvt.rn.f32.s32	%f23, %r8;
 	// inline asm
 	ex2.approx.ftz.f32 %f22,%f23;
 	// inline asm
-	mul.f32 	%f26, %f4, %f22;
+	mul.f32 	%f26, %f2, %f22;
 	mul.f32 	%f27, %f26, %f22;
 	mul.f32 	%f28, %f27, %f22;
-	mad.lo.s32 	%r11, %r10, -3, %r1;
-	cvt.rn.f32.s32	%f25, %r11;
+	mad.lo.s32 	%r9, %r8, -3, %r1;
+	cvt.rn.f32.s32	%f25, %r9;
 	// inline asm
 	ex2.approx.ftz.f32 %f24,%f25;
 	// inline asm
@@ -4758,16 +4789,16 @@ BB58_2:
 	bra.uni 	BB58_10;
 
 BB58_7:
-	shr.u32 	%r12, %r1, 31;
-	add.s32 	%r13, %r1, %r12;
-	shr.s32 	%r14, %r13, 1;
-	cvt.rn.f32.s32	%f30, %r14;
+	shr.u32 	%r10, %r1, 31;
+	add.s32 	%r11, %r1, %r10;
+	shr.s32 	%r12, %r11, 1;
+	cvt.rn.f32.s32	%f30, %r12;
 	// inline asm
 	ex2.approx.ftz.f32 %f29,%f30;
 	// inline asm
-	mul.f32 	%f33, %f4, %f29;
-	sub.s32 	%r15, %r1, %r14;
-	cvt.rn.f32.s32	%f32, %r15;
+	mul.f32 	%f33, %f2, %f29;
+	sub.s32 	%r13, %r1, %r12;
+	cvt.rn.f32.s32	%f32, %r13;
 	// inline asm
 	ex2.approx.ftz.f32 %f31,%f32;
 	// inline asm
@@ -4779,20 +4810,20 @@ BB58_8:
 	// inline asm
 	ex2.approx.ftz.f32 %f34,%f35;
 	// inline asm
-	mul.f32 	%f44, %f4, %f34;
+	mul.f32 	%f44, %f2, %f34;
 	bra.uni 	BB58_10;
 
 BB58_9:
-	setp.leu.f32	%p12, %f5, 0f00000000;
-	add.f32 	%f36, %f4, %f4;
-	selp.f32	%f44, %f36, %f4, %p12;
+	setp.leu.f32	%p12, %f3, 0f00000000;
+	add.f32 	%f36, %f2, %f2;
+	selp.f32	%f44, %f36, %f2, %p12;
 
 BB58_10:
 	mul.f32 	%f37, %f46, 0f3F000000;
 	setp.gtu.f32	%p13, %f44, %f37;
 	add.f32 	%f38, %f44, %f44;
 	selp.f32	%f45, %f44, %f38, %p13;
-	setp.ltu.f32	%p14, %f45, %f4;
+	setp.ltu.f32	%p14, %f45, %f2;
 	@%p14 bra 	BB58_12;
 
 BB58_11:
@@ -4800,28 +4831,42 @@ BB58_11:
 	setp.ltu.f32	%p15, %f46, %f45;
 	selp.f32	%f46, %f46, %f39, %p15;
 	mul.f32 	%f45, %f45, 0f3F000000;
-	setp.ge.f32	%p16, %f45, %f4;
+	setp.ge.f32	%p16, %f45, %f2;
 	@%p16 bra 	BB58_11;
 
 BB58_12:
-	mov.b32 	 %r16, %f1;
-	and.b32  	%r17, %r16, -2147483648;
-	mov.b32 	 %r18, %f46;
-	or.b32  	%r19, %r18, %r17;
-	mov.b32 	 %f47, %r19;
+	mov.b32 	 %r14, %f18;
+	and.b32  	%r15, %r14, -2147483648;
+	mov.b32 	 %r16, %f46;
+	or.b32  	%r17, %r16, %r15;
+	mov.b32 	 %f47, %r17;
 	bra.uni 	BB58_14;
 
 BB58_13:
-	setp.gtu.f32	%p17, %f4, 0f7F800000;
-	add.f32 	%f40, %f1, %f3;
-	selp.f32	%f41, %f40, %f1, %p17;
-	add.f32 	%f42, %f41, %f1;
+	setp.gtu.f32	%p17, %f2, 0f7F800000;
+	add.f32 	%f40, %f18, %f19;
+	selp.f32	%f41, %f40, %f18, %p17;
+	add.f32 	%f42, %f41, %f18;
 	setp.leu.f32	%p18, %f46, 0f00000000;
 	selp.f32	%f47, %f42, %f41, %p18;
 
 BB58_14:
-	cvt.rzi.s32.f32	%r20, %f47;
-	st.param.b32	[funj_retval0+0], %r20;
+	st.param.f32	[funj_retval0+0], %f47;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___modii(
+	.param .b32 ___modii_param_0,
+	.param .b32 ___modii_param_1
+)
+{
+	.reg .s32 	%r<4>;
+
+
+	ld.param.u32 	%r1, [___modii_param_0];
+	ld.param.u32 	%r2, [___modii_param_1];
+	rem.s32 	%r3, %r1, %r2;
+	st.param.b32	[funj_retval0+0], %r3;
 	ret;
 }
 
@@ -4830,135 +4875,13 @@ BB58_14:
 	.param .b32 _Z3modIiET_S0_S0__param_1
 )
 {
-	.reg .pred 	%p<19>;
-	.reg .s32 	%r<21>;
-	.reg .f32 	%f<48>;
+	.reg .s32 	%r<4>;
 
 
-	ld.param.u32 	%r3, [_Z3modIiET_S0_S0__param_0];
-	ld.param.u32 	%r4, [_Z3modIiET_S0_S0__param_1];
-	cvt.rn.f32.s32	%f1, %r3;
-	abs.f32 	%f46, %f1;
-	cvt.rn.f32.s32	%f3, %r4;
-	abs.f32 	%f4, %f3;
-	setp.eq.f32	%p1, %f46, 0f7F800000;
-	setp.eq.f32	%p2, %f4, 0f00000000;
-	or.pred  	%p3, %p1, %p2;
-	@!%p3 bra 	BB59_2;
-	bra.uni 	BB59_1;
-
-BB59_1:
-	mov.f32 	%f47, 0f7FFFFFFF;
-	bra.uni 	BB59_14;
-
-BB59_2:
-	setp.ltu.f32	%p4, %f46, %f4;
-	@%p4 bra 	BB59_13;
-
-	lg2.approx.f32 	%f20, %f46;
-	cvt.rzi.s32.f32	%r5, %f20;
-	lg2.approx.f32 	%f21, %f4;
-	cvt.rzi.s32.f32	%r6, %f21;
-	sub.s32 	%r1, %r5, %r6;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p5, %f5, 0f00000000;
-	setp.eq.f32	%p6, %f5, 0f7F800000;
-	or.pred  	%p7, %p5, %p6;
-	setp.eq.s32	%p8, %r5, %r6;
-	or.pred  	%p9, %p7, %p8;
-	@%p9 bra 	BB59_9;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p10, %r2, 126;
-	@%p10 bra 	BB59_8;
-
-	setp.lt.s32	%p11, %r2, 252;
-	@%p11 bra 	BB59_7;
-
-	shr.s32 	%r7, %r1, 31;
-	shr.u32 	%r8, %r7, 30;
-	add.s32 	%r9, %r1, %r8;
-	shr.s32 	%r10, %r9, 2;
-	cvt.rn.f32.s32	%f23, %r10;
-	// inline asm
-	ex2.approx.ftz.f32 %f22,%f23;
-	// inline asm
-	mul.f32 	%f26, %f4, %f22;
-	mul.f32 	%f27, %f26, %f22;
-	mul.f32 	%f28, %f27, %f22;
-	mad.lo.s32 	%r11, %r10, -3, %r1;
-	cvt.rn.f32.s32	%f25, %r11;
-	// inline asm
-	ex2.approx.ftz.f32 %f24,%f25;
-	// inline asm
-	mul.f32 	%f44, %f28, %f24;
-	bra.uni 	BB59_10;
-
-BB59_7:
-	shr.u32 	%r12, %r1, 31;
-	add.s32 	%r13, %r1, %r12;
-	shr.s32 	%r14, %r13, 1;
-	cvt.rn.f32.s32	%f30, %r14;
-	// inline asm
-	ex2.approx.ftz.f32 %f29,%f30;
-	// inline asm
-	mul.f32 	%f33, %f4, %f29;
-	sub.s32 	%r15, %r1, %r14;
-	cvt.rn.f32.s32	%f32, %r15;
-	// inline asm
-	ex2.approx.ftz.f32 %f31,%f32;
-	// inline asm
-	mul.f32 	%f44, %f33, %f31;
-	bra.uni 	BB59_10;
-
-BB59_8:
-	cvt.rn.f32.s32	%f35, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f4, %f34;
-	bra.uni 	BB59_10;
-
-BB59_9:
-	setp.leu.f32	%p12, %f5, 0f00000000;
-	add.f32 	%f36, %f4, %f4;
-	selp.f32	%f44, %f36, %f4, %p12;
-
-BB59_10:
-	mul.f32 	%f37, %f46, 0f3F000000;
-	setp.gtu.f32	%p13, %f44, %f37;
-	add.f32 	%f38, %f44, %f44;
-	selp.f32	%f45, %f44, %f38, %p13;
-	setp.ltu.f32	%p14, %f45, %f4;
-	@%p14 bra 	BB59_12;
-
-BB59_11:
-	sub.f32 	%f39, %f46, %f45;
-	setp.ltu.f32	%p15, %f46, %f45;
-	selp.f32	%f46, %f46, %f39, %p15;
-	mul.f32 	%f45, %f45, 0f3F000000;
-	setp.ge.f32	%p16, %f45, %f4;
-	@%p16 bra 	BB59_11;
-
-BB59_12:
-	mov.b32 	 %r16, %f1;
-	and.b32  	%r17, %r16, -2147483648;
-	mov.b32 	 %r18, %f46;
-	or.b32  	%r19, %r18, %r17;
-	mov.b32 	 %f47, %r19;
-	bra.uni 	BB59_14;
-
-BB59_13:
-	setp.gtu.f32	%p17, %f4, 0f7F800000;
-	add.f32 	%f40, %f1, %f3;
-	selp.f32	%f41, %f40, %f1, %p17;
-	add.f32 	%f42, %f41, %f1;
-	setp.leu.f32	%p18, %f46, 0f00000000;
-	selp.f32	%f47, %f42, %f41, %p18;
-
-BB59_14:
-	cvt.rzi.s32.f32	%r20, %f47;
-	st.param.b32	[funj_retval0+0], %r20;
+	ld.param.u32 	%r1, [_Z3modIiET_S0_S0__param_0];
+	ld.param.u32 	%r2, [_Z3modIiET_S0_S0__param_1];
+	rem.s32 	%r3, %r1, %r2;
+	st.param.b32	[funj_retval0+0], %r3;
 	ret;
 }
 
@@ -4967,135 +4890,13 @@ BB59_14:
 	.param .b32 ___moduu_param_1
 )
 {
-	.reg .pred 	%p<19>;
-	.reg .s32 	%r<21>;
-	.reg .f32 	%f<48>;
+	.reg .s32 	%r<4>;
 
 
-	ld.param.u32 	%r3, [___moduu_param_0];
-	ld.param.u32 	%r4, [___moduu_param_1];
-	cvt.rn.f32.u32	%f1, %r3;
-	abs.f32 	%f46, %f1;
-	cvt.rn.f32.u32	%f3, %r4;
-	abs.f32 	%f4, %f3;
-	setp.eq.f32	%p1, %f46, 0f7F800000;
-	setp.eq.f32	%p2, %f4, 0f00000000;
-	or.pred  	%p3, %p1, %p2;
-	@!%p3 bra 	BB60_2;
-	bra.uni 	BB60_1;
-
-BB60_1:
-	mov.f32 	%f47, 0f7FFFFFFF;
-	bra.uni 	BB60_14;
-
-BB60_2:
-	setp.ltu.f32	%p4, %f46, %f4;
-	@%p4 bra 	BB60_13;
-
-	lg2.approx.f32 	%f20, %f46;
-	cvt.rzi.s32.f32	%r5, %f20;
-	lg2.approx.f32 	%f21, %f4;
-	cvt.rzi.s32.f32	%r6, %f21;
-	sub.s32 	%r1, %r5, %r6;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p5, %f5, 0f00000000;
-	setp.eq.f32	%p6, %f5, 0f7F800000;
-	or.pred  	%p7, %p5, %p6;
-	setp.eq.s32	%p8, %r5, %r6;
-	or.pred  	%p9, %p7, %p8;
-	@%p9 bra 	BB60_9;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p10, %r2, 126;
-	@%p10 bra 	BB60_8;
-
-	setp.lt.s32	%p11, %r2, 252;
-	@%p11 bra 	BB60_7;
-
-	shr.s32 	%r7, %r1, 31;
-	shr.u32 	%r8, %r7, 30;
-	add.s32 	%r9, %r1, %r8;
-	shr.s32 	%r10, %r9, 2;
-	cvt.rn.f32.s32	%f23, %r10;
-	// inline asm
-	ex2.approx.ftz.f32 %f22,%f23;
-	// inline asm
-	mul.f32 	%f26, %f4, %f22;
-	mul.f32 	%f27, %f26, %f22;
-	mul.f32 	%f28, %f27, %f22;
-	mad.lo.s32 	%r11, %r10, -3, %r1;
-	cvt.rn.f32.s32	%f25, %r11;
-	// inline asm
-	ex2.approx.ftz.f32 %f24,%f25;
-	// inline asm
-	mul.f32 	%f44, %f28, %f24;
-	bra.uni 	BB60_10;
-
-BB60_7:
-	shr.u32 	%r12, %r1, 31;
-	add.s32 	%r13, %r1, %r12;
-	shr.s32 	%r14, %r13, 1;
-	cvt.rn.f32.s32	%f30, %r14;
-	// inline asm
-	ex2.approx.ftz.f32 %f29,%f30;
-	// inline asm
-	mul.f32 	%f33, %f4, %f29;
-	sub.s32 	%r15, %r1, %r14;
-	cvt.rn.f32.s32	%f32, %r15;
-	// inline asm
-	ex2.approx.ftz.f32 %f31,%f32;
-	// inline asm
-	mul.f32 	%f44, %f33, %f31;
-	bra.uni 	BB60_10;
-
-BB60_8:
-	cvt.rn.f32.s32	%f35, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f4, %f34;
-	bra.uni 	BB60_10;
-
-BB60_9:
-	setp.leu.f32	%p12, %f5, 0f00000000;
-	add.f32 	%f36, %f4, %f4;
-	selp.f32	%f44, %f36, %f4, %p12;
-
-BB60_10:
-	mul.f32 	%f37, %f46, 0f3F000000;
-	setp.gtu.f32	%p13, %f44, %f37;
-	add.f32 	%f38, %f44, %f44;
-	selp.f32	%f45, %f44, %f38, %p13;
-	setp.ltu.f32	%p14, %f45, %f4;
-	@%p14 bra 	BB60_12;
-
-BB60_11:
-	sub.f32 	%f39, %f46, %f45;
-	setp.ltu.f32	%p15, %f46, %f45;
-	selp.f32	%f46, %f46, %f39, %p15;
-	mul.f32 	%f45, %f45, 0f3F000000;
-	setp.ge.f32	%p16, %f45, %f4;
-	@%p16 bra 	BB60_11;
-
-BB60_12:
-	mov.b32 	 %r16, %f1;
-	and.b32  	%r17, %r16, -2147483648;
-	mov.b32 	 %r18, %f46;
-	or.b32  	%r19, %r18, %r17;
-	mov.b32 	 %f47, %r19;
-	bra.uni 	BB60_14;
-
-BB60_13:
-	setp.gtu.f32	%p17, %f4, 0f7F800000;
-	add.f32 	%f40, %f1, %f3;
-	selp.f32	%f41, %f40, %f1, %p17;
-	add.f32 	%f42, %f41, %f1;
-	setp.leu.f32	%p18, %f46, 0f00000000;
-	selp.f32	%f47, %f42, %f41, %p18;
-
-BB60_14:
-	cvt.rzi.u32.f32	%r20, %f47;
-	st.param.b32	[funj_retval0+0], %r20;
+	ld.param.u32 	%r1, [___moduu_param_0];
+	ld.param.u32 	%r2, [___moduu_param_1];
+	rem.u32 	%r3, %r1, %r2;
+	st.param.b32	[funj_retval0+0], %r3;
 	ret;
 }
 
@@ -5104,135 +4905,13 @@ BB60_14:
 	.param .b32 _Z3modIjET_S0_S0__param_1
 )
 {
-	.reg .pred 	%p<19>;
-	.reg .s32 	%r<21>;
-	.reg .f32 	%f<48>;
+	.reg .s32 	%r<4>;
 
 
-	ld.param.u32 	%r3, [_Z3modIjET_S0_S0__param_0];
-	ld.param.u32 	%r4, [_Z3modIjET_S0_S0__param_1];
-	cvt.rn.f32.u32	%f1, %r3;
-	abs.f32 	%f46, %f1;
-	cvt.rn.f32.u32	%f3, %r4;
-	abs.f32 	%f4, %f3;
-	setp.eq.f32	%p1, %f46, 0f7F800000;
-	setp.eq.f32	%p2, %f4, 0f00000000;
-	or.pred  	%p3, %p1, %p2;
-	@!%p3 bra 	BB61_2;
-	bra.uni 	BB61_1;
-
-BB61_1:
-	mov.f32 	%f47, 0f7FFFFFFF;
-	bra.uni 	BB61_14;
-
-BB61_2:
-	setp.ltu.f32	%p4, %f46, %f4;
-	@%p4 bra 	BB61_13;
-
-	lg2.approx.f32 	%f20, %f46;
-	cvt.rzi.s32.f32	%r5, %f20;
-	lg2.approx.f32 	%f21, %f4;
-	cvt.rzi.s32.f32	%r6, %f21;
-	sub.s32 	%r1, %r5, %r6;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p5, %f5, 0f00000000;
-	setp.eq.f32	%p6, %f5, 0f7F800000;
-	or.pred  	%p7, %p5, %p6;
-	setp.eq.s32	%p8, %r5, %r6;
-	or.pred  	%p9, %p7, %p8;
-	@%p9 bra 	BB61_9;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p10, %r2, 126;
-	@%p10 bra 	BB61_8;
-
-	setp.lt.s32	%p11, %r2, 252;
-	@%p11 bra 	BB61_7;
-
-	shr.s32 	%r7, %r1, 31;
-	shr.u32 	%r8, %r7, 30;
-	add.s32 	%r9, %r1, %r8;
-	shr.s32 	%r10, %r9, 2;
-	cvt.rn.f32.s32	%f23, %r10;
-	// inline asm
-	ex2.approx.ftz.f32 %f22,%f23;
-	// inline asm
-	mul.f32 	%f26, %f4, %f22;
-	mul.f32 	%f27, %f26, %f22;
-	mul.f32 	%f28, %f27, %f22;
-	mad.lo.s32 	%r11, %r10, -3, %r1;
-	cvt.rn.f32.s32	%f25, %r11;
-	// inline asm
-	ex2.approx.ftz.f32 %f24,%f25;
-	// inline asm
-	mul.f32 	%f44, %f28, %f24;
-	bra.uni 	BB61_10;
-
-BB61_7:
-	shr.u32 	%r12, %r1, 31;
-	add.s32 	%r13, %r1, %r12;
-	shr.s32 	%r14, %r13, 1;
-	cvt.rn.f32.s32	%f30, %r14;
-	// inline asm
-	ex2.approx.ftz.f32 %f29,%f30;
-	// inline asm
-	mul.f32 	%f33, %f4, %f29;
-	sub.s32 	%r15, %r1, %r14;
-	cvt.rn.f32.s32	%f32, %r15;
-	// inline asm
-	ex2.approx.ftz.f32 %f31,%f32;
-	// inline asm
-	mul.f32 	%f44, %f33, %f31;
-	bra.uni 	BB61_10;
-
-BB61_8:
-	cvt.rn.f32.s32	%f35, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f4, %f34;
-	bra.uni 	BB61_10;
-
-BB61_9:
-	setp.leu.f32	%p12, %f5, 0f00000000;
-	add.f32 	%f36, %f4, %f4;
-	selp.f32	%f44, %f36, %f4, %p12;
-
-BB61_10:
-	mul.f32 	%f37, %f46, 0f3F000000;
-	setp.gtu.f32	%p13, %f44, %f37;
-	add.f32 	%f38, %f44, %f44;
-	selp.f32	%f45, %f44, %f38, %p13;
-	setp.ltu.f32	%p14, %f45, %f4;
-	@%p14 bra 	BB61_12;
-
-BB61_11:
-	sub.f32 	%f39, %f46, %f45;
-	setp.ltu.f32	%p15, %f46, %f45;
-	selp.f32	%f46, %f46, %f39, %p15;
-	mul.f32 	%f45, %f45, 0f3F000000;
-	setp.ge.f32	%p16, %f45, %f4;
-	@%p16 bra 	BB61_11;
-
-BB61_12:
-	mov.b32 	 %r16, %f1;
-	and.b32  	%r17, %r16, -2147483648;
-	mov.b32 	 %r18, %f46;
-	or.b32  	%r19, %r18, %r17;
-	mov.b32 	 %f47, %r19;
-	bra.uni 	BB61_14;
-
-BB61_13:
-	setp.gtu.f32	%p17, %f4, 0f7F800000;
-	add.f32 	%f40, %f1, %f3;
-	selp.f32	%f41, %f40, %f1, %p17;
-	add.f32 	%f42, %f41, %f1;
-	setp.leu.f32	%p18, %f46, 0f00000000;
-	selp.f32	%f47, %f42, %f41, %p18;
-
-BB61_14:
-	cvt.rzi.u32.f32	%r20, %f47;
-	st.param.b32	[funj_retval0+0], %r20;
+	ld.param.u32 	%r1, [_Z3modIjET_S0_S0__param_0];
+	ld.param.u32 	%r2, [_Z3modIjET_S0_S0__param_1];
+	rem.u32 	%r3, %r1, %r2;
+	st.param.b32	[funj_retval0+0], %r3;
 	ret;
 }
 
@@ -5241,135 +4920,12 @@ BB61_14:
 	.param .b64 ___modxx_param_1
 )
 {
-	.reg .pred 	%p<19>;
-	.reg .s32 	%r<18>;
-	.reg .f32 	%f<48>;
 	.reg .s64 	%rd<4>;
 
 
 	ld.param.u64 	%rd1, [___modxx_param_0];
 	ld.param.u64 	%rd2, [___modxx_param_1];
-	cvt.rn.f32.s64	%f1, %rd1;
-	abs.f32 	%f46, %f1;
-	cvt.rn.f32.s64	%f3, %rd2;
-	abs.f32 	%f4, %f3;
-	setp.eq.f32	%p1, %f46, 0f7F800000;
-	setp.eq.f32	%p2, %f4, 0f00000000;
-	or.pred  	%p3, %p1, %p2;
-	@!%p3 bra 	BB62_2;
-	bra.uni 	BB62_1;
-
-BB62_1:
-	mov.f32 	%f47, 0f7FFFFFFF;
-	bra.uni 	BB62_14;
-
-BB62_2:
-	setp.ltu.f32	%p4, %f46, %f4;
-	@%p4 bra 	BB62_13;
-
-	lg2.approx.f32 	%f20, %f46;
-	cvt.rzi.s32.f32	%r3, %f20;
-	lg2.approx.f32 	%f21, %f4;
-	cvt.rzi.s32.f32	%r4, %f21;
-	sub.s32 	%r1, %r3, %r4;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p5, %f5, 0f00000000;
-	setp.eq.f32	%p6, %f5, 0f7F800000;
-	or.pred  	%p7, %p5, %p6;
-	setp.eq.s32	%p8, %r3, %r4;
-	or.pred  	%p9, %p7, %p8;
-	@%p9 bra 	BB62_9;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p10, %r2, 126;
-	@%p10 bra 	BB62_8;
-
-	setp.lt.s32	%p11, %r2, 252;
-	@%p11 bra 	BB62_7;
-
-	shr.s32 	%r5, %r1, 31;
-	shr.u32 	%r6, %r5, 30;
-	add.s32 	%r7, %r1, %r6;
-	shr.s32 	%r8, %r7, 2;
-	cvt.rn.f32.s32	%f23, %r8;
-	// inline asm
-	ex2.approx.ftz.f32 %f22,%f23;
-	// inline asm
-	mul.f32 	%f26, %f4, %f22;
-	mul.f32 	%f27, %f26, %f22;
-	mul.f32 	%f28, %f27, %f22;
-	mad.lo.s32 	%r9, %r8, -3, %r1;
-	cvt.rn.f32.s32	%f25, %r9;
-	// inline asm
-	ex2.approx.ftz.f32 %f24,%f25;
-	// inline asm
-	mul.f32 	%f44, %f28, %f24;
-	bra.uni 	BB62_10;
-
-BB62_7:
-	shr.u32 	%r10, %r1, 31;
-	add.s32 	%r11, %r1, %r10;
-	shr.s32 	%r12, %r11, 1;
-	cvt.rn.f32.s32	%f30, %r12;
-	// inline asm
-	ex2.approx.ftz.f32 %f29,%f30;
-	// inline asm
-	mul.f32 	%f33, %f4, %f29;
-	sub.s32 	%r13, %r1, %r12;
-	cvt.rn.f32.s32	%f32, %r13;
-	// inline asm
-	ex2.approx.ftz.f32 %f31,%f32;
-	// inline asm
-	mul.f32 	%f44, %f33, %f31;
-	bra.uni 	BB62_10;
-
-BB62_8:
-	cvt.rn.f32.s32	%f35, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f4, %f34;
-	bra.uni 	BB62_10;
-
-BB62_9:
-	setp.leu.f32	%p12, %f5, 0f00000000;
-	add.f32 	%f36, %f4, %f4;
-	selp.f32	%f44, %f36, %f4, %p12;
-
-BB62_10:
-	mul.f32 	%f37, %f46, 0f3F000000;
-	setp.gtu.f32	%p13, %f44, %f37;
-	add.f32 	%f38, %f44, %f44;
-	selp.f32	%f45, %f44, %f38, %p13;
-	setp.ltu.f32	%p14, %f45, %f4;
-	@%p14 bra 	BB62_12;
-
-BB62_11:
-	sub.f32 	%f39, %f46, %f45;
-	setp.ltu.f32	%p15, %f46, %f45;
-	selp.f32	%f46, %f46, %f39, %p15;
-	mul.f32 	%f45, %f45, 0f3F000000;
-	setp.ge.f32	%p16, %f45, %f4;
-	@%p16 bra 	BB62_11;
-
-BB62_12:
-	mov.b32 	 %r14, %f1;
-	and.b32  	%r15, %r14, -2147483648;
-	mov.b32 	 %r16, %f46;
-	or.b32  	%r17, %r16, %r15;
-	mov.b32 	 %f47, %r17;
-	bra.uni 	BB62_14;
-
-BB62_13:
-	setp.gtu.f32	%p17, %f4, 0f7F800000;
-	add.f32 	%f40, %f1, %f3;
-	selp.f32	%f41, %f40, %f1, %p17;
-	add.f32 	%f42, %f41, %f1;
-	setp.leu.f32	%p18, %f46, 0f00000000;
-	selp.f32	%f47, %f42, %f41, %p18;
-
-BB62_14:
-	cvt.rzi.s64.f32	%rd3, %f47;
+	rem.s64 	%rd3, %rd1, %rd2;
 	st.param.b64	[funj_retval0+0], %rd3;
 	ret;
 }
@@ -5379,135 +4935,12 @@ BB62_14:
 	.param .b64 _Z3modIxET_S0_S0__param_1
 )
 {
-	.reg .pred 	%p<19>;
-	.reg .s32 	%r<18>;
-	.reg .f32 	%f<48>;
 	.reg .s64 	%rd<4>;
 
 
 	ld.param.u64 	%rd1, [_Z3modIxET_S0_S0__param_0];
 	ld.param.u64 	%rd2, [_Z3modIxET_S0_S0__param_1];
-	cvt.rn.f32.s64	%f1, %rd1;
-	abs.f32 	%f46, %f1;
-	cvt.rn.f32.s64	%f3, %rd2;
-	abs.f32 	%f4, %f3;
-	setp.eq.f32	%p1, %f46, 0f7F800000;
-	setp.eq.f32	%p2, %f4, 0f00000000;
-	or.pred  	%p3, %p1, %p2;
-	@!%p3 bra 	BB63_2;
-	bra.uni 	BB63_1;
-
-BB63_1:
-	mov.f32 	%f47, 0f7FFFFFFF;
-	bra.uni 	BB63_14;
-
-BB63_2:
-	setp.ltu.f32	%p4, %f46, %f4;
-	@%p4 bra 	BB63_13;
-
-	lg2.approx.f32 	%f20, %f46;
-	cvt.rzi.s32.f32	%r3, %f20;
-	lg2.approx.f32 	%f21, %f4;
-	cvt.rzi.s32.f32	%r4, %f21;
-	sub.s32 	%r1, %r3, %r4;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p5, %f5, 0f00000000;
-	setp.eq.f32	%p6, %f5, 0f7F800000;
-	or.pred  	%p7, %p5, %p6;
-	setp.eq.s32	%p8, %r3, %r4;
-	or.pred  	%p9, %p7, %p8;
-	@%p9 bra 	BB63_9;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p10, %r2, 126;
-	@%p10 bra 	BB63_8;
-
-	setp.lt.s32	%p11, %r2, 252;
-	@%p11 bra 	BB63_7;
-
-	shr.s32 	%r5, %r1, 31;
-	shr.u32 	%r6, %r5, 30;
-	add.s32 	%r7, %r1, %r6;
-	shr.s32 	%r8, %r7, 2;
-	cvt.rn.f32.s32	%f23, %r8;
-	// inline asm
-	ex2.approx.ftz.f32 %f22,%f23;
-	// inline asm
-	mul.f32 	%f26, %f4, %f22;
-	mul.f32 	%f27, %f26, %f22;
-	mul.f32 	%f28, %f27, %f22;
-	mad.lo.s32 	%r9, %r8, -3, %r1;
-	cvt.rn.f32.s32	%f25, %r9;
-	// inline asm
-	ex2.approx.ftz.f32 %f24,%f25;
-	// inline asm
-	mul.f32 	%f44, %f28, %f24;
-	bra.uni 	BB63_10;
-
-BB63_7:
-	shr.u32 	%r10, %r1, 31;
-	add.s32 	%r11, %r1, %r10;
-	shr.s32 	%r12, %r11, 1;
-	cvt.rn.f32.s32	%f30, %r12;
-	// inline asm
-	ex2.approx.ftz.f32 %f29,%f30;
-	// inline asm
-	mul.f32 	%f33, %f4, %f29;
-	sub.s32 	%r13, %r1, %r12;
-	cvt.rn.f32.s32	%f32, %r13;
-	// inline asm
-	ex2.approx.ftz.f32 %f31,%f32;
-	// inline asm
-	mul.f32 	%f44, %f33, %f31;
-	bra.uni 	BB63_10;
-
-BB63_8:
-	cvt.rn.f32.s32	%f35, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f4, %f34;
-	bra.uni 	BB63_10;
-
-BB63_9:
-	setp.leu.f32	%p12, %f5, 0f00000000;
-	add.f32 	%f36, %f4, %f4;
-	selp.f32	%f44, %f36, %f4, %p12;
-
-BB63_10:
-	mul.f32 	%f37, %f46, 0f3F000000;
-	setp.gtu.f32	%p13, %f44, %f37;
-	add.f32 	%f38, %f44, %f44;
-	selp.f32	%f45, %f44, %f38, %p13;
-	setp.ltu.f32	%p14, %f45, %f4;
-	@%p14 bra 	BB63_12;
-
-BB63_11:
-	sub.f32 	%f39, %f46, %f45;
-	setp.ltu.f32	%p15, %f46, %f45;
-	selp.f32	%f46, %f46, %f39, %p15;
-	mul.f32 	%f45, %f45, 0f3F000000;
-	setp.ge.f32	%p16, %f45, %f4;
-	@%p16 bra 	BB63_11;
-
-BB63_12:
-	mov.b32 	 %r14, %f1;
-	and.b32  	%r15, %r14, -2147483648;
-	mov.b32 	 %r16, %f46;
-	or.b32  	%r17, %r16, %r15;
-	mov.b32 	 %f47, %r17;
-	bra.uni 	BB63_14;
-
-BB63_13:
-	setp.gtu.f32	%p17, %f4, 0f7F800000;
-	add.f32 	%f40, %f1, %f3;
-	selp.f32	%f41, %f40, %f1, %p17;
-	add.f32 	%f42, %f41, %f1;
-	setp.leu.f32	%p18, %f46, 0f00000000;
-	selp.f32	%f47, %f42, %f41, %p18;
-
-BB63_14:
-	cvt.rzi.s64.f32	%rd3, %f47;
+	rem.s64 	%rd3, %rd1, %rd2;
 	st.param.b64	[funj_retval0+0], %rd3;
 	ret;
 }
@@ -5517,135 +4950,12 @@ BB63_14:
 	.param .b64 ___modyy_param_1
 )
 {
-	.reg .pred 	%p<19>;
-	.reg .s32 	%r<18>;
-	.reg .f32 	%f<48>;
 	.reg .s64 	%rd<4>;
 
 
 	ld.param.u64 	%rd1, [___modyy_param_0];
 	ld.param.u64 	%rd2, [___modyy_param_1];
-	cvt.rn.f32.u64	%f1, %rd1;
-	abs.f32 	%f46, %f1;
-	cvt.rn.f32.u64	%f3, %rd2;
-	abs.f32 	%f4, %f3;
-	setp.eq.f32	%p1, %f46, 0f7F800000;
-	setp.eq.f32	%p2, %f4, 0f00000000;
-	or.pred  	%p3, %p1, %p2;
-	@!%p3 bra 	BB64_2;
-	bra.uni 	BB64_1;
-
-BB64_1:
-	mov.f32 	%f47, 0f7FFFFFFF;
-	bra.uni 	BB64_14;
-
-BB64_2:
-	setp.ltu.f32	%p4, %f46, %f4;
-	@%p4 bra 	BB64_13;
-
-	lg2.approx.f32 	%f20, %f46;
-	cvt.rzi.s32.f32	%r3, %f20;
-	lg2.approx.f32 	%f21, %f4;
-	cvt.rzi.s32.f32	%r4, %f21;
-	sub.s32 	%r1, %r3, %r4;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p5, %f5, 0f00000000;
-	setp.eq.f32	%p6, %f5, 0f7F800000;
-	or.pred  	%p7, %p5, %p6;
-	setp.eq.s32	%p8, %r3, %r4;
-	or.pred  	%p9, %p7, %p8;
-	@%p9 bra 	BB64_9;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p10, %r2, 126;
-	@%p10 bra 	BB64_8;
-
-	setp.lt.s32	%p11, %r2, 252;
-	@%p11 bra 	BB64_7;
-
-	shr.s32 	%r5, %r1, 31;
-	shr.u32 	%r6, %r5, 30;
-	add.s32 	%r7, %r1, %r6;
-	shr.s32 	%r8, %r7, 2;
-	cvt.rn.f32.s32	%f23, %r8;
-	// inline asm
-	ex2.approx.ftz.f32 %f22,%f23;
-	// inline asm
-	mul.f32 	%f26, %f4, %f22;
-	mul.f32 	%f27, %f26, %f22;
-	mul.f32 	%f28, %f27, %f22;
-	mad.lo.s32 	%r9, %r8, -3, %r1;
-	cvt.rn.f32.s32	%f25, %r9;
-	// inline asm
-	ex2.approx.ftz.f32 %f24,%f25;
-	// inline asm
-	mul.f32 	%f44, %f28, %f24;
-	bra.uni 	BB64_10;
-
-BB64_7:
-	shr.u32 	%r10, %r1, 31;
-	add.s32 	%r11, %r1, %r10;
-	shr.s32 	%r12, %r11, 1;
-	cvt.rn.f32.s32	%f30, %r12;
-	// inline asm
-	ex2.approx.ftz.f32 %f29,%f30;
-	// inline asm
-	mul.f32 	%f33, %f4, %f29;
-	sub.s32 	%r13, %r1, %r12;
-	cvt.rn.f32.s32	%f32, %r13;
-	// inline asm
-	ex2.approx.ftz.f32 %f31,%f32;
-	// inline asm
-	mul.f32 	%f44, %f33, %f31;
-	bra.uni 	BB64_10;
-
-BB64_8:
-	cvt.rn.f32.s32	%f35, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f4, %f34;
-	bra.uni 	BB64_10;
-
-BB64_9:
-	setp.leu.f32	%p12, %f5, 0f00000000;
-	add.f32 	%f36, %f4, %f4;
-	selp.f32	%f44, %f36, %f4, %p12;
-
-BB64_10:
-	mul.f32 	%f37, %f46, 0f3F000000;
-	setp.gtu.f32	%p13, %f44, %f37;
-	add.f32 	%f38, %f44, %f44;
-	selp.f32	%f45, %f44, %f38, %p13;
-	setp.ltu.f32	%p14, %f45, %f4;
-	@%p14 bra 	BB64_12;
-
-BB64_11:
-	sub.f32 	%f39, %f46, %f45;
-	setp.ltu.f32	%p15, %f46, %f45;
-	selp.f32	%f46, %f46, %f39, %p15;
-	mul.f32 	%f45, %f45, 0f3F000000;
-	setp.ge.f32	%p16, %f45, %f4;
-	@%p16 bra 	BB64_11;
-
-BB64_12:
-	mov.b32 	 %r14, %f1;
-	and.b32  	%r15, %r14, -2147483648;
-	mov.b32 	 %r16, %f46;
-	or.b32  	%r17, %r16, %r15;
-	mov.b32 	 %f47, %r17;
-	bra.uni 	BB64_14;
-
-BB64_13:
-	setp.gtu.f32	%p17, %f4, 0f7F800000;
-	add.f32 	%f40, %f1, %f3;
-	selp.f32	%f41, %f40, %f1, %p17;
-	add.f32 	%f42, %f41, %f1;
-	setp.leu.f32	%p18, %f46, 0f00000000;
-	selp.f32	%f47, %f42, %f41, %p18;
-
-BB64_14:
-	cvt.rzi.u64.f32	%rd3, %f47;
+	rem.u64 	%rd3, %rd1, %rd2;
 	st.param.b64	[funj_retval0+0], %rd3;
 	ret;
 }
@@ -5655,135 +4965,12 @@ BB64_14:
 	.param .b64 _Z3modIyET_S0_S0__param_1
 )
 {
-	.reg .pred 	%p<19>;
-	.reg .s32 	%r<18>;
-	.reg .f32 	%f<48>;
 	.reg .s64 	%rd<4>;
 
 
 	ld.param.u64 	%rd1, [_Z3modIyET_S0_S0__param_0];
 	ld.param.u64 	%rd2, [_Z3modIyET_S0_S0__param_1];
-	cvt.rn.f32.u64	%f1, %rd1;
-	abs.f32 	%f46, %f1;
-	cvt.rn.f32.u64	%f3, %rd2;
-	abs.f32 	%f4, %f3;
-	setp.eq.f32	%p1, %f46, 0f7F800000;
-	setp.eq.f32	%p2, %f4, 0f00000000;
-	or.pred  	%p3, %p1, %p2;
-	@!%p3 bra 	BB65_2;
-	bra.uni 	BB65_1;
-
-BB65_1:
-	mov.f32 	%f47, 0f7FFFFFFF;
-	bra.uni 	BB65_14;
-
-BB65_2:
-	setp.ltu.f32	%p4, %f46, %f4;
-	@%p4 bra 	BB65_13;
-
-	lg2.approx.f32 	%f20, %f46;
-	cvt.rzi.s32.f32	%r3, %f20;
-	lg2.approx.f32 	%f21, %f4;
-	cvt.rzi.s32.f32	%r4, %f21;
-	sub.s32 	%r1, %r3, %r4;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p5, %f5, 0f00000000;
-	setp.eq.f32	%p6, %f5, 0f7F800000;
-	or.pred  	%p7, %p5, %p6;
-	setp.eq.s32	%p8, %r3, %r4;
-	or.pred  	%p9, %p7, %p8;
-	@%p9 bra 	BB65_9;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p10, %r2, 126;
-	@%p10 bra 	BB65_8;
-
-	setp.lt.s32	%p11, %r2, 252;
-	@%p11 bra 	BB65_7;
-
-	shr.s32 	%r5, %r1, 31;
-	shr.u32 	%r6, %r5, 30;
-	add.s32 	%r7, %r1, %r6;
-	shr.s32 	%r8, %r7, 2;
-	cvt.rn.f32.s32	%f23, %r8;
-	// inline asm
-	ex2.approx.ftz.f32 %f22,%f23;
-	// inline asm
-	mul.f32 	%f26, %f4, %f22;
-	mul.f32 	%f27, %f26, %f22;
-	mul.f32 	%f28, %f27, %f22;
-	mad.lo.s32 	%r9, %r8, -3, %r1;
-	cvt.rn.f32.s32	%f25, %r9;
-	// inline asm
-	ex2.approx.ftz.f32 %f24,%f25;
-	// inline asm
-	mul.f32 	%f44, %f28, %f24;
-	bra.uni 	BB65_10;
-
-BB65_7:
-	shr.u32 	%r10, %r1, 31;
-	add.s32 	%r11, %r1, %r10;
-	shr.s32 	%r12, %r11, 1;
-	cvt.rn.f32.s32	%f30, %r12;
-	// inline asm
-	ex2.approx.ftz.f32 %f29,%f30;
-	// inline asm
-	mul.f32 	%f33, %f4, %f29;
-	sub.s32 	%r13, %r1, %r12;
-	cvt.rn.f32.s32	%f32, %r13;
-	// inline asm
-	ex2.approx.ftz.f32 %f31,%f32;
-	// inline asm
-	mul.f32 	%f44, %f33, %f31;
-	bra.uni 	BB65_10;
-
-BB65_8:
-	cvt.rn.f32.s32	%f35, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f4, %f34;
-	bra.uni 	BB65_10;
-
-BB65_9:
-	setp.leu.f32	%p12, %f5, 0f00000000;
-	add.f32 	%f36, %f4, %f4;
-	selp.f32	%f44, %f36, %f4, %p12;
-
-BB65_10:
-	mul.f32 	%f37, %f46, 0f3F000000;
-	setp.gtu.f32	%p13, %f44, %f37;
-	add.f32 	%f38, %f44, %f44;
-	selp.f32	%f45, %f44, %f38, %p13;
-	setp.ltu.f32	%p14, %f45, %f4;
-	@%p14 bra 	BB65_12;
-
-BB65_11:
-	sub.f32 	%f39, %f46, %f45;
-	setp.ltu.f32	%p15, %f46, %f45;
-	selp.f32	%f46, %f46, %f39, %p15;
-	mul.f32 	%f45, %f45, 0f3F000000;
-	setp.ge.f32	%p16, %f45, %f4;
-	@%p16 bra 	BB65_11;
-
-BB65_12:
-	mov.b32 	 %r14, %f1;
-	and.b32  	%r15, %r14, -2147483648;
-	mov.b32 	 %r16, %f46;
-	or.b32  	%r17, %r16, %r15;
-	mov.b32 	 %f47, %r17;
-	bra.uni 	BB65_14;
-
-BB65_13:
-	setp.gtu.f32	%p17, %f4, 0f7F800000;
-	add.f32 	%f40, %f1, %f3;
-	selp.f32	%f41, %f40, %f1, %p17;
-	add.f32 	%f42, %f41, %f1;
-	setp.leu.f32	%p18, %f46, 0f00000000;
-	selp.f32	%f47, %f42, %f41, %p18;
-
-BB65_14:
-	cvt.rzi.u64.f32	%rd3, %f47;
+	rem.u64 	%rd3, %rd1, %rd2;
 	st.param.b64	[funj_retval0+0], %rd3;
 	ret;
 }
@@ -5793,137 +4980,17 @@ BB65_14:
 	.param .b32 ___modjj_param_1
 )
 {
-	.reg .pred 	%p<19>;
 	.reg .s16 	%rs<3>;
-	.reg .s32 	%r<20>;
-	.reg .f32 	%f<48>;
+	.reg .s32 	%r<5>;
 
 
 	ld.param.s8 	%rs1, [___modjj_param_0];
-	cvt.rn.f32.s16	%f1, %rs1;
-	abs.f32 	%f46, %f1;
 	ld.param.s8 	%rs2, [___modjj_param_1];
-	cvt.rn.f32.s16	%f3, %rs2;
-	abs.f32 	%f4, %f3;
-	setp.eq.f32	%p1, %f46, 0f7F800000;
-	setp.eq.f32	%p2, %f4, 0f00000000;
-	or.pred  	%p3, %p1, %p2;
-	@!%p3 bra 	BB66_2;
-	bra.uni 	BB66_1;
-
-BB66_1:
-	mov.f32 	%f47, 0f7FFFFFFF;
-	bra.uni 	BB66_14;
-
-BB66_2:
-	setp.ltu.f32	%p4, %f46, %f4;
-	@%p4 bra 	BB66_13;
-
-	lg2.approx.f32 	%f20, %f46;
-	cvt.rzi.s32.f32	%r3, %f20;
-	lg2.approx.f32 	%f21, %f4;
-	cvt.rzi.s32.f32	%r4, %f21;
-	sub.s32 	%r1, %r3, %r4;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p5, %f5, 0f00000000;
-	setp.eq.f32	%p6, %f5, 0f7F800000;
-	or.pred  	%p7, %p5, %p6;
-	setp.eq.s32	%p8, %r3, %r4;
-	or.pred  	%p9, %p7, %p8;
-	@%p9 bra 	BB66_9;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p10, %r2, 126;
-	@%p10 bra 	BB66_8;
-
-	setp.lt.s32	%p11, %r2, 252;
-	@%p11 bra 	BB66_7;
-
-	shr.s32 	%r5, %r1, 31;
-	shr.u32 	%r6, %r5, 30;
-	add.s32 	%r7, %r1, %r6;
-	shr.s32 	%r8, %r7, 2;
-	cvt.rn.f32.s32	%f23, %r8;
-	// inline asm
-	ex2.approx.ftz.f32 %f22,%f23;
-	// inline asm
-	mul.f32 	%f26, %f4, %f22;
-	mul.f32 	%f27, %f26, %f22;
-	mul.f32 	%f28, %f27, %f22;
-	mad.lo.s32 	%r9, %r8, -3, %r1;
-	cvt.rn.f32.s32	%f25, %r9;
-	// inline asm
-	ex2.approx.ftz.f32 %f24,%f25;
-	// inline asm
-	mul.f32 	%f44, %f28, %f24;
-	bra.uni 	BB66_10;
-
-BB66_7:
-	shr.u32 	%r10, %r1, 31;
-	add.s32 	%r11, %r1, %r10;
-	shr.s32 	%r12, %r11, 1;
-	cvt.rn.f32.s32	%f30, %r12;
-	// inline asm
-	ex2.approx.ftz.f32 %f29,%f30;
-	// inline asm
-	mul.f32 	%f33, %f4, %f29;
-	sub.s32 	%r13, %r1, %r12;
-	cvt.rn.f32.s32	%f32, %r13;
-	// inline asm
-	ex2.approx.ftz.f32 %f31,%f32;
-	// inline asm
-	mul.f32 	%f44, %f33, %f31;
-	bra.uni 	BB66_10;
-
-BB66_8:
-	cvt.rn.f32.s32	%f35, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f4, %f34;
-	bra.uni 	BB66_10;
-
-BB66_9:
-	setp.leu.f32	%p12, %f5, 0f00000000;
-	add.f32 	%f36, %f4, %f4;
-	selp.f32	%f44, %f36, %f4, %p12;
-
-BB66_10:
-	mul.f32 	%f37, %f46, 0f3F000000;
-	setp.gtu.f32	%p13, %f44, %f37;
-	add.f32 	%f38, %f44, %f44;
-	selp.f32	%f45, %f44, %f38, %p13;
-	setp.ltu.f32	%p14, %f45, %f4;
-	@%p14 bra 	BB66_12;
-
-BB66_11:
-	sub.f32 	%f39, %f46, %f45;
-	setp.ltu.f32	%p15, %f46, %f45;
-	selp.f32	%f46, %f46, %f39, %p15;
-	mul.f32 	%f45, %f45, 0f3F000000;
-	setp.ge.f32	%p16, %f45, %f4;
-	@%p16 bra 	BB66_11;
-
-BB66_12:
-	mov.b32 	 %r14, %f1;
-	and.b32  	%r15, %r14, -2147483648;
-	mov.b32 	 %r16, %f46;
-	or.b32  	%r17, %r16, %r15;
-	mov.b32 	 %f47, %r17;
-	bra.uni 	BB66_14;
-
-BB66_13:
-	setp.gtu.f32	%p17, %f4, 0f7F800000;
-	add.f32 	%f40, %f1, %f3;
-	selp.f32	%f41, %f40, %f1, %p17;
-	add.f32 	%f42, %f41, %f1;
-	setp.leu.f32	%p18, %f46, 0f00000000;
-	selp.f32	%f47, %f42, %f41, %p18;
-
-BB66_14:
-	cvt.rzi.s32.f32	%r18, %f47;
-	cvt.s32.s8 	%r19, %r18;
-	st.param.b32	[funj_retval0+0], %r19;
+	cvt.s32.s16	%r1, %rs1;
+	cvt.s32.s16	%r2, %rs2;
+	rem.s32 	%r3, %r1, %r2;
+	cvt.s32.s8 	%r4, %r3;
+	st.param.b32	[funj_retval0+0], %r4;
 	ret;
 }
 
@@ -5932,137 +4999,17 @@ BB66_14:
 	.param .b32 _Z3modIcET_S0_S0__param_1
 )
 {
-	.reg .pred 	%p<19>;
 	.reg .s16 	%rs<3>;
-	.reg .s32 	%r<20>;
-	.reg .f32 	%f<48>;
+	.reg .s32 	%r<5>;
 
 
 	ld.param.s8 	%rs1, [_Z3modIcET_S0_S0__param_0];
-	cvt.rn.f32.s16	%f1, %rs1;
-	abs.f32 	%f46, %f1;
 	ld.param.s8 	%rs2, [_Z3modIcET_S0_S0__param_1];
-	cvt.rn.f32.s16	%f3, %rs2;
-	abs.f32 	%f4, %f3;
-	setp.eq.f32	%p1, %f46, 0f7F800000;
-	setp.eq.f32	%p2, %f4, 0f00000000;
-	or.pred  	%p3, %p1, %p2;
-	@!%p3 bra 	BB67_2;
-	bra.uni 	BB67_1;
-
-BB67_1:
-	mov.f32 	%f47, 0f7FFFFFFF;
-	bra.uni 	BB67_14;
-
-BB67_2:
-	setp.ltu.f32	%p4, %f46, %f4;
-	@%p4 bra 	BB67_13;
-
-	lg2.approx.f32 	%f20, %f46;
-	cvt.rzi.s32.f32	%r3, %f20;
-	lg2.approx.f32 	%f21, %f4;
-	cvt.rzi.s32.f32	%r4, %f21;
-	sub.s32 	%r1, %r3, %r4;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p5, %f5, 0f00000000;
-	setp.eq.f32	%p6, %f5, 0f7F800000;
-	or.pred  	%p7, %p5, %p6;
-	setp.eq.s32	%p8, %r3, %r4;
-	or.pred  	%p9, %p7, %p8;
-	@%p9 bra 	BB67_9;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p10, %r2, 126;
-	@%p10 bra 	BB67_8;
-
-	setp.lt.s32	%p11, %r2, 252;
-	@%p11 bra 	BB67_7;
-
-	shr.s32 	%r5, %r1, 31;
-	shr.u32 	%r6, %r5, 30;
-	add.s32 	%r7, %r1, %r6;
-	shr.s32 	%r8, %r7, 2;
-	cvt.rn.f32.s32	%f23, %r8;
-	// inline asm
-	ex2.approx.ftz.f32 %f22,%f23;
-	// inline asm
-	mul.f32 	%f26, %f4, %f22;
-	mul.f32 	%f27, %f26, %f22;
-	mul.f32 	%f28, %f27, %f22;
-	mad.lo.s32 	%r9, %r8, -3, %r1;
-	cvt.rn.f32.s32	%f25, %r9;
-	// inline asm
-	ex2.approx.ftz.f32 %f24,%f25;
-	// inline asm
-	mul.f32 	%f44, %f28, %f24;
-	bra.uni 	BB67_10;
-
-BB67_7:
-	shr.u32 	%r10, %r1, 31;
-	add.s32 	%r11, %r1, %r10;
-	shr.s32 	%r12, %r11, 1;
-	cvt.rn.f32.s32	%f30, %r12;
-	// inline asm
-	ex2.approx.ftz.f32 %f29,%f30;
-	// inline asm
-	mul.f32 	%f33, %f4, %f29;
-	sub.s32 	%r13, %r1, %r12;
-	cvt.rn.f32.s32	%f32, %r13;
-	// inline asm
-	ex2.approx.ftz.f32 %f31,%f32;
-	// inline asm
-	mul.f32 	%f44, %f33, %f31;
-	bra.uni 	BB67_10;
-
-BB67_8:
-	cvt.rn.f32.s32	%f35, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f4, %f34;
-	bra.uni 	BB67_10;
-
-BB67_9:
-	setp.leu.f32	%p12, %f5, 0f00000000;
-	add.f32 	%f36, %f4, %f4;
-	selp.f32	%f44, %f36, %f4, %p12;
-
-BB67_10:
-	mul.f32 	%f37, %f46, 0f3F000000;
-	setp.gtu.f32	%p13, %f44, %f37;
-	add.f32 	%f38, %f44, %f44;
-	selp.f32	%f45, %f44, %f38, %p13;
-	setp.ltu.f32	%p14, %f45, %f4;
-	@%p14 bra 	BB67_12;
-
-BB67_11:
-	sub.f32 	%f39, %f46, %f45;
-	setp.ltu.f32	%p15, %f46, %f45;
-	selp.f32	%f46, %f46, %f39, %p15;
-	mul.f32 	%f45, %f45, 0f3F000000;
-	setp.ge.f32	%p16, %f45, %f4;
-	@%p16 bra 	BB67_11;
-
-BB67_12:
-	mov.b32 	 %r14, %f1;
-	and.b32  	%r15, %r14, -2147483648;
-	mov.b32 	 %r16, %f46;
-	or.b32  	%r17, %r16, %r15;
-	mov.b32 	 %f47, %r17;
-	bra.uni 	BB67_14;
-
-BB67_13:
-	setp.gtu.f32	%p17, %f4, 0f7F800000;
-	add.f32 	%f40, %f1, %f3;
-	selp.f32	%f41, %f40, %f1, %p17;
-	add.f32 	%f42, %f41, %f1;
-	setp.leu.f32	%p18, %f46, 0f00000000;
-	selp.f32	%f47, %f42, %f41, %p18;
-
-BB67_14:
-	cvt.rzi.s32.f32	%r18, %f47;
-	cvt.s32.s8 	%r19, %r18;
-	st.param.b32	[funj_retval0+0], %r19;
+	cvt.s32.s16	%r1, %rs1;
+	cvt.s32.s16	%r2, %rs2;
+	rem.s32 	%r3, %r1, %r2;
+	cvt.s32.s8 	%r4, %r3;
+	st.param.b32	[funj_retval0+0], %r4;
 	ret;
 }
 
@@ -6071,137 +5018,15 @@ BB67_14:
 	.param .b32 ___modvv_param_1
 )
 {
-	.reg .pred 	%p<19>;
-	.reg .s16 	%rs<3>;
-	.reg .s32 	%r<20>;
-	.reg .f32 	%f<48>;
+	.reg .s16 	%rs<4>;
+	.reg .s32 	%r<2>;
 
 
-	ld.param.u8 	%rs1, [___modvv_param_0];
-	cvt.rn.f32.u16	%f1, %rs1;
-	abs.f32 	%f46, %f1;
-	ld.param.u8 	%rs2, [___modvv_param_1];
-	cvt.rn.f32.u16	%f3, %rs2;
-	abs.f32 	%f4, %f3;
-	setp.eq.f32	%p1, %f46, 0f7F800000;
-	setp.eq.f32	%p2, %f4, 0f00000000;
-	or.pred  	%p3, %p1, %p2;
-	@!%p3 bra 	BB68_2;
-	bra.uni 	BB68_1;
-
-BB68_1:
-	mov.f32 	%f47, 0f7FFFFFFF;
-	bra.uni 	BB68_14;
-
-BB68_2:
-	setp.ltu.f32	%p4, %f46, %f4;
-	@%p4 bra 	BB68_13;
-
-	lg2.approx.f32 	%f20, %f46;
-	cvt.rzi.s32.f32	%r3, %f20;
-	lg2.approx.f32 	%f21, %f4;
-	cvt.rzi.s32.f32	%r4, %f21;
-	sub.s32 	%r1, %r3, %r4;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p5, %f5, 0f00000000;
-	setp.eq.f32	%p6, %f5, 0f7F800000;
-	or.pred  	%p7, %p5, %p6;
-	setp.eq.s32	%p8, %r3, %r4;
-	or.pred  	%p9, %p7, %p8;
-	@%p9 bra 	BB68_9;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p10, %r2, 126;
-	@%p10 bra 	BB68_8;
-
-	setp.lt.s32	%p11, %r2, 252;
-	@%p11 bra 	BB68_7;
-
-	shr.s32 	%r5, %r1, 31;
-	shr.u32 	%r6, %r5, 30;
-	add.s32 	%r7, %r1, %r6;
-	shr.s32 	%r8, %r7, 2;
-	cvt.rn.f32.s32	%f23, %r8;
-	// inline asm
-	ex2.approx.ftz.f32 %f22,%f23;
-	// inline asm
-	mul.f32 	%f26, %f4, %f22;
-	mul.f32 	%f27, %f26, %f22;
-	mul.f32 	%f28, %f27, %f22;
-	mad.lo.s32 	%r9, %r8, -3, %r1;
-	cvt.rn.f32.s32	%f25, %r9;
-	// inline asm
-	ex2.approx.ftz.f32 %f24,%f25;
-	// inline asm
-	mul.f32 	%f44, %f28, %f24;
-	bra.uni 	BB68_10;
-
-BB68_7:
-	shr.u32 	%r10, %r1, 31;
-	add.s32 	%r11, %r1, %r10;
-	shr.s32 	%r12, %r11, 1;
-	cvt.rn.f32.s32	%f30, %r12;
-	// inline asm
-	ex2.approx.ftz.f32 %f29,%f30;
-	// inline asm
-	mul.f32 	%f33, %f4, %f29;
-	sub.s32 	%r13, %r1, %r12;
-	cvt.rn.f32.s32	%f32, %r13;
-	// inline asm
-	ex2.approx.ftz.f32 %f31,%f32;
-	// inline asm
-	mul.f32 	%f44, %f33, %f31;
-	bra.uni 	BB68_10;
-
-BB68_8:
-	cvt.rn.f32.s32	%f35, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f4, %f34;
-	bra.uni 	BB68_10;
-
-BB68_9:
-	setp.leu.f32	%p12, %f5, 0f00000000;
-	add.f32 	%f36, %f4, %f4;
-	selp.f32	%f44, %f36, %f4, %p12;
-
-BB68_10:
-	mul.f32 	%f37, %f46, 0f3F000000;
-	setp.gtu.f32	%p13, %f44, %f37;
-	add.f32 	%f38, %f44, %f44;
-	selp.f32	%f45, %f44, %f38, %p13;
-	setp.ltu.f32	%p14, %f45, %f4;
-	@%p14 bra 	BB68_12;
-
-BB68_11:
-	sub.f32 	%f39, %f46, %f45;
-	setp.ltu.f32	%p15, %f46, %f45;
-	selp.f32	%f46, %f46, %f39, %p15;
-	mul.f32 	%f45, %f45, 0f3F000000;
-	setp.ge.f32	%p16, %f45, %f4;
-	@%p16 bra 	BB68_11;
-
-BB68_12:
-	mov.b32 	 %r14, %f1;
-	and.b32  	%r15, %r14, -2147483648;
-	mov.b32 	 %r16, %f46;
-	or.b32  	%r17, %r16, %r15;
-	mov.b32 	 %f47, %r17;
-	bra.uni 	BB68_14;
-
-BB68_13:
-	setp.gtu.f32	%p17, %f4, 0f7F800000;
-	add.f32 	%f40, %f1, %f3;
-	selp.f32	%f41, %f40, %f1, %p17;
-	add.f32 	%f42, %f41, %f1;
-	setp.leu.f32	%p18, %f46, 0f00000000;
-	selp.f32	%f47, %f42, %f41, %p18;
-
-BB68_14:
-	cvt.rzi.u32.f32	%r18, %f47;
-	and.b32  	%r19, %r18, 255;
-	st.param.b32	[funj_retval0+0], %r19;
+	ld.param.u8 	%rs1, [___modvv_param_1];
+	ld.param.u8 	%rs2, [___modvv_param_0];
+	rem.u16 	%rs3, %rs2, %rs1;
+	cvt.u32.u16	%r1, %rs3;
+	st.param.b32	[funj_retval0+0], %r1;
 	ret;
 }
 
@@ -6210,137 +5035,15 @@ BB68_14:
 	.param .b32 _Z3modIhET_S0_S0__param_1
 )
 {
-	.reg .pred 	%p<19>;
-	.reg .s16 	%rs<3>;
-	.reg .s32 	%r<20>;
-	.reg .f32 	%f<48>;
+	.reg .s16 	%rs<4>;
+	.reg .s32 	%r<2>;
 
 
-	ld.param.u8 	%rs1, [_Z3modIhET_S0_S0__param_0];
-	cvt.rn.f32.u16	%f1, %rs1;
-	abs.f32 	%f46, %f1;
-	ld.param.u8 	%rs2, [_Z3modIhET_S0_S0__param_1];
-	cvt.rn.f32.u16	%f3, %rs2;
-	abs.f32 	%f4, %f3;
-	setp.eq.f32	%p1, %f46, 0f7F800000;
-	setp.eq.f32	%p2, %f4, 0f00000000;
-	or.pred  	%p3, %p1, %p2;
-	@!%p3 bra 	BB69_2;
-	bra.uni 	BB69_1;
-
-BB69_1:
-	mov.f32 	%f47, 0f7FFFFFFF;
-	bra.uni 	BB69_14;
-
-BB69_2:
-	setp.ltu.f32	%p4, %f46, %f4;
-	@%p4 bra 	BB69_13;
-
-	lg2.approx.f32 	%f20, %f46;
-	cvt.rzi.s32.f32	%r3, %f20;
-	lg2.approx.f32 	%f21, %f4;
-	cvt.rzi.s32.f32	%r4, %f21;
-	sub.s32 	%r1, %r3, %r4;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p5, %f5, 0f00000000;
-	setp.eq.f32	%p6, %f5, 0f7F800000;
-	or.pred  	%p7, %p5, %p6;
-	setp.eq.s32	%p8, %r3, %r4;
-	or.pred  	%p9, %p7, %p8;
-	@%p9 bra 	BB69_9;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p10, %r2, 126;
-	@%p10 bra 	BB69_8;
-
-	setp.lt.s32	%p11, %r2, 252;
-	@%p11 bra 	BB69_7;
-
-	shr.s32 	%r5, %r1, 31;
-	shr.u32 	%r6, %r5, 30;
-	add.s32 	%r7, %r1, %r6;
-	shr.s32 	%r8, %r7, 2;
-	cvt.rn.f32.s32	%f23, %r8;
-	// inline asm
-	ex2.approx.ftz.f32 %f22,%f23;
-	// inline asm
-	mul.f32 	%f26, %f4, %f22;
-	mul.f32 	%f27, %f26, %f22;
-	mul.f32 	%f28, %f27, %f22;
-	mad.lo.s32 	%r9, %r8, -3, %r1;
-	cvt.rn.f32.s32	%f25, %r9;
-	// inline asm
-	ex2.approx.ftz.f32 %f24,%f25;
-	// inline asm
-	mul.f32 	%f44, %f28, %f24;
-	bra.uni 	BB69_10;
-
-BB69_7:
-	shr.u32 	%r10, %r1, 31;
-	add.s32 	%r11, %r1, %r10;
-	shr.s32 	%r12, %r11, 1;
-	cvt.rn.f32.s32	%f30, %r12;
-	// inline asm
-	ex2.approx.ftz.f32 %f29,%f30;
-	// inline asm
-	mul.f32 	%f33, %f4, %f29;
-	sub.s32 	%r13, %r1, %r12;
-	cvt.rn.f32.s32	%f32, %r13;
-	// inline asm
-	ex2.approx.ftz.f32 %f31,%f32;
-	// inline asm
-	mul.f32 	%f44, %f33, %f31;
-	bra.uni 	BB69_10;
-
-BB69_8:
-	cvt.rn.f32.s32	%f35, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f4, %f34;
-	bra.uni 	BB69_10;
-
-BB69_9:
-	setp.leu.f32	%p12, %f5, 0f00000000;
-	add.f32 	%f36, %f4, %f4;
-	selp.f32	%f44, %f36, %f4, %p12;
-
-BB69_10:
-	mul.f32 	%f37, %f46, 0f3F000000;
-	setp.gtu.f32	%p13, %f44, %f37;
-	add.f32 	%f38, %f44, %f44;
-	selp.f32	%f45, %f44, %f38, %p13;
-	setp.ltu.f32	%p14, %f45, %f4;
-	@%p14 bra 	BB69_12;
-
-BB69_11:
-	sub.f32 	%f39, %f46, %f45;
-	setp.ltu.f32	%p15, %f46, %f45;
-	selp.f32	%f46, %f46, %f39, %p15;
-	mul.f32 	%f45, %f45, 0f3F000000;
-	setp.ge.f32	%p16, %f45, %f4;
-	@%p16 bra 	BB69_11;
-
-BB69_12:
-	mov.b32 	 %r14, %f1;
-	and.b32  	%r15, %r14, -2147483648;
-	mov.b32 	 %r16, %f46;
-	or.b32  	%r17, %r16, %r15;
-	mov.b32 	 %f47, %r17;
-	bra.uni 	BB69_14;
-
-BB69_13:
-	setp.gtu.f32	%p17, %f4, 0f7F800000;
-	add.f32 	%f40, %f1, %f3;
-	selp.f32	%f41, %f40, %f1, %p17;
-	add.f32 	%f42, %f41, %f1;
-	setp.leu.f32	%p18, %f46, 0f00000000;
-	selp.f32	%f47, %f42, %f41, %p18;
-
-BB69_14:
-	cvt.rzi.u32.f32	%r18, %f47;
-	and.b32  	%r19, %r18, 255;
-	st.param.b32	[funj_retval0+0], %r19;
+	ld.param.u8 	%rs1, [_Z3modIhET_S0_S0__param_1];
+	ld.param.u8 	%rs2, [_Z3modIhET_S0_S0__param_0];
+	rem.u16 	%rs3, %rs2, %rs1;
+	cvt.u32.u16	%r1, %rs3;
+	st.param.b32	[funj_retval0+0], %r1;
 	ret;
 }
 
@@ -6379,36 +5082,36 @@ BB69_14:
 	setp.gt.u32	%p1, %r8, 2146435071;
 	setp.gt.u32	%p2, %r21, 2146435071;
 	or.pred  	%p3, %p1, %p2;
-	@%p3 bra 	BB70_15;
+	@%p3 bra 	BB71_15;
 
 	setp.neu.f64	%p4, %fd2, 0d0000000000000000;
-	@%p4 bra 	BB70_3;
+	@%p4 bra 	BB71_3;
 
 	mov.f64 	%fd35, 0dFFF8000000000000;
-	bra.uni 	BB70_18;
+	bra.uni 	BB71_18;
 
-BB70_3:
+BB71_3:
 	setp.ltu.f64	%p5, %fd34, %fd2;
-	@%p5 bra 	BB70_18;
+	@%p5 bra 	BB71_18;
 
 	{
 	.reg .b32 %temp; 
 	mov.b64 	{%temp, %r11}, %fd2;
 	}
 	setp.lt.s32	%p6, %r11, 1048576;
-	@%p6 bra 	BB70_6;
+	@%p6 bra 	BB71_6;
 
 	mov.f64 	%fd30, 0d0000000000000000;
-	bra.uni 	BB70_10;
+	bra.uni 	BB71_10;
 
-BB70_6:
+BB71_6:
 	setp.geu.f64	%p7, %fd2, %fd34;
 	mov.f64 	%fd31, %fd2;
-	@%p7 bra 	BB70_9;
+	@%p7 bra 	BB71_9;
 
 	mov.f64 	%fd32, %fd2;
 
-BB70_8:
+BB71_8:
 	add.f64 	%fd32, %fd32, %fd32;
 	setp.lt.f64	%p8, %fd32, %fd34;
 	{
@@ -6419,9 +5122,9 @@ BB70_8:
 	and.pred  	%p10, %p8, %p9;
 	mov.f64 	%fd26, %fd32;
 	mov.f64 	%fd31, %fd26;
-	@%p10 bra 	BB70_8;
+	@%p10 bra 	BB71_8;
 
-BB70_9:
+BB71_9:
 	mov.f64 	%fd27, %fd31;
 	mov.f64 	%fd30, %fd27;
 	{
@@ -6433,36 +5136,36 @@ BB70_9:
 	mov.b64 	{%r22, %temp}, %fd30;
 	}
 
-BB70_10:
+BB71_10:
 	mov.f64 	%fd29, %fd30;
 	{
 	.reg .b32 %temp; 
 	mov.b64 	{%temp, %r13}, %fd34;
 	}
 	setp.lt.s32	%p11, %r13, 1048576;
-	@%p11 bra 	BB70_12;
+	@%p11 bra 	BB71_12;
 
 	and.b32  	%r14, %r21, 1048575;
 	and.b32  	%r15, %r1, 2146435072;
 	or.b32  	%r16, %r14, %r15;
 	mov.b64 	%fd29, {%r22, %r16};
 
-BB70_12:
+BB71_12:
 	mul.f64 	%fd22, %fd29, 0d3FE0000000000000;
 	setp.gt.f64	%p12, %fd29, %fd34;
 	selp.f64	%fd33, %fd22, %fd29, %p12;
 	setp.ltu.f64	%p13, %fd33, %fd2;
-	@%p13 bra 	BB70_14;
+	@%p13 bra 	BB71_14;
 
-BB70_13:
+BB71_13:
 	sub.f64 	%fd23, %fd34, %fd33;
 	setp.ltu.f64	%p14, %fd34, %fd33;
 	selp.f64	%fd34, %fd34, %fd23, %p14;
 	mul.f64 	%fd33, %fd33, 0d3FE0000000000000;
 	setp.ge.f64	%p15, %fd33, %fd2;
-	@%p15 bra 	BB70_13;
+	@%p15 bra 	BB71_13;
 
-BB70_14:
+BB71_14:
 	and.b32  	%r17, %r1, -2147483648;
 	{
 	.reg .b32 %temp; 
@@ -6474,22 +5177,22 @@ BB70_14:
 	mov.b64 	{%r20, %temp}, %fd34;
 	}
 	mov.b64 	%fd35, {%r20, %r19};
-	bra.uni 	BB70_18;
+	bra.uni 	BB71_18;
 
-BB70_15:
+BB71_15:
 	setp.gtu.f64	%p16, %fd34, 0d7FF0000000000000;
 	setp.gtu.f64	%p17, %fd2, 0d7FF0000000000000;
 	or.pred  	%p18, %p16, %p17;
-	@%p18 bra 	BB70_17;
+	@%p18 bra 	BB71_17;
 
 	setp.eq.f64	%p19, %fd34, 0d7FF0000000000000;
 	selp.f64	%fd35, 0dFFF8000000000000, %fd35, %p19;
-	bra.uni 	BB70_18;
+	bra.uni 	BB71_18;
 
-BB70_17:
+BB71_17:
 	add.f64 	%fd35, %fd35, %fd20;
 
-BB70_18:
+BB71_18:
 	st.param.f64	[funj_retval0+0], %fd35;
 	ret;
 }
@@ -6506,173 +5209,6 @@ BB70_18:
 
 	ld.param.f32 	%f21, [___remss_param_0];
 	ld.param.f32 	%f22, [___remss_param_1];
-	abs.f32 	%f51, %f21;
-	setp.gtu.f32	%p1, %f51, 0f7F800000;
-	abs.f32 	%f2, %f22;
-	setp.gtu.f32	%p2, %f2, 0f7F800000;
-	or.pred  	%p3, %p1, %p2;
-	@%p3 bra 	BB71_20;
-
-	setp.eq.f32	%p4, %f51, 0f7F800000;
-	setp.eq.f32	%p5, %f2, 0f00000000;
-	or.pred  	%p6, %p4, %p5;
-	@!%p6 bra 	BB71_3;
-	bra.uni 	BB71_2;
-
-BB71_2:
-	mov.f32 	%f53, 0f7FFFFFFF;
-	bra.uni 	BB71_21;
-
-BB71_3:
-	setp.ge.f32	%p7, %f51, %f2;
-	@%p7 bra 	BB71_5;
-
-	mov.u32 	%r22, 0;
-	bra.uni 	BB71_16;
-
-BB71_5:
-	lg2.approx.f32 	%f23, %f51;
-	cvt.rzi.s32.f32	%r5, %f23;
-	lg2.approx.f32 	%f24, %f2;
-	cvt.rzi.s32.f32	%r6, %f24;
-	sub.s32 	%r1, %r5, %r6;
-	abs.f32 	%f3, %f2;
-	setp.eq.f32	%p8, %f3, 0f00000000;
-	setp.eq.f32	%p9, %f3, 0f7F800000;
-	or.pred  	%p10, %p8, %p9;
-	setp.eq.s32	%p11, %r5, %r6;
-	or.pred  	%p12, %p10, %p11;
-	@%p12 bra 	BB71_11;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p13, %r2, 126;
-	@%p13 bra 	BB71_10;
-
-	setp.lt.s32	%p14, %r2, 252;
-	@%p14 bra 	BB71_9;
-
-	shr.s32 	%r7, %r1, 31;
-	shr.u32 	%r8, %r7, 30;
-	add.s32 	%r9, %r1, %r8;
-	shr.s32 	%r10, %r9, 2;
-	cvt.rn.f32.s32	%f26, %r10;
-	// inline asm
-	ex2.approx.ftz.f32 %f25,%f26;
-	// inline asm
-	mul.f32 	%f29, %f2, %f25;
-	mul.f32 	%f30, %f29, %f25;
-	mul.f32 	%f31, %f30, %f25;
-	mad.lo.s32 	%r11, %r10, -3, %r1;
-	cvt.rn.f32.s32	%f28, %r11;
-	// inline asm
-	ex2.approx.ftz.f32 %f27,%f28;
-	// inline asm
-	mul.f32 	%f44, %f31, %f27;
-	bra.uni 	BB71_12;
-
-BB71_9:
-	shr.u32 	%r12, %r1, 31;
-	add.s32 	%r13, %r1, %r12;
-	shr.s32 	%r14, %r13, 1;
-	cvt.rn.f32.s32	%f33, %r14;
-	// inline asm
-	ex2.approx.ftz.f32 %f32,%f33;
-	// inline asm
-	mul.f32 	%f36, %f2, %f32;
-	sub.s32 	%r15, %r1, %r14;
-	cvt.rn.f32.s32	%f35, %r15;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f36, %f34;
-	bra.uni 	BB71_12;
-
-BB71_10:
-	cvt.rn.f32.s32	%f38, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f37,%f38;
-	// inline asm
-	mul.f32 	%f44, %f2, %f37;
-	bra.uni 	BB71_12;
-
-BB71_11:
-	setp.leu.f32	%p15, %f3, 0f00000000;
-	add.f32 	%f39, %f2, %f2;
-	selp.f32	%f44, %f39, %f2, %p15;
-
-BB71_12:
-	mul.f32 	%f40, %f51, 0f3F000000;
-	setp.gtu.f32	%p16, %f44, %f40;
-	add.f32 	%f41, %f44, %f44;
-	selp.f32	%f45, %f44, %f41, %p16;
-	setp.ge.f32	%p17, %f45, %f2;
-	@%p17 bra 	BB71_13;
-	bra.uni 	BB71_22;
-
-BB71_13:
-	mov.f32 	%f52, %f51;
-
-BB71_14:
-	mov.f32 	%f10, %f52;
-	mov.f32 	%f11, %f45;
-	sub.f32 	%f42, %f10, %f11;
-	setp.ltu.f32	%p18, %f10, %f11;
-	selp.f32	%f52, %f10, %f42, %p18;
-	mul.f32 	%f45, %f11, 0f3F000000;
-	setp.ge.f32	%p19, %f45, %f2;
-	@%p19 bra 	BB71_14;
-
-	setp.ge.f32	%p20, %f10, %f11;
-	selp.u32	%r22, 1, 0, %p20;
-	mov.f32 	%f51, %f52;
-
-BB71_16:
-	mov.f32 	%f50, %f51;
-	add.f32 	%f15, %f50, %f50;
-	setp.gt.f32	%p21, %f15, %f2;
-	@%p21 bra 	BB71_18;
-
-	setp.eq.f32	%p22, %f15, %f2;
-	setp.ne.s32	%p23, %r22, 0;
-	and.pred  	%p24, %p22, %p23;
-	@!%p24 bra 	BB71_19;
-	bra.uni 	BB71_18;
-
-BB71_18:
-	sub.f32 	%f50, %f50, %f2;
-
-BB71_19:
-	mov.b32 	 %r18, %f21;
-	and.b32  	%r19, %r18, -2147483648;
-	mov.b32 	 %r20, %f50;
-	xor.b32  	%r21, %r20, %r19;
-	mov.b32 	 %f53, %r21;
-	bra.uni 	BB71_21;
-
-BB71_20:
-	add.f32 	%f53, %f21, %f22;
-
-BB71_21:
-	st.param.f32	[funj_retval0+0], %f53;
-	ret;
-
-BB71_22:
-	mov.u32 	%r22, 0;
-	bra.uni 	BB71_16;
-}
-
-.visible .func  (.param .b32 funj_retval0) _Z3remIfET_S0_S0_(
-	.param .b32 _Z3remIfET_S0_S0__param_0,
-	.param .b32 _Z3remIfET_S0_S0__param_1
-)
-{
-	.reg .pred 	%p<25>;
-	.reg .s32 	%r<23>;
-	.reg .f32 	%f<54>;
-
-
-	ld.param.f32 	%f21, [_Z3remIfET_S0_S0__param_0];
-	ld.param.f32 	%f22, [_Z3remIfET_S0_S0__param_1];
 	abs.f32 	%f51, %f21;
 	setp.gtu.f32	%p1, %f51, 0f7F800000;
 	abs.f32 	%f2, %f22;
@@ -6833,169 +5369,14 @@ BB72_22:
 	.param .b32 ___remii_param_1
 )
 {
-	.reg .pred 	%p<25>;
-	.reg .s32 	%r<26>;
-	.reg .f32 	%f<54>;
+	.reg .s32 	%r<4>;
 
 
-	ld.param.u32 	%r5, [___remii_param_0];
-	ld.param.u32 	%r6, [___remii_param_1];
-	cvt.rn.f32.s32	%f1, %r5;
-	abs.f32 	%f51, %f1;
-	cvt.rn.f32.s32	%f3, %r6;
-	abs.f32 	%f4, %f3;
-	setp.gtu.f32	%p1, %f51, 0f7F800000;
-	setp.gtu.f32	%p2, %f4, 0f7F800000;
-	or.pred  	%p3, %p1, %p2;
-	@%p3 bra 	BB73_20;
-
-	setp.eq.f32	%p4, %f51, 0f7F800000;
-	setp.eq.f32	%p5, %f4, 0f00000000;
-	or.pred  	%p6, %p4, %p5;
-	@!%p6 bra 	BB73_3;
-	bra.uni 	BB73_2;
-
-BB73_2:
-	mov.f32 	%f53, 0f7FFFFFFF;
-	bra.uni 	BB73_21;
-
-BB73_3:
-	setp.ge.f32	%p7, %f51, %f4;
-	@%p7 bra 	BB73_5;
-
-	mov.u32 	%r25, 0;
-	bra.uni 	BB73_16;
-
-BB73_5:
-	lg2.approx.f32 	%f23, %f51;
-	cvt.rzi.s32.f32	%r7, %f23;
-	lg2.approx.f32 	%f24, %f4;
-	cvt.rzi.s32.f32	%r8, %f24;
-	sub.s32 	%r1, %r7, %r8;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p8, %f5, 0f00000000;
-	setp.eq.f32	%p9, %f5, 0f7F800000;
-	or.pred  	%p10, %p8, %p9;
-	setp.eq.s32	%p11, %r7, %r8;
-	or.pred  	%p12, %p10, %p11;
-	@%p12 bra 	BB73_11;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p13, %r2, 126;
-	@%p13 bra 	BB73_10;
-
-	setp.lt.s32	%p14, %r2, 252;
-	@%p14 bra 	BB73_9;
-
-	shr.s32 	%r9, %r1, 31;
-	shr.u32 	%r10, %r9, 30;
-	add.s32 	%r11, %r1, %r10;
-	shr.s32 	%r12, %r11, 2;
-	cvt.rn.f32.s32	%f26, %r12;
-	// inline asm
-	ex2.approx.ftz.f32 %f25,%f26;
-	// inline asm
-	mul.f32 	%f29, %f4, %f25;
-	mul.f32 	%f30, %f29, %f25;
-	mul.f32 	%f31, %f30, %f25;
-	mad.lo.s32 	%r13, %r12, -3, %r1;
-	cvt.rn.f32.s32	%f28, %r13;
-	// inline asm
-	ex2.approx.ftz.f32 %f27,%f28;
-	// inline asm
-	mul.f32 	%f44, %f31, %f27;
-	bra.uni 	BB73_12;
-
-BB73_9:
-	shr.u32 	%r14, %r1, 31;
-	add.s32 	%r15, %r1, %r14;
-	shr.s32 	%r16, %r15, 1;
-	cvt.rn.f32.s32	%f33, %r16;
-	// inline asm
-	ex2.approx.ftz.f32 %f32,%f33;
-	// inline asm
-	mul.f32 	%f36, %f4, %f32;
-	sub.s32 	%r17, %r1, %r16;
-	cvt.rn.f32.s32	%f35, %r17;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f36, %f34;
-	bra.uni 	BB73_12;
-
-BB73_10:
-	cvt.rn.f32.s32	%f38, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f37,%f38;
-	// inline asm
-	mul.f32 	%f44, %f4, %f37;
-	bra.uni 	BB73_12;
-
-BB73_11:
-	setp.leu.f32	%p15, %f5, 0f00000000;
-	add.f32 	%f39, %f4, %f4;
-	selp.f32	%f44, %f39, %f4, %p15;
-
-BB73_12:
-	mul.f32 	%f40, %f51, 0f3F000000;
-	setp.gtu.f32	%p16, %f44, %f40;
-	add.f32 	%f41, %f44, %f44;
-	selp.f32	%f45, %f44, %f41, %p16;
-	setp.ge.f32	%p17, %f45, %f4;
-	@%p17 bra 	BB73_13;
-	bra.uni 	BB73_22;
-
-BB73_13:
-	mov.f32 	%f52, %f51;
-
-BB73_14:
-	mov.f32 	%f12, %f52;
-	mov.f32 	%f13, %f45;
-	sub.f32 	%f42, %f12, %f13;
-	setp.ltu.f32	%p18, %f12, %f13;
-	selp.f32	%f52, %f12, %f42, %p18;
-	mul.f32 	%f45, %f13, 0f3F000000;
-	setp.ge.f32	%p19, %f45, %f4;
-	@%p19 bra 	BB73_14;
-
-	setp.ge.f32	%p20, %f12, %f13;
-	selp.u32	%r25, 1, 0, %p20;
-	mov.f32 	%f51, %f52;
-
-BB73_16:
-	mov.f32 	%f50, %f51;
-	add.f32 	%f17, %f50, %f50;
-	setp.gt.f32	%p21, %f17, %f4;
-	@%p21 bra 	BB73_18;
-
-	setp.eq.f32	%p22, %f17, %f4;
-	setp.ne.s32	%p23, %r25, 0;
-	and.pred  	%p24, %p22, %p23;
-	@!%p24 bra 	BB73_19;
-	bra.uni 	BB73_18;
-
-BB73_18:
-	sub.f32 	%f50, %f50, %f4;
-
-BB73_19:
-	mov.b32 	 %r20, %f1;
-	and.b32  	%r21, %r20, -2147483648;
-	mov.b32 	 %r22, %f50;
-	xor.b32  	%r23, %r22, %r21;
-	mov.b32 	 %f53, %r23;
-	bra.uni 	BB73_21;
-
-BB73_20:
-	add.f32 	%f53, %f1, %f3;
-
-BB73_21:
-	cvt.rzi.s32.f32	%r24, %f53;
-	st.param.b32	[funj_retval0+0], %r24;
+	ld.param.u32 	%r1, [___remii_param_0];
+	ld.param.u32 	%r2, [___remii_param_1];
+	rem.s32 	%r3, %r1, %r2;
+	st.param.b32	[funj_retval0+0], %r3;
 	ret;
-
-BB73_22:
-	mov.u32 	%r25, 0;
-	bra.uni 	BB73_16;
 }
 
 .visible .func  (.param .b32 funj_retval0) _Z3remIiET_S0_S0_(
@@ -7003,169 +5384,14 @@ BB73_22:
 	.param .b32 _Z3remIiET_S0_S0__param_1
 )
 {
-	.reg .pred 	%p<25>;
-	.reg .s32 	%r<26>;
-	.reg .f32 	%f<54>;
+	.reg .s32 	%r<4>;
 
 
-	ld.param.u32 	%r5, [_Z3remIiET_S0_S0__param_0];
-	ld.param.u32 	%r6, [_Z3remIiET_S0_S0__param_1];
-	cvt.rn.f32.s32	%f1, %r5;
-	abs.f32 	%f51, %f1;
-	cvt.rn.f32.s32	%f3, %r6;
-	abs.f32 	%f4, %f3;
-	setp.gtu.f32	%p1, %f51, 0f7F800000;
-	setp.gtu.f32	%p2, %f4, 0f7F800000;
-	or.pred  	%p3, %p1, %p2;
-	@%p3 bra 	BB74_20;
-
-	setp.eq.f32	%p4, %f51, 0f7F800000;
-	setp.eq.f32	%p5, %f4, 0f00000000;
-	or.pred  	%p6, %p4, %p5;
-	@!%p6 bra 	BB74_3;
-	bra.uni 	BB74_2;
-
-BB74_2:
-	mov.f32 	%f53, 0f7FFFFFFF;
-	bra.uni 	BB74_21;
-
-BB74_3:
-	setp.ge.f32	%p7, %f51, %f4;
-	@%p7 bra 	BB74_5;
-
-	mov.u32 	%r25, 0;
-	bra.uni 	BB74_16;
-
-BB74_5:
-	lg2.approx.f32 	%f23, %f51;
-	cvt.rzi.s32.f32	%r7, %f23;
-	lg2.approx.f32 	%f24, %f4;
-	cvt.rzi.s32.f32	%r8, %f24;
-	sub.s32 	%r1, %r7, %r8;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p8, %f5, 0f00000000;
-	setp.eq.f32	%p9, %f5, 0f7F800000;
-	or.pred  	%p10, %p8, %p9;
-	setp.eq.s32	%p11, %r7, %r8;
-	or.pred  	%p12, %p10, %p11;
-	@%p12 bra 	BB74_11;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p13, %r2, 126;
-	@%p13 bra 	BB74_10;
-
-	setp.lt.s32	%p14, %r2, 252;
-	@%p14 bra 	BB74_9;
-
-	shr.s32 	%r9, %r1, 31;
-	shr.u32 	%r10, %r9, 30;
-	add.s32 	%r11, %r1, %r10;
-	shr.s32 	%r12, %r11, 2;
-	cvt.rn.f32.s32	%f26, %r12;
-	// inline asm
-	ex2.approx.ftz.f32 %f25,%f26;
-	// inline asm
-	mul.f32 	%f29, %f4, %f25;
-	mul.f32 	%f30, %f29, %f25;
-	mul.f32 	%f31, %f30, %f25;
-	mad.lo.s32 	%r13, %r12, -3, %r1;
-	cvt.rn.f32.s32	%f28, %r13;
-	// inline asm
-	ex2.approx.ftz.f32 %f27,%f28;
-	// inline asm
-	mul.f32 	%f44, %f31, %f27;
-	bra.uni 	BB74_12;
-
-BB74_9:
-	shr.u32 	%r14, %r1, 31;
-	add.s32 	%r15, %r1, %r14;
-	shr.s32 	%r16, %r15, 1;
-	cvt.rn.f32.s32	%f33, %r16;
-	// inline asm
-	ex2.approx.ftz.f32 %f32,%f33;
-	// inline asm
-	mul.f32 	%f36, %f4, %f32;
-	sub.s32 	%r17, %r1, %r16;
-	cvt.rn.f32.s32	%f35, %r17;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f36, %f34;
-	bra.uni 	BB74_12;
-
-BB74_10:
-	cvt.rn.f32.s32	%f38, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f37,%f38;
-	// inline asm
-	mul.f32 	%f44, %f4, %f37;
-	bra.uni 	BB74_12;
-
-BB74_11:
-	setp.leu.f32	%p15, %f5, 0f00000000;
-	add.f32 	%f39, %f4, %f4;
-	selp.f32	%f44, %f39, %f4, %p15;
-
-BB74_12:
-	mul.f32 	%f40, %f51, 0f3F000000;
-	setp.gtu.f32	%p16, %f44, %f40;
-	add.f32 	%f41, %f44, %f44;
-	selp.f32	%f45, %f44, %f41, %p16;
-	setp.ge.f32	%p17, %f45, %f4;
-	@%p17 bra 	BB74_13;
-	bra.uni 	BB74_22;
-
-BB74_13:
-	mov.f32 	%f52, %f51;
-
-BB74_14:
-	mov.f32 	%f12, %f52;
-	mov.f32 	%f13, %f45;
-	sub.f32 	%f42, %f12, %f13;
-	setp.ltu.f32	%p18, %f12, %f13;
-	selp.f32	%f52, %f12, %f42, %p18;
-	mul.f32 	%f45, %f13, 0f3F000000;
-	setp.ge.f32	%p19, %f45, %f4;
-	@%p19 bra 	BB74_14;
-
-	setp.ge.f32	%p20, %f12, %f13;
-	selp.u32	%r25, 1, 0, %p20;
-	mov.f32 	%f51, %f52;
-
-BB74_16:
-	mov.f32 	%f50, %f51;
-	add.f32 	%f17, %f50, %f50;
-	setp.gt.f32	%p21, %f17, %f4;
-	@%p21 bra 	BB74_18;
-
-	setp.eq.f32	%p22, %f17, %f4;
-	setp.ne.s32	%p23, %r25, 0;
-	and.pred  	%p24, %p22, %p23;
-	@!%p24 bra 	BB74_19;
-	bra.uni 	BB74_18;
-
-BB74_18:
-	sub.f32 	%f50, %f50, %f4;
-
-BB74_19:
-	mov.b32 	 %r20, %f1;
-	and.b32  	%r21, %r20, -2147483648;
-	mov.b32 	 %r22, %f50;
-	xor.b32  	%r23, %r22, %r21;
-	mov.b32 	 %f53, %r23;
-	bra.uni 	BB74_21;
-
-BB74_20:
-	add.f32 	%f53, %f1, %f3;
-
-BB74_21:
-	cvt.rzi.s32.f32	%r24, %f53;
-	st.param.b32	[funj_retval0+0], %r24;
+	ld.param.u32 	%r1, [_Z3remIiET_S0_S0__param_0];
+	ld.param.u32 	%r2, [_Z3remIiET_S0_S0__param_1];
+	rem.s32 	%r3, %r1, %r2;
+	st.param.b32	[funj_retval0+0], %r3;
 	ret;
-
-BB74_22:
-	mov.u32 	%r25, 0;
-	bra.uni 	BB74_16;
 }
 
 .visible .func  (.param .b32 funj_retval0) ___remuu(
@@ -7173,169 +5399,14 @@ BB74_22:
 	.param .b32 ___remuu_param_1
 )
 {
-	.reg .pred 	%p<25>;
-	.reg .s32 	%r<26>;
-	.reg .f32 	%f<54>;
+	.reg .s32 	%r<4>;
 
 
-	ld.param.u32 	%r5, [___remuu_param_0];
-	ld.param.u32 	%r6, [___remuu_param_1];
-	cvt.rn.f32.u32	%f1, %r5;
-	abs.f32 	%f51, %f1;
-	cvt.rn.f32.u32	%f3, %r6;
-	abs.f32 	%f4, %f3;
-	setp.gtu.f32	%p1, %f51, 0f7F800000;
-	setp.gtu.f32	%p2, %f4, 0f7F800000;
-	or.pred  	%p3, %p1, %p2;
-	@%p3 bra 	BB75_20;
-
-	setp.eq.f32	%p4, %f51, 0f7F800000;
-	setp.eq.f32	%p5, %f4, 0f00000000;
-	or.pred  	%p6, %p4, %p5;
-	@!%p6 bra 	BB75_3;
-	bra.uni 	BB75_2;
-
-BB75_2:
-	mov.f32 	%f53, 0f7FFFFFFF;
-	bra.uni 	BB75_21;
-
-BB75_3:
-	setp.ge.f32	%p7, %f51, %f4;
-	@%p7 bra 	BB75_5;
-
-	mov.u32 	%r25, 0;
-	bra.uni 	BB75_16;
-
-BB75_5:
-	lg2.approx.f32 	%f23, %f51;
-	cvt.rzi.s32.f32	%r7, %f23;
-	lg2.approx.f32 	%f24, %f4;
-	cvt.rzi.s32.f32	%r8, %f24;
-	sub.s32 	%r1, %r7, %r8;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p8, %f5, 0f00000000;
-	setp.eq.f32	%p9, %f5, 0f7F800000;
-	or.pred  	%p10, %p8, %p9;
-	setp.eq.s32	%p11, %r7, %r8;
-	or.pred  	%p12, %p10, %p11;
-	@%p12 bra 	BB75_11;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p13, %r2, 126;
-	@%p13 bra 	BB75_10;
-
-	setp.lt.s32	%p14, %r2, 252;
-	@%p14 bra 	BB75_9;
-
-	shr.s32 	%r9, %r1, 31;
-	shr.u32 	%r10, %r9, 30;
-	add.s32 	%r11, %r1, %r10;
-	shr.s32 	%r12, %r11, 2;
-	cvt.rn.f32.s32	%f26, %r12;
-	// inline asm
-	ex2.approx.ftz.f32 %f25,%f26;
-	// inline asm
-	mul.f32 	%f29, %f4, %f25;
-	mul.f32 	%f30, %f29, %f25;
-	mul.f32 	%f31, %f30, %f25;
-	mad.lo.s32 	%r13, %r12, -3, %r1;
-	cvt.rn.f32.s32	%f28, %r13;
-	// inline asm
-	ex2.approx.ftz.f32 %f27,%f28;
-	// inline asm
-	mul.f32 	%f44, %f31, %f27;
-	bra.uni 	BB75_12;
-
-BB75_9:
-	shr.u32 	%r14, %r1, 31;
-	add.s32 	%r15, %r1, %r14;
-	shr.s32 	%r16, %r15, 1;
-	cvt.rn.f32.s32	%f33, %r16;
-	// inline asm
-	ex2.approx.ftz.f32 %f32,%f33;
-	// inline asm
-	mul.f32 	%f36, %f4, %f32;
-	sub.s32 	%r17, %r1, %r16;
-	cvt.rn.f32.s32	%f35, %r17;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f36, %f34;
-	bra.uni 	BB75_12;
-
-BB75_10:
-	cvt.rn.f32.s32	%f38, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f37,%f38;
-	// inline asm
-	mul.f32 	%f44, %f4, %f37;
-	bra.uni 	BB75_12;
-
-BB75_11:
-	setp.leu.f32	%p15, %f5, 0f00000000;
-	add.f32 	%f39, %f4, %f4;
-	selp.f32	%f44, %f39, %f4, %p15;
-
-BB75_12:
-	mul.f32 	%f40, %f51, 0f3F000000;
-	setp.gtu.f32	%p16, %f44, %f40;
-	add.f32 	%f41, %f44, %f44;
-	selp.f32	%f45, %f44, %f41, %p16;
-	setp.ge.f32	%p17, %f45, %f4;
-	@%p17 bra 	BB75_13;
-	bra.uni 	BB75_22;
-
-BB75_13:
-	mov.f32 	%f52, %f51;
-
-BB75_14:
-	mov.f32 	%f12, %f52;
-	mov.f32 	%f13, %f45;
-	sub.f32 	%f42, %f12, %f13;
-	setp.ltu.f32	%p18, %f12, %f13;
-	selp.f32	%f52, %f12, %f42, %p18;
-	mul.f32 	%f45, %f13, 0f3F000000;
-	setp.ge.f32	%p19, %f45, %f4;
-	@%p19 bra 	BB75_14;
-
-	setp.ge.f32	%p20, %f12, %f13;
-	selp.u32	%r25, 1, 0, %p20;
-	mov.f32 	%f51, %f52;
-
-BB75_16:
-	mov.f32 	%f50, %f51;
-	add.f32 	%f17, %f50, %f50;
-	setp.gt.f32	%p21, %f17, %f4;
-	@%p21 bra 	BB75_18;
-
-	setp.eq.f32	%p22, %f17, %f4;
-	setp.ne.s32	%p23, %r25, 0;
-	and.pred  	%p24, %p22, %p23;
-	@!%p24 bra 	BB75_19;
-	bra.uni 	BB75_18;
-
-BB75_18:
-	sub.f32 	%f50, %f50, %f4;
-
-BB75_19:
-	mov.b32 	 %r20, %f1;
-	and.b32  	%r21, %r20, -2147483648;
-	mov.b32 	 %r22, %f50;
-	xor.b32  	%r23, %r22, %r21;
-	mov.b32 	 %f53, %r23;
-	bra.uni 	BB75_21;
-
-BB75_20:
-	add.f32 	%f53, %f1, %f3;
-
-BB75_21:
-	cvt.rzi.u32.f32	%r24, %f53;
-	st.param.b32	[funj_retval0+0], %r24;
+	ld.param.u32 	%r1, [___remuu_param_0];
+	ld.param.u32 	%r2, [___remuu_param_1];
+	rem.u32 	%r3, %r1, %r2;
+	st.param.b32	[funj_retval0+0], %r3;
 	ret;
-
-BB75_22:
-	mov.u32 	%r25, 0;
-	bra.uni 	BB75_16;
 }
 
 .visible .func  (.param .b32 funj_retval0) _Z3remIjET_S0_S0_(
@@ -7343,169 +5414,14 @@ BB75_22:
 	.param .b32 _Z3remIjET_S0_S0__param_1
 )
 {
-	.reg .pred 	%p<25>;
-	.reg .s32 	%r<26>;
-	.reg .f32 	%f<54>;
+	.reg .s32 	%r<4>;
 
 
-	ld.param.u32 	%r5, [_Z3remIjET_S0_S0__param_0];
-	ld.param.u32 	%r6, [_Z3remIjET_S0_S0__param_1];
-	cvt.rn.f32.u32	%f1, %r5;
-	abs.f32 	%f51, %f1;
-	cvt.rn.f32.u32	%f3, %r6;
-	abs.f32 	%f4, %f3;
-	setp.gtu.f32	%p1, %f51, 0f7F800000;
-	setp.gtu.f32	%p2, %f4, 0f7F800000;
-	or.pred  	%p3, %p1, %p2;
-	@%p3 bra 	BB76_20;
-
-	setp.eq.f32	%p4, %f51, 0f7F800000;
-	setp.eq.f32	%p5, %f4, 0f00000000;
-	or.pred  	%p6, %p4, %p5;
-	@!%p6 bra 	BB76_3;
-	bra.uni 	BB76_2;
-
-BB76_2:
-	mov.f32 	%f53, 0f7FFFFFFF;
-	bra.uni 	BB76_21;
-
-BB76_3:
-	setp.ge.f32	%p7, %f51, %f4;
-	@%p7 bra 	BB76_5;
-
-	mov.u32 	%r25, 0;
-	bra.uni 	BB76_16;
-
-BB76_5:
-	lg2.approx.f32 	%f23, %f51;
-	cvt.rzi.s32.f32	%r7, %f23;
-	lg2.approx.f32 	%f24, %f4;
-	cvt.rzi.s32.f32	%r8, %f24;
-	sub.s32 	%r1, %r7, %r8;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p8, %f5, 0f00000000;
-	setp.eq.f32	%p9, %f5, 0f7F800000;
-	or.pred  	%p10, %p8, %p9;
-	setp.eq.s32	%p11, %r7, %r8;
-	or.pred  	%p12, %p10, %p11;
-	@%p12 bra 	BB76_11;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p13, %r2, 126;
-	@%p13 bra 	BB76_10;
-
-	setp.lt.s32	%p14, %r2, 252;
-	@%p14 bra 	BB76_9;
-
-	shr.s32 	%r9, %r1, 31;
-	shr.u32 	%r10, %r9, 30;
-	add.s32 	%r11, %r1, %r10;
-	shr.s32 	%r12, %r11, 2;
-	cvt.rn.f32.s32	%f26, %r12;
-	// inline asm
-	ex2.approx.ftz.f32 %f25,%f26;
-	// inline asm
-	mul.f32 	%f29, %f4, %f25;
-	mul.f32 	%f30, %f29, %f25;
-	mul.f32 	%f31, %f30, %f25;
-	mad.lo.s32 	%r13, %r12, -3, %r1;
-	cvt.rn.f32.s32	%f28, %r13;
-	// inline asm
-	ex2.approx.ftz.f32 %f27,%f28;
-	// inline asm
-	mul.f32 	%f44, %f31, %f27;
-	bra.uni 	BB76_12;
-
-BB76_9:
-	shr.u32 	%r14, %r1, 31;
-	add.s32 	%r15, %r1, %r14;
-	shr.s32 	%r16, %r15, 1;
-	cvt.rn.f32.s32	%f33, %r16;
-	// inline asm
-	ex2.approx.ftz.f32 %f32,%f33;
-	// inline asm
-	mul.f32 	%f36, %f4, %f32;
-	sub.s32 	%r17, %r1, %r16;
-	cvt.rn.f32.s32	%f35, %r17;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f36, %f34;
-	bra.uni 	BB76_12;
-
-BB76_10:
-	cvt.rn.f32.s32	%f38, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f37,%f38;
-	// inline asm
-	mul.f32 	%f44, %f4, %f37;
-	bra.uni 	BB76_12;
-
-BB76_11:
-	setp.leu.f32	%p15, %f5, 0f00000000;
-	add.f32 	%f39, %f4, %f4;
-	selp.f32	%f44, %f39, %f4, %p15;
-
-BB76_12:
-	mul.f32 	%f40, %f51, 0f3F000000;
-	setp.gtu.f32	%p16, %f44, %f40;
-	add.f32 	%f41, %f44, %f44;
-	selp.f32	%f45, %f44, %f41, %p16;
-	setp.ge.f32	%p17, %f45, %f4;
-	@%p17 bra 	BB76_13;
-	bra.uni 	BB76_22;
-
-BB76_13:
-	mov.f32 	%f52, %f51;
-
-BB76_14:
-	mov.f32 	%f12, %f52;
-	mov.f32 	%f13, %f45;
-	sub.f32 	%f42, %f12, %f13;
-	setp.ltu.f32	%p18, %f12, %f13;
-	selp.f32	%f52, %f12, %f42, %p18;
-	mul.f32 	%f45, %f13, 0f3F000000;
-	setp.ge.f32	%p19, %f45, %f4;
-	@%p19 bra 	BB76_14;
-
-	setp.ge.f32	%p20, %f12, %f13;
-	selp.u32	%r25, 1, 0, %p20;
-	mov.f32 	%f51, %f52;
-
-BB76_16:
-	mov.f32 	%f50, %f51;
-	add.f32 	%f17, %f50, %f50;
-	setp.gt.f32	%p21, %f17, %f4;
-	@%p21 bra 	BB76_18;
-
-	setp.eq.f32	%p22, %f17, %f4;
-	setp.ne.s32	%p23, %r25, 0;
-	and.pred  	%p24, %p22, %p23;
-	@!%p24 bra 	BB76_19;
-	bra.uni 	BB76_18;
-
-BB76_18:
-	sub.f32 	%f50, %f50, %f4;
-
-BB76_19:
-	mov.b32 	 %r20, %f1;
-	and.b32  	%r21, %r20, -2147483648;
-	mov.b32 	 %r22, %f50;
-	xor.b32  	%r23, %r22, %r21;
-	mov.b32 	 %f53, %r23;
-	bra.uni 	BB76_21;
-
-BB76_20:
-	add.f32 	%f53, %f1, %f3;
-
-BB76_21:
-	cvt.rzi.u32.f32	%r24, %f53;
-	st.param.b32	[funj_retval0+0], %r24;
+	ld.param.u32 	%r1, [_Z3remIjET_S0_S0__param_0];
+	ld.param.u32 	%r2, [_Z3remIjET_S0_S0__param_1];
+	rem.u32 	%r3, %r1, %r2;
+	st.param.b32	[funj_retval0+0], %r3;
 	ret;
-
-BB76_22:
-	mov.u32 	%r25, 0;
-	bra.uni 	BB76_16;
 }
 
 .visible .func  (.param .b64 funj_retval0) ___remxx(
@@ -7513,170 +5429,14 @@ BB76_22:
 	.param .b64 ___remxx_param_1
 )
 {
-	.reg .pred 	%p<25>;
-	.reg .s32 	%r<23>;
-	.reg .f32 	%f<54>;
 	.reg .s64 	%rd<4>;
 
 
 	ld.param.u64 	%rd1, [___remxx_param_0];
 	ld.param.u64 	%rd2, [___remxx_param_1];
-	cvt.rn.f32.s64	%f1, %rd1;
-	abs.f32 	%f51, %f1;
-	cvt.rn.f32.s64	%f3, %rd2;
-	abs.f32 	%f4, %f3;
-	setp.gtu.f32	%p1, %f51, 0f7F800000;
-	setp.gtu.f32	%p2, %f4, 0f7F800000;
-	or.pred  	%p3, %p1, %p2;
-	@%p3 bra 	BB77_20;
-
-	setp.eq.f32	%p4, %f51, 0f7F800000;
-	setp.eq.f32	%p5, %f4, 0f00000000;
-	or.pred  	%p6, %p4, %p5;
-	@!%p6 bra 	BB77_3;
-	bra.uni 	BB77_2;
-
-BB77_2:
-	mov.f32 	%f53, 0f7FFFFFFF;
-	bra.uni 	BB77_21;
-
-BB77_3:
-	setp.ge.f32	%p7, %f51, %f4;
-	@%p7 bra 	BB77_5;
-
-	mov.u32 	%r22, 0;
-	bra.uni 	BB77_16;
-
-BB77_5:
-	lg2.approx.f32 	%f23, %f51;
-	cvt.rzi.s32.f32	%r5, %f23;
-	lg2.approx.f32 	%f24, %f4;
-	cvt.rzi.s32.f32	%r6, %f24;
-	sub.s32 	%r1, %r5, %r6;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p8, %f5, 0f00000000;
-	setp.eq.f32	%p9, %f5, 0f7F800000;
-	or.pred  	%p10, %p8, %p9;
-	setp.eq.s32	%p11, %r5, %r6;
-	or.pred  	%p12, %p10, %p11;
-	@%p12 bra 	BB77_11;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p13, %r2, 126;
-	@%p13 bra 	BB77_10;
-
-	setp.lt.s32	%p14, %r2, 252;
-	@%p14 bra 	BB77_9;
-
-	shr.s32 	%r7, %r1, 31;
-	shr.u32 	%r8, %r7, 30;
-	add.s32 	%r9, %r1, %r8;
-	shr.s32 	%r10, %r9, 2;
-	cvt.rn.f32.s32	%f26, %r10;
-	// inline asm
-	ex2.approx.ftz.f32 %f25,%f26;
-	// inline asm
-	mul.f32 	%f29, %f4, %f25;
-	mul.f32 	%f30, %f29, %f25;
-	mul.f32 	%f31, %f30, %f25;
-	mad.lo.s32 	%r11, %r10, -3, %r1;
-	cvt.rn.f32.s32	%f28, %r11;
-	// inline asm
-	ex2.approx.ftz.f32 %f27,%f28;
-	// inline asm
-	mul.f32 	%f44, %f31, %f27;
-	bra.uni 	BB77_12;
-
-BB77_9:
-	shr.u32 	%r12, %r1, 31;
-	add.s32 	%r13, %r1, %r12;
-	shr.s32 	%r14, %r13, 1;
-	cvt.rn.f32.s32	%f33, %r14;
-	// inline asm
-	ex2.approx.ftz.f32 %f32,%f33;
-	// inline asm
-	mul.f32 	%f36, %f4, %f32;
-	sub.s32 	%r15, %r1, %r14;
-	cvt.rn.f32.s32	%f35, %r15;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f36, %f34;
-	bra.uni 	BB77_12;
-
-BB77_10:
-	cvt.rn.f32.s32	%f38, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f37,%f38;
-	// inline asm
-	mul.f32 	%f44, %f4, %f37;
-	bra.uni 	BB77_12;
-
-BB77_11:
-	setp.leu.f32	%p15, %f5, 0f00000000;
-	add.f32 	%f39, %f4, %f4;
-	selp.f32	%f44, %f39, %f4, %p15;
-
-BB77_12:
-	mul.f32 	%f40, %f51, 0f3F000000;
-	setp.gtu.f32	%p16, %f44, %f40;
-	add.f32 	%f41, %f44, %f44;
-	selp.f32	%f45, %f44, %f41, %p16;
-	setp.ge.f32	%p17, %f45, %f4;
-	@%p17 bra 	BB77_13;
-	bra.uni 	BB77_22;
-
-BB77_13:
-	mov.f32 	%f52, %f51;
-
-BB77_14:
-	mov.f32 	%f12, %f52;
-	mov.f32 	%f13, %f45;
-	sub.f32 	%f42, %f12, %f13;
-	setp.ltu.f32	%p18, %f12, %f13;
-	selp.f32	%f52, %f12, %f42, %p18;
-	mul.f32 	%f45, %f13, 0f3F000000;
-	setp.ge.f32	%p19, %f45, %f4;
-	@%p19 bra 	BB77_14;
-
-	setp.ge.f32	%p20, %f12, %f13;
-	selp.u32	%r22, 1, 0, %p20;
-	mov.f32 	%f51, %f52;
-
-BB77_16:
-	mov.f32 	%f50, %f51;
-	add.f32 	%f17, %f50, %f50;
-	setp.gt.f32	%p21, %f17, %f4;
-	@%p21 bra 	BB77_18;
-
-	setp.eq.f32	%p22, %f17, %f4;
-	setp.ne.s32	%p23, %r22, 0;
-	and.pred  	%p24, %p22, %p23;
-	@!%p24 bra 	BB77_19;
-	bra.uni 	BB77_18;
-
-BB77_18:
-	sub.f32 	%f50, %f50, %f4;
-
-BB77_19:
-	mov.b32 	 %r18, %f1;
-	and.b32  	%r19, %r18, -2147483648;
-	mov.b32 	 %r20, %f50;
-	xor.b32  	%r21, %r20, %r19;
-	mov.b32 	 %f53, %r21;
-	bra.uni 	BB77_21;
-
-BB77_20:
-	add.f32 	%f53, %f1, %f3;
-
-BB77_21:
-	cvt.rzi.s64.f32	%rd3, %f53;
+	rem.s64 	%rd3, %rd1, %rd2;
 	st.param.b64	[funj_retval0+0], %rd3;
 	ret;
-
-BB77_22:
-	mov.u32 	%r22, 0;
-	bra.uni 	BB77_16;
 }
 
 .visible .func  (.param .b64 funj_retval0) _Z3remIxET_S0_S0_(
@@ -7684,170 +5444,14 @@ BB77_22:
 	.param .b64 _Z3remIxET_S0_S0__param_1
 )
 {
-	.reg .pred 	%p<25>;
-	.reg .s32 	%r<23>;
-	.reg .f32 	%f<54>;
 	.reg .s64 	%rd<4>;
 
 
 	ld.param.u64 	%rd1, [_Z3remIxET_S0_S0__param_0];
 	ld.param.u64 	%rd2, [_Z3remIxET_S0_S0__param_1];
-	cvt.rn.f32.s64	%f1, %rd1;
-	abs.f32 	%f51, %f1;
-	cvt.rn.f32.s64	%f3, %rd2;
-	abs.f32 	%f4, %f3;
-	setp.gtu.f32	%p1, %f51, 0f7F800000;
-	setp.gtu.f32	%p2, %f4, 0f7F800000;
-	or.pred  	%p3, %p1, %p2;
-	@%p3 bra 	BB78_20;
-
-	setp.eq.f32	%p4, %f51, 0f7F800000;
-	setp.eq.f32	%p5, %f4, 0f00000000;
-	or.pred  	%p6, %p4, %p5;
-	@!%p6 bra 	BB78_3;
-	bra.uni 	BB78_2;
-
-BB78_2:
-	mov.f32 	%f53, 0f7FFFFFFF;
-	bra.uni 	BB78_21;
-
-BB78_3:
-	setp.ge.f32	%p7, %f51, %f4;
-	@%p7 bra 	BB78_5;
-
-	mov.u32 	%r22, 0;
-	bra.uni 	BB78_16;
-
-BB78_5:
-	lg2.approx.f32 	%f23, %f51;
-	cvt.rzi.s32.f32	%r5, %f23;
-	lg2.approx.f32 	%f24, %f4;
-	cvt.rzi.s32.f32	%r6, %f24;
-	sub.s32 	%r1, %r5, %r6;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p8, %f5, 0f00000000;
-	setp.eq.f32	%p9, %f5, 0f7F800000;
-	or.pred  	%p10, %p8, %p9;
-	setp.eq.s32	%p11, %r5, %r6;
-	or.pred  	%p12, %p10, %p11;
-	@%p12 bra 	BB78_11;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p13, %r2, 126;
-	@%p13 bra 	BB78_10;
-
-	setp.lt.s32	%p14, %r2, 252;
-	@%p14 bra 	BB78_9;
-
-	shr.s32 	%r7, %r1, 31;
-	shr.u32 	%r8, %r7, 30;
-	add.s32 	%r9, %r1, %r8;
-	shr.s32 	%r10, %r9, 2;
-	cvt.rn.f32.s32	%f26, %r10;
-	// inline asm
-	ex2.approx.ftz.f32 %f25,%f26;
-	// inline asm
-	mul.f32 	%f29, %f4, %f25;
-	mul.f32 	%f30, %f29, %f25;
-	mul.f32 	%f31, %f30, %f25;
-	mad.lo.s32 	%r11, %r10, -3, %r1;
-	cvt.rn.f32.s32	%f28, %r11;
-	// inline asm
-	ex2.approx.ftz.f32 %f27,%f28;
-	// inline asm
-	mul.f32 	%f44, %f31, %f27;
-	bra.uni 	BB78_12;
-
-BB78_9:
-	shr.u32 	%r12, %r1, 31;
-	add.s32 	%r13, %r1, %r12;
-	shr.s32 	%r14, %r13, 1;
-	cvt.rn.f32.s32	%f33, %r14;
-	// inline asm
-	ex2.approx.ftz.f32 %f32,%f33;
-	// inline asm
-	mul.f32 	%f36, %f4, %f32;
-	sub.s32 	%r15, %r1, %r14;
-	cvt.rn.f32.s32	%f35, %r15;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f36, %f34;
-	bra.uni 	BB78_12;
-
-BB78_10:
-	cvt.rn.f32.s32	%f38, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f37,%f38;
-	// inline asm
-	mul.f32 	%f44, %f4, %f37;
-	bra.uni 	BB78_12;
-
-BB78_11:
-	setp.leu.f32	%p15, %f5, 0f00000000;
-	add.f32 	%f39, %f4, %f4;
-	selp.f32	%f44, %f39, %f4, %p15;
-
-BB78_12:
-	mul.f32 	%f40, %f51, 0f3F000000;
-	setp.gtu.f32	%p16, %f44, %f40;
-	add.f32 	%f41, %f44, %f44;
-	selp.f32	%f45, %f44, %f41, %p16;
-	setp.ge.f32	%p17, %f45, %f4;
-	@%p17 bra 	BB78_13;
-	bra.uni 	BB78_22;
-
-BB78_13:
-	mov.f32 	%f52, %f51;
-
-BB78_14:
-	mov.f32 	%f12, %f52;
-	mov.f32 	%f13, %f45;
-	sub.f32 	%f42, %f12, %f13;
-	setp.ltu.f32	%p18, %f12, %f13;
-	selp.f32	%f52, %f12, %f42, %p18;
-	mul.f32 	%f45, %f13, 0f3F000000;
-	setp.ge.f32	%p19, %f45, %f4;
-	@%p19 bra 	BB78_14;
-
-	setp.ge.f32	%p20, %f12, %f13;
-	selp.u32	%r22, 1, 0, %p20;
-	mov.f32 	%f51, %f52;
-
-BB78_16:
-	mov.f32 	%f50, %f51;
-	add.f32 	%f17, %f50, %f50;
-	setp.gt.f32	%p21, %f17, %f4;
-	@%p21 bra 	BB78_18;
-
-	setp.eq.f32	%p22, %f17, %f4;
-	setp.ne.s32	%p23, %r22, 0;
-	and.pred  	%p24, %p22, %p23;
-	@!%p24 bra 	BB78_19;
-	bra.uni 	BB78_18;
-
-BB78_18:
-	sub.f32 	%f50, %f50, %f4;
-
-BB78_19:
-	mov.b32 	 %r18, %f1;
-	and.b32  	%r19, %r18, -2147483648;
-	mov.b32 	 %r20, %f50;
-	xor.b32  	%r21, %r20, %r19;
-	mov.b32 	 %f53, %r21;
-	bra.uni 	BB78_21;
-
-BB78_20:
-	add.f32 	%f53, %f1, %f3;
-
-BB78_21:
-	cvt.rzi.s64.f32	%rd3, %f53;
+	rem.s64 	%rd3, %rd1, %rd2;
 	st.param.b64	[funj_retval0+0], %rd3;
 	ret;
-
-BB78_22:
-	mov.u32 	%r22, 0;
-	bra.uni 	BB78_16;
 }
 
 .visible .func  (.param .b64 funj_retval0) ___remyy(
@@ -7855,170 +5459,14 @@ BB78_22:
 	.param .b64 ___remyy_param_1
 )
 {
-	.reg .pred 	%p<25>;
-	.reg .s32 	%r<23>;
-	.reg .f32 	%f<54>;
 	.reg .s64 	%rd<4>;
 
 
 	ld.param.u64 	%rd1, [___remyy_param_0];
 	ld.param.u64 	%rd2, [___remyy_param_1];
-	cvt.rn.f32.u64	%f1, %rd1;
-	abs.f32 	%f51, %f1;
-	cvt.rn.f32.u64	%f3, %rd2;
-	abs.f32 	%f4, %f3;
-	setp.gtu.f32	%p1, %f51, 0f7F800000;
-	setp.gtu.f32	%p2, %f4, 0f7F800000;
-	or.pred  	%p3, %p1, %p2;
-	@%p3 bra 	BB79_20;
-
-	setp.eq.f32	%p4, %f51, 0f7F800000;
-	setp.eq.f32	%p5, %f4, 0f00000000;
-	or.pred  	%p6, %p4, %p5;
-	@!%p6 bra 	BB79_3;
-	bra.uni 	BB79_2;
-
-BB79_2:
-	mov.f32 	%f53, 0f7FFFFFFF;
-	bra.uni 	BB79_21;
-
-BB79_3:
-	setp.ge.f32	%p7, %f51, %f4;
-	@%p7 bra 	BB79_5;
-
-	mov.u32 	%r22, 0;
-	bra.uni 	BB79_16;
-
-BB79_5:
-	lg2.approx.f32 	%f23, %f51;
-	cvt.rzi.s32.f32	%r5, %f23;
-	lg2.approx.f32 	%f24, %f4;
-	cvt.rzi.s32.f32	%r6, %f24;
-	sub.s32 	%r1, %r5, %r6;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p8, %f5, 0f00000000;
-	setp.eq.f32	%p9, %f5, 0f7F800000;
-	or.pred  	%p10, %p8, %p9;
-	setp.eq.s32	%p11, %r5, %r6;
-	or.pred  	%p12, %p10, %p11;
-	@%p12 bra 	BB79_11;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p13, %r2, 126;
-	@%p13 bra 	BB79_10;
-
-	setp.lt.s32	%p14, %r2, 252;
-	@%p14 bra 	BB79_9;
-
-	shr.s32 	%r7, %r1, 31;
-	shr.u32 	%r8, %r7, 30;
-	add.s32 	%r9, %r1, %r8;
-	shr.s32 	%r10, %r9, 2;
-	cvt.rn.f32.s32	%f26, %r10;
-	// inline asm
-	ex2.approx.ftz.f32 %f25,%f26;
-	// inline asm
-	mul.f32 	%f29, %f4, %f25;
-	mul.f32 	%f30, %f29, %f25;
-	mul.f32 	%f31, %f30, %f25;
-	mad.lo.s32 	%r11, %r10, -3, %r1;
-	cvt.rn.f32.s32	%f28, %r11;
-	// inline asm
-	ex2.approx.ftz.f32 %f27,%f28;
-	// inline asm
-	mul.f32 	%f44, %f31, %f27;
-	bra.uni 	BB79_12;
-
-BB79_9:
-	shr.u32 	%r12, %r1, 31;
-	add.s32 	%r13, %r1, %r12;
-	shr.s32 	%r14, %r13, 1;
-	cvt.rn.f32.s32	%f33, %r14;
-	// inline asm
-	ex2.approx.ftz.f32 %f32,%f33;
-	// inline asm
-	mul.f32 	%f36, %f4, %f32;
-	sub.s32 	%r15, %r1, %r14;
-	cvt.rn.f32.s32	%f35, %r15;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f36, %f34;
-	bra.uni 	BB79_12;
-
-BB79_10:
-	cvt.rn.f32.s32	%f38, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f37,%f38;
-	// inline asm
-	mul.f32 	%f44, %f4, %f37;
-	bra.uni 	BB79_12;
-
-BB79_11:
-	setp.leu.f32	%p15, %f5, 0f00000000;
-	add.f32 	%f39, %f4, %f4;
-	selp.f32	%f44, %f39, %f4, %p15;
-
-BB79_12:
-	mul.f32 	%f40, %f51, 0f3F000000;
-	setp.gtu.f32	%p16, %f44, %f40;
-	add.f32 	%f41, %f44, %f44;
-	selp.f32	%f45, %f44, %f41, %p16;
-	setp.ge.f32	%p17, %f45, %f4;
-	@%p17 bra 	BB79_13;
-	bra.uni 	BB79_22;
-
-BB79_13:
-	mov.f32 	%f52, %f51;
-
-BB79_14:
-	mov.f32 	%f12, %f52;
-	mov.f32 	%f13, %f45;
-	sub.f32 	%f42, %f12, %f13;
-	setp.ltu.f32	%p18, %f12, %f13;
-	selp.f32	%f52, %f12, %f42, %p18;
-	mul.f32 	%f45, %f13, 0f3F000000;
-	setp.ge.f32	%p19, %f45, %f4;
-	@%p19 bra 	BB79_14;
-
-	setp.ge.f32	%p20, %f12, %f13;
-	selp.u32	%r22, 1, 0, %p20;
-	mov.f32 	%f51, %f52;
-
-BB79_16:
-	mov.f32 	%f50, %f51;
-	add.f32 	%f17, %f50, %f50;
-	setp.gt.f32	%p21, %f17, %f4;
-	@%p21 bra 	BB79_18;
-
-	setp.eq.f32	%p22, %f17, %f4;
-	setp.ne.s32	%p23, %r22, 0;
-	and.pred  	%p24, %p22, %p23;
-	@!%p24 bra 	BB79_19;
-	bra.uni 	BB79_18;
-
-BB79_18:
-	sub.f32 	%f50, %f50, %f4;
-
-BB79_19:
-	mov.b32 	 %r18, %f1;
-	and.b32  	%r19, %r18, -2147483648;
-	mov.b32 	 %r20, %f50;
-	xor.b32  	%r21, %r20, %r19;
-	mov.b32 	 %f53, %r21;
-	bra.uni 	BB79_21;
-
-BB79_20:
-	add.f32 	%f53, %f1, %f3;
-
-BB79_21:
-	cvt.rzi.u64.f32	%rd3, %f53;
+	rem.u64 	%rd3, %rd1, %rd2;
 	st.param.b64	[funj_retval0+0], %rd3;
 	ret;
-
-BB79_22:
-	mov.u32 	%r22, 0;
-	bra.uni 	BB79_16;
 }
 
 .visible .func  (.param .b64 funj_retval0) _Z3remIyET_S0_S0_(
@@ -8026,170 +5474,14 @@ BB79_22:
 	.param .b64 _Z3remIyET_S0_S0__param_1
 )
 {
-	.reg .pred 	%p<25>;
-	.reg .s32 	%r<23>;
-	.reg .f32 	%f<54>;
 	.reg .s64 	%rd<4>;
 
 
 	ld.param.u64 	%rd1, [_Z3remIyET_S0_S0__param_0];
 	ld.param.u64 	%rd2, [_Z3remIyET_S0_S0__param_1];
-	cvt.rn.f32.u64	%f1, %rd1;
-	abs.f32 	%f51, %f1;
-	cvt.rn.f32.u64	%f3, %rd2;
-	abs.f32 	%f4, %f3;
-	setp.gtu.f32	%p1, %f51, 0f7F800000;
-	setp.gtu.f32	%p2, %f4, 0f7F800000;
-	or.pred  	%p3, %p1, %p2;
-	@%p3 bra 	BB80_20;
-
-	setp.eq.f32	%p4, %f51, 0f7F800000;
-	setp.eq.f32	%p5, %f4, 0f00000000;
-	or.pred  	%p6, %p4, %p5;
-	@!%p6 bra 	BB80_3;
-	bra.uni 	BB80_2;
-
-BB80_2:
-	mov.f32 	%f53, 0f7FFFFFFF;
-	bra.uni 	BB80_21;
-
-BB80_3:
-	setp.ge.f32	%p7, %f51, %f4;
-	@%p7 bra 	BB80_5;
-
-	mov.u32 	%r22, 0;
-	bra.uni 	BB80_16;
-
-BB80_5:
-	lg2.approx.f32 	%f23, %f51;
-	cvt.rzi.s32.f32	%r5, %f23;
-	lg2.approx.f32 	%f24, %f4;
-	cvt.rzi.s32.f32	%r6, %f24;
-	sub.s32 	%r1, %r5, %r6;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p8, %f5, 0f00000000;
-	setp.eq.f32	%p9, %f5, 0f7F800000;
-	or.pred  	%p10, %p8, %p9;
-	setp.eq.s32	%p11, %r5, %r6;
-	or.pred  	%p12, %p10, %p11;
-	@%p12 bra 	BB80_11;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p13, %r2, 126;
-	@%p13 bra 	BB80_10;
-
-	setp.lt.s32	%p14, %r2, 252;
-	@%p14 bra 	BB80_9;
-
-	shr.s32 	%r7, %r1, 31;
-	shr.u32 	%r8, %r7, 30;
-	add.s32 	%r9, %r1, %r8;
-	shr.s32 	%r10, %r9, 2;
-	cvt.rn.f32.s32	%f26, %r10;
-	// inline asm
-	ex2.approx.ftz.f32 %f25,%f26;
-	// inline asm
-	mul.f32 	%f29, %f4, %f25;
-	mul.f32 	%f30, %f29, %f25;
-	mul.f32 	%f31, %f30, %f25;
-	mad.lo.s32 	%r11, %r10, -3, %r1;
-	cvt.rn.f32.s32	%f28, %r11;
-	// inline asm
-	ex2.approx.ftz.f32 %f27,%f28;
-	// inline asm
-	mul.f32 	%f44, %f31, %f27;
-	bra.uni 	BB80_12;
-
-BB80_9:
-	shr.u32 	%r12, %r1, 31;
-	add.s32 	%r13, %r1, %r12;
-	shr.s32 	%r14, %r13, 1;
-	cvt.rn.f32.s32	%f33, %r14;
-	// inline asm
-	ex2.approx.ftz.f32 %f32,%f33;
-	// inline asm
-	mul.f32 	%f36, %f4, %f32;
-	sub.s32 	%r15, %r1, %r14;
-	cvt.rn.f32.s32	%f35, %r15;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f36, %f34;
-	bra.uni 	BB80_12;
-
-BB80_10:
-	cvt.rn.f32.s32	%f38, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f37,%f38;
-	// inline asm
-	mul.f32 	%f44, %f4, %f37;
-	bra.uni 	BB80_12;
-
-BB80_11:
-	setp.leu.f32	%p15, %f5, 0f00000000;
-	add.f32 	%f39, %f4, %f4;
-	selp.f32	%f44, %f39, %f4, %p15;
-
-BB80_12:
-	mul.f32 	%f40, %f51, 0f3F000000;
-	setp.gtu.f32	%p16, %f44, %f40;
-	add.f32 	%f41, %f44, %f44;
-	selp.f32	%f45, %f44, %f41, %p16;
-	setp.ge.f32	%p17, %f45, %f4;
-	@%p17 bra 	BB80_13;
-	bra.uni 	BB80_22;
-
-BB80_13:
-	mov.f32 	%f52, %f51;
-
-BB80_14:
-	mov.f32 	%f12, %f52;
-	mov.f32 	%f13, %f45;
-	sub.f32 	%f42, %f12, %f13;
-	setp.ltu.f32	%p18, %f12, %f13;
-	selp.f32	%f52, %f12, %f42, %p18;
-	mul.f32 	%f45, %f13, 0f3F000000;
-	setp.ge.f32	%p19, %f45, %f4;
-	@%p19 bra 	BB80_14;
-
-	setp.ge.f32	%p20, %f12, %f13;
-	selp.u32	%r22, 1, 0, %p20;
-	mov.f32 	%f51, %f52;
-
-BB80_16:
-	mov.f32 	%f50, %f51;
-	add.f32 	%f17, %f50, %f50;
-	setp.gt.f32	%p21, %f17, %f4;
-	@%p21 bra 	BB80_18;
-
-	setp.eq.f32	%p22, %f17, %f4;
-	setp.ne.s32	%p23, %r22, 0;
-	and.pred  	%p24, %p22, %p23;
-	@!%p24 bra 	BB80_19;
-	bra.uni 	BB80_18;
-
-BB80_18:
-	sub.f32 	%f50, %f50, %f4;
-
-BB80_19:
-	mov.b32 	 %r18, %f1;
-	and.b32  	%r19, %r18, -2147483648;
-	mov.b32 	 %r20, %f50;
-	xor.b32  	%r21, %r20, %r19;
-	mov.b32 	 %f53, %r21;
-	bra.uni 	BB80_21;
-
-BB80_20:
-	add.f32 	%f53, %f1, %f3;
-
-BB80_21:
-	cvt.rzi.u64.f32	%rd3, %f53;
+	rem.u64 	%rd3, %rd1, %rd2;
 	st.param.b64	[funj_retval0+0], %rd3;
 	ret;
-
-BB80_22:
-	mov.u32 	%r22, 0;
-	bra.uni 	BB80_16;
 }
 
 .visible .func  (.param .b32 funj_retval0) ___remjj(
@@ -8197,171 +5489,18 @@ BB80_22:
 	.param .b32 ___remjj_param_1
 )
 {
-	.reg .pred 	%p<25>;
 	.reg .s16 	%rs<3>;
-	.reg .s32 	%r<25>;
-	.reg .f32 	%f<54>;
+	.reg .s32 	%r<5>;
 
 
 	ld.param.s8 	%rs1, [___remjj_param_0];
-	cvt.rn.f32.s16	%f1, %rs1;
-	abs.f32 	%f51, %f1;
 	ld.param.s8 	%rs2, [___remjj_param_1];
-	cvt.rn.f32.s16	%f3, %rs2;
-	abs.f32 	%f4, %f3;
-	setp.gtu.f32	%p1, %f51, 0f7F800000;
-	setp.gtu.f32	%p2, %f4, 0f7F800000;
-	or.pred  	%p3, %p1, %p2;
-	@%p3 bra 	BB81_20;
-
-	setp.eq.f32	%p4, %f51, 0f7F800000;
-	setp.eq.f32	%p5, %f4, 0f00000000;
-	or.pred  	%p6, %p4, %p5;
-	@!%p6 bra 	BB81_3;
-	bra.uni 	BB81_2;
-
-BB81_2:
-	mov.f32 	%f53, 0f7FFFFFFF;
-	bra.uni 	BB81_21;
-
-BB81_3:
-	setp.ge.f32	%p7, %f51, %f4;
-	@%p7 bra 	BB81_5;
-
-	mov.u32 	%r24, 0;
-	bra.uni 	BB81_16;
-
-BB81_5:
-	lg2.approx.f32 	%f23, %f51;
-	cvt.rzi.s32.f32	%r5, %f23;
-	lg2.approx.f32 	%f24, %f4;
-	cvt.rzi.s32.f32	%r6, %f24;
-	sub.s32 	%r1, %r5, %r6;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p8, %f5, 0f00000000;
-	setp.eq.f32	%p9, %f5, 0f7F800000;
-	or.pred  	%p10, %p8, %p9;
-	setp.eq.s32	%p11, %r5, %r6;
-	or.pred  	%p12, %p10, %p11;
-	@%p12 bra 	BB81_11;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p13, %r2, 126;
-	@%p13 bra 	BB81_10;
-
-	setp.lt.s32	%p14, %r2, 252;
-	@%p14 bra 	BB81_9;
-
-	shr.s32 	%r7, %r1, 31;
-	shr.u32 	%r8, %r7, 30;
-	add.s32 	%r9, %r1, %r8;
-	shr.s32 	%r10, %r9, 2;
-	cvt.rn.f32.s32	%f26, %r10;
-	// inline asm
-	ex2.approx.ftz.f32 %f25,%f26;
-	// inline asm
-	mul.f32 	%f29, %f4, %f25;
-	mul.f32 	%f30, %f29, %f25;
-	mul.f32 	%f31, %f30, %f25;
-	mad.lo.s32 	%r11, %r10, -3, %r1;
-	cvt.rn.f32.s32	%f28, %r11;
-	// inline asm
-	ex2.approx.ftz.f32 %f27,%f28;
-	// inline asm
-	mul.f32 	%f44, %f31, %f27;
-	bra.uni 	BB81_12;
-
-BB81_9:
-	shr.u32 	%r12, %r1, 31;
-	add.s32 	%r13, %r1, %r12;
-	shr.s32 	%r14, %r13, 1;
-	cvt.rn.f32.s32	%f33, %r14;
-	// inline asm
-	ex2.approx.ftz.f32 %f32,%f33;
-	// inline asm
-	mul.f32 	%f36, %f4, %f32;
-	sub.s32 	%r15, %r1, %r14;
-	cvt.rn.f32.s32	%f35, %r15;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f36, %f34;
-	bra.uni 	BB81_12;
-
-BB81_10:
-	cvt.rn.f32.s32	%f38, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f37,%f38;
-	// inline asm
-	mul.f32 	%f44, %f4, %f37;
-	bra.uni 	BB81_12;
-
-BB81_11:
-	setp.leu.f32	%p15, %f5, 0f00000000;
-	add.f32 	%f39, %f4, %f4;
-	selp.f32	%f44, %f39, %f4, %p15;
-
-BB81_12:
-	mul.f32 	%f40, %f51, 0f3F000000;
-	setp.gtu.f32	%p16, %f44, %f40;
-	add.f32 	%f41, %f44, %f44;
-	selp.f32	%f45, %f44, %f41, %p16;
-	setp.ge.f32	%p17, %f45, %f4;
-	@%p17 bra 	BB81_13;
-	bra.uni 	BB81_22;
-
-BB81_13:
-	mov.f32 	%f52, %f51;
-
-BB81_14:
-	mov.f32 	%f12, %f52;
-	mov.f32 	%f13, %f45;
-	sub.f32 	%f42, %f12, %f13;
-	setp.ltu.f32	%p18, %f12, %f13;
-	selp.f32	%f52, %f12, %f42, %p18;
-	mul.f32 	%f45, %f13, 0f3F000000;
-	setp.ge.f32	%p19, %f45, %f4;
-	@%p19 bra 	BB81_14;
-
-	setp.ge.f32	%p20, %f12, %f13;
-	selp.u32	%r24, 1, 0, %p20;
-	mov.f32 	%f51, %f52;
-
-BB81_16:
-	mov.f32 	%f50, %f51;
-	add.f32 	%f17, %f50, %f50;
-	setp.gt.f32	%p21, %f17, %f4;
-	@%p21 bra 	BB81_18;
-
-	setp.eq.f32	%p22, %f17, %f4;
-	setp.ne.s32	%p23, %r24, 0;
-	and.pred  	%p24, %p22, %p23;
-	@!%p24 bra 	BB81_19;
-	bra.uni 	BB81_18;
-
-BB81_18:
-	sub.f32 	%f50, %f50, %f4;
-
-BB81_19:
-	mov.b32 	 %r18, %f1;
-	and.b32  	%r19, %r18, -2147483648;
-	mov.b32 	 %r20, %f50;
-	xor.b32  	%r21, %r20, %r19;
-	mov.b32 	 %f53, %r21;
-	bra.uni 	BB81_21;
-
-BB81_20:
-	add.f32 	%f53, %f1, %f3;
-
-BB81_21:
-	cvt.rzi.s32.f32	%r22, %f53;
-	cvt.s32.s8 	%r23, %r22;
-	st.param.b32	[funj_retval0+0], %r23;
+	cvt.s32.s16	%r1, %rs1;
+	cvt.s32.s16	%r2, %rs2;
+	rem.s32 	%r3, %r1, %r2;
+	cvt.s32.s8 	%r4, %r3;
+	st.param.b32	[funj_retval0+0], %r4;
 	ret;
-
-BB81_22:
-	mov.u32 	%r24, 0;
-	bra.uni 	BB81_16;
 }
 
 .visible .func  (.param .b32 funj_retval0) _Z3remIcET_S0_S0_(
@@ -8369,171 +5508,18 @@ BB81_22:
 	.param .b32 _Z3remIcET_S0_S0__param_1
 )
 {
-	.reg .pred 	%p<25>;
 	.reg .s16 	%rs<3>;
-	.reg .s32 	%r<25>;
-	.reg .f32 	%f<54>;
+	.reg .s32 	%r<5>;
 
 
 	ld.param.s8 	%rs1, [_Z3remIcET_S0_S0__param_0];
-	cvt.rn.f32.s16	%f1, %rs1;
-	abs.f32 	%f51, %f1;
 	ld.param.s8 	%rs2, [_Z3remIcET_S0_S0__param_1];
-	cvt.rn.f32.s16	%f3, %rs2;
-	abs.f32 	%f4, %f3;
-	setp.gtu.f32	%p1, %f51, 0f7F800000;
-	setp.gtu.f32	%p2, %f4, 0f7F800000;
-	or.pred  	%p3, %p1, %p2;
-	@%p3 bra 	BB82_20;
-
-	setp.eq.f32	%p4, %f51, 0f7F800000;
-	setp.eq.f32	%p5, %f4, 0f00000000;
-	or.pred  	%p6, %p4, %p5;
-	@!%p6 bra 	BB82_3;
-	bra.uni 	BB82_2;
-
-BB82_2:
-	mov.f32 	%f53, 0f7FFFFFFF;
-	bra.uni 	BB82_21;
-
-BB82_3:
-	setp.ge.f32	%p7, %f51, %f4;
-	@%p7 bra 	BB82_5;
-
-	mov.u32 	%r24, 0;
-	bra.uni 	BB82_16;
-
-BB82_5:
-	lg2.approx.f32 	%f23, %f51;
-	cvt.rzi.s32.f32	%r5, %f23;
-	lg2.approx.f32 	%f24, %f4;
-	cvt.rzi.s32.f32	%r6, %f24;
-	sub.s32 	%r1, %r5, %r6;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p8, %f5, 0f00000000;
-	setp.eq.f32	%p9, %f5, 0f7F800000;
-	or.pred  	%p10, %p8, %p9;
-	setp.eq.s32	%p11, %r5, %r6;
-	or.pred  	%p12, %p10, %p11;
-	@%p12 bra 	BB82_11;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p13, %r2, 126;
-	@%p13 bra 	BB82_10;
-
-	setp.lt.s32	%p14, %r2, 252;
-	@%p14 bra 	BB82_9;
-
-	shr.s32 	%r7, %r1, 31;
-	shr.u32 	%r8, %r7, 30;
-	add.s32 	%r9, %r1, %r8;
-	shr.s32 	%r10, %r9, 2;
-	cvt.rn.f32.s32	%f26, %r10;
-	// inline asm
-	ex2.approx.ftz.f32 %f25,%f26;
-	// inline asm
-	mul.f32 	%f29, %f4, %f25;
-	mul.f32 	%f30, %f29, %f25;
-	mul.f32 	%f31, %f30, %f25;
-	mad.lo.s32 	%r11, %r10, -3, %r1;
-	cvt.rn.f32.s32	%f28, %r11;
-	// inline asm
-	ex2.approx.ftz.f32 %f27,%f28;
-	// inline asm
-	mul.f32 	%f44, %f31, %f27;
-	bra.uni 	BB82_12;
-
-BB82_9:
-	shr.u32 	%r12, %r1, 31;
-	add.s32 	%r13, %r1, %r12;
-	shr.s32 	%r14, %r13, 1;
-	cvt.rn.f32.s32	%f33, %r14;
-	// inline asm
-	ex2.approx.ftz.f32 %f32,%f33;
-	// inline asm
-	mul.f32 	%f36, %f4, %f32;
-	sub.s32 	%r15, %r1, %r14;
-	cvt.rn.f32.s32	%f35, %r15;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f36, %f34;
-	bra.uni 	BB82_12;
-
-BB82_10:
-	cvt.rn.f32.s32	%f38, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f37,%f38;
-	// inline asm
-	mul.f32 	%f44, %f4, %f37;
-	bra.uni 	BB82_12;
-
-BB82_11:
-	setp.leu.f32	%p15, %f5, 0f00000000;
-	add.f32 	%f39, %f4, %f4;
-	selp.f32	%f44, %f39, %f4, %p15;
-
-BB82_12:
-	mul.f32 	%f40, %f51, 0f3F000000;
-	setp.gtu.f32	%p16, %f44, %f40;
-	add.f32 	%f41, %f44, %f44;
-	selp.f32	%f45, %f44, %f41, %p16;
-	setp.ge.f32	%p17, %f45, %f4;
-	@%p17 bra 	BB82_13;
-	bra.uni 	BB82_22;
-
-BB82_13:
-	mov.f32 	%f52, %f51;
-
-BB82_14:
-	mov.f32 	%f12, %f52;
-	mov.f32 	%f13, %f45;
-	sub.f32 	%f42, %f12, %f13;
-	setp.ltu.f32	%p18, %f12, %f13;
-	selp.f32	%f52, %f12, %f42, %p18;
-	mul.f32 	%f45, %f13, 0f3F000000;
-	setp.ge.f32	%p19, %f45, %f4;
-	@%p19 bra 	BB82_14;
-
-	setp.ge.f32	%p20, %f12, %f13;
-	selp.u32	%r24, 1, 0, %p20;
-	mov.f32 	%f51, %f52;
-
-BB82_16:
-	mov.f32 	%f50, %f51;
-	add.f32 	%f17, %f50, %f50;
-	setp.gt.f32	%p21, %f17, %f4;
-	@%p21 bra 	BB82_18;
-
-	setp.eq.f32	%p22, %f17, %f4;
-	setp.ne.s32	%p23, %r24, 0;
-	and.pred  	%p24, %p22, %p23;
-	@!%p24 bra 	BB82_19;
-	bra.uni 	BB82_18;
-
-BB82_18:
-	sub.f32 	%f50, %f50, %f4;
-
-BB82_19:
-	mov.b32 	 %r18, %f1;
-	and.b32  	%r19, %r18, -2147483648;
-	mov.b32 	 %r20, %f50;
-	xor.b32  	%r21, %r20, %r19;
-	mov.b32 	 %f53, %r21;
-	bra.uni 	BB82_21;
-
-BB82_20:
-	add.f32 	%f53, %f1, %f3;
-
-BB82_21:
-	cvt.rzi.s32.f32	%r22, %f53;
-	cvt.s32.s8 	%r23, %r22;
-	st.param.b32	[funj_retval0+0], %r23;
+	cvt.s32.s16	%r1, %rs1;
+	cvt.s32.s16	%r2, %rs2;
+	rem.s32 	%r3, %r1, %r2;
+	cvt.s32.s8 	%r4, %r3;
+	st.param.b32	[funj_retval0+0], %r4;
 	ret;
-
-BB82_22:
-	mov.u32 	%r24, 0;
-	bra.uni 	BB82_16;
 }
 
 .visible .func  (.param .b32 funj_retval0) ___remvv(
@@ -8541,171 +5527,16 @@ BB82_22:
 	.param .b32 ___remvv_param_1
 )
 {
-	.reg .pred 	%p<25>;
-	.reg .s16 	%rs<3>;
-	.reg .s32 	%r<25>;
-	.reg .f32 	%f<54>;
+	.reg .s16 	%rs<4>;
+	.reg .s32 	%r<2>;
 
 
-	ld.param.u8 	%rs1, [___remvv_param_0];
-	cvt.rn.f32.u16	%f1, %rs1;
-	abs.f32 	%f51, %f1;
-	ld.param.u8 	%rs2, [___remvv_param_1];
-	cvt.rn.f32.u16	%f3, %rs2;
-	abs.f32 	%f4, %f3;
-	setp.gtu.f32	%p1, %f51, 0f7F800000;
-	setp.gtu.f32	%p2, %f4, 0f7F800000;
-	or.pred  	%p3, %p1, %p2;
-	@%p3 bra 	BB83_20;
-
-	setp.eq.f32	%p4, %f51, 0f7F800000;
-	setp.eq.f32	%p5, %f4, 0f00000000;
-	or.pred  	%p6, %p4, %p5;
-	@!%p6 bra 	BB83_3;
-	bra.uni 	BB83_2;
-
-BB83_2:
-	mov.f32 	%f53, 0f7FFFFFFF;
-	bra.uni 	BB83_21;
-
-BB83_3:
-	setp.ge.f32	%p7, %f51, %f4;
-	@%p7 bra 	BB83_5;
-
-	mov.u32 	%r24, 0;
-	bra.uni 	BB83_16;
-
-BB83_5:
-	lg2.approx.f32 	%f23, %f51;
-	cvt.rzi.s32.f32	%r5, %f23;
-	lg2.approx.f32 	%f24, %f4;
-	cvt.rzi.s32.f32	%r6, %f24;
-	sub.s32 	%r1, %r5, %r6;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p8, %f5, 0f00000000;
-	setp.eq.f32	%p9, %f5, 0f7F800000;
-	or.pred  	%p10, %p8, %p9;
-	setp.eq.s32	%p11, %r5, %r6;
-	or.pred  	%p12, %p10, %p11;
-	@%p12 bra 	BB83_11;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p13, %r2, 126;
-	@%p13 bra 	BB83_10;
-
-	setp.lt.s32	%p14, %r2, 252;
-	@%p14 bra 	BB83_9;
-
-	shr.s32 	%r7, %r1, 31;
-	shr.u32 	%r8, %r7, 30;
-	add.s32 	%r9, %r1, %r8;
-	shr.s32 	%r10, %r9, 2;
-	cvt.rn.f32.s32	%f26, %r10;
-	// inline asm
-	ex2.approx.ftz.f32 %f25,%f26;
-	// inline asm
-	mul.f32 	%f29, %f4, %f25;
-	mul.f32 	%f30, %f29, %f25;
-	mul.f32 	%f31, %f30, %f25;
-	mad.lo.s32 	%r11, %r10, -3, %r1;
-	cvt.rn.f32.s32	%f28, %r11;
-	// inline asm
-	ex2.approx.ftz.f32 %f27,%f28;
-	// inline asm
-	mul.f32 	%f44, %f31, %f27;
-	bra.uni 	BB83_12;
-
-BB83_9:
-	shr.u32 	%r12, %r1, 31;
-	add.s32 	%r13, %r1, %r12;
-	shr.s32 	%r14, %r13, 1;
-	cvt.rn.f32.s32	%f33, %r14;
-	// inline asm
-	ex2.approx.ftz.f32 %f32,%f33;
-	// inline asm
-	mul.f32 	%f36, %f4, %f32;
-	sub.s32 	%r15, %r1, %r14;
-	cvt.rn.f32.s32	%f35, %r15;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f36, %f34;
-	bra.uni 	BB83_12;
-
-BB83_10:
-	cvt.rn.f32.s32	%f38, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f37,%f38;
-	// inline asm
-	mul.f32 	%f44, %f4, %f37;
-	bra.uni 	BB83_12;
-
-BB83_11:
-	setp.leu.f32	%p15, %f5, 0f00000000;
-	add.f32 	%f39, %f4, %f4;
-	selp.f32	%f44, %f39, %f4, %p15;
-
-BB83_12:
-	mul.f32 	%f40, %f51, 0f3F000000;
-	setp.gtu.f32	%p16, %f44, %f40;
-	add.f32 	%f41, %f44, %f44;
-	selp.f32	%f45, %f44, %f41, %p16;
-	setp.ge.f32	%p17, %f45, %f4;
-	@%p17 bra 	BB83_13;
-	bra.uni 	BB83_22;
-
-BB83_13:
-	mov.f32 	%f52, %f51;
-
-BB83_14:
-	mov.f32 	%f12, %f52;
-	mov.f32 	%f13, %f45;
-	sub.f32 	%f42, %f12, %f13;
-	setp.ltu.f32	%p18, %f12, %f13;
-	selp.f32	%f52, %f12, %f42, %p18;
-	mul.f32 	%f45, %f13, 0f3F000000;
-	setp.ge.f32	%p19, %f45, %f4;
-	@%p19 bra 	BB83_14;
-
-	setp.ge.f32	%p20, %f12, %f13;
-	selp.u32	%r24, 1, 0, %p20;
-	mov.f32 	%f51, %f52;
-
-BB83_16:
-	mov.f32 	%f50, %f51;
-	add.f32 	%f17, %f50, %f50;
-	setp.gt.f32	%p21, %f17, %f4;
-	@%p21 bra 	BB83_18;
-
-	setp.eq.f32	%p22, %f17, %f4;
-	setp.ne.s32	%p23, %r24, 0;
-	and.pred  	%p24, %p22, %p23;
-	@!%p24 bra 	BB83_19;
-	bra.uni 	BB83_18;
-
-BB83_18:
-	sub.f32 	%f50, %f50, %f4;
-
-BB83_19:
-	mov.b32 	 %r18, %f1;
-	and.b32  	%r19, %r18, -2147483648;
-	mov.b32 	 %r20, %f50;
-	xor.b32  	%r21, %r20, %r19;
-	mov.b32 	 %f53, %r21;
-	bra.uni 	BB83_21;
-
-BB83_20:
-	add.f32 	%f53, %f1, %f3;
-
-BB83_21:
-	cvt.rzi.u32.f32	%r22, %f53;
-	and.b32  	%r23, %r22, 255;
-	st.param.b32	[funj_retval0+0], %r23;
+	ld.param.u8 	%rs1, [___remvv_param_1];
+	ld.param.u8 	%rs2, [___remvv_param_0];
+	rem.u16 	%rs3, %rs2, %rs1;
+	cvt.u32.u16	%r1, %rs3;
+	st.param.b32	[funj_retval0+0], %r1;
 	ret;
-
-BB83_22:
-	mov.u32 	%r24, 0;
-	bra.uni 	BB83_16;
 }
 
 .visible .func  (.param .b32 funj_retval0) _Z3remIhET_S0_S0_(
@@ -8713,171 +5544,16 @@ BB83_22:
 	.param .b32 _Z3remIhET_S0_S0__param_1
 )
 {
-	.reg .pred 	%p<25>;
-	.reg .s16 	%rs<3>;
-	.reg .s32 	%r<25>;
-	.reg .f32 	%f<54>;
+	.reg .s16 	%rs<4>;
+	.reg .s32 	%r<2>;
 
 
-	ld.param.u8 	%rs1, [_Z3remIhET_S0_S0__param_0];
-	cvt.rn.f32.u16	%f1, %rs1;
-	abs.f32 	%f51, %f1;
-	ld.param.u8 	%rs2, [_Z3remIhET_S0_S0__param_1];
-	cvt.rn.f32.u16	%f3, %rs2;
-	abs.f32 	%f4, %f3;
-	setp.gtu.f32	%p1, %f51, 0f7F800000;
-	setp.gtu.f32	%p2, %f4, 0f7F800000;
-	or.pred  	%p3, %p1, %p2;
-	@%p3 bra 	BB84_20;
-
-	setp.eq.f32	%p4, %f51, 0f7F800000;
-	setp.eq.f32	%p5, %f4, 0f00000000;
-	or.pred  	%p6, %p4, %p5;
-	@!%p6 bra 	BB84_3;
-	bra.uni 	BB84_2;
-
-BB84_2:
-	mov.f32 	%f53, 0f7FFFFFFF;
-	bra.uni 	BB84_21;
-
-BB84_3:
-	setp.ge.f32	%p7, %f51, %f4;
-	@%p7 bra 	BB84_5;
-
-	mov.u32 	%r24, 0;
-	bra.uni 	BB84_16;
-
-BB84_5:
-	lg2.approx.f32 	%f23, %f51;
-	cvt.rzi.s32.f32	%r5, %f23;
-	lg2.approx.f32 	%f24, %f4;
-	cvt.rzi.s32.f32	%r6, %f24;
-	sub.s32 	%r1, %r5, %r6;
-	abs.f32 	%f5, %f4;
-	setp.eq.f32	%p8, %f5, 0f00000000;
-	setp.eq.f32	%p9, %f5, 0f7F800000;
-	or.pred  	%p10, %p8, %p9;
-	setp.eq.s32	%p11, %r5, %r6;
-	or.pred  	%p12, %p10, %p11;
-	@%p12 bra 	BB84_11;
-
-	abs.s32 	%r2, %r1;
-	setp.lt.s32	%p13, %r2, 126;
-	@%p13 bra 	BB84_10;
-
-	setp.lt.s32	%p14, %r2, 252;
-	@%p14 bra 	BB84_9;
-
-	shr.s32 	%r7, %r1, 31;
-	shr.u32 	%r8, %r7, 30;
-	add.s32 	%r9, %r1, %r8;
-	shr.s32 	%r10, %r9, 2;
-	cvt.rn.f32.s32	%f26, %r10;
-	// inline asm
-	ex2.approx.ftz.f32 %f25,%f26;
-	// inline asm
-	mul.f32 	%f29, %f4, %f25;
-	mul.f32 	%f30, %f29, %f25;
-	mul.f32 	%f31, %f30, %f25;
-	mad.lo.s32 	%r11, %r10, -3, %r1;
-	cvt.rn.f32.s32	%f28, %r11;
-	// inline asm
-	ex2.approx.ftz.f32 %f27,%f28;
-	// inline asm
-	mul.f32 	%f44, %f31, %f27;
-	bra.uni 	BB84_12;
-
-BB84_9:
-	shr.u32 	%r12, %r1, 31;
-	add.s32 	%r13, %r1, %r12;
-	shr.s32 	%r14, %r13, 1;
-	cvt.rn.f32.s32	%f33, %r14;
-	// inline asm
-	ex2.approx.ftz.f32 %f32,%f33;
-	// inline asm
-	mul.f32 	%f36, %f4, %f32;
-	sub.s32 	%r15, %r1, %r14;
-	cvt.rn.f32.s32	%f35, %r15;
-	// inline asm
-	ex2.approx.ftz.f32 %f34,%f35;
-	// inline asm
-	mul.f32 	%f44, %f36, %f34;
-	bra.uni 	BB84_12;
-
-BB84_10:
-	cvt.rn.f32.s32	%f38, %r1;
-	// inline asm
-	ex2.approx.ftz.f32 %f37,%f38;
-	// inline asm
-	mul.f32 	%f44, %f4, %f37;
-	bra.uni 	BB84_12;
-
-BB84_11:
-	setp.leu.f32	%p15, %f5, 0f00000000;
-	add.f32 	%f39, %f4, %f4;
-	selp.f32	%f44, %f39, %f4, %p15;
-
-BB84_12:
-	mul.f32 	%f40, %f51, 0f3F000000;
-	setp.gtu.f32	%p16, %f44, %f40;
-	add.f32 	%f41, %f44, %f44;
-	selp.f32	%f45, %f44, %f41, %p16;
-	setp.ge.f32	%p17, %f45, %f4;
-	@%p17 bra 	BB84_13;
-	bra.uni 	BB84_22;
-
-BB84_13:
-	mov.f32 	%f52, %f51;
-
-BB84_14:
-	mov.f32 	%f12, %f52;
-	mov.f32 	%f13, %f45;
-	sub.f32 	%f42, %f12, %f13;
-	setp.ltu.f32	%p18, %f12, %f13;
-	selp.f32	%f52, %f12, %f42, %p18;
-	mul.f32 	%f45, %f13, 0f3F000000;
-	setp.ge.f32	%p19, %f45, %f4;
-	@%p19 bra 	BB84_14;
-
-	setp.ge.f32	%p20, %f12, %f13;
-	selp.u32	%r24, 1, 0, %p20;
-	mov.f32 	%f51, %f52;
-
-BB84_16:
-	mov.f32 	%f50, %f51;
-	add.f32 	%f17, %f50, %f50;
-	setp.gt.f32	%p21, %f17, %f4;
-	@%p21 bra 	BB84_18;
-
-	setp.eq.f32	%p22, %f17, %f4;
-	setp.ne.s32	%p23, %r24, 0;
-	and.pred  	%p24, %p22, %p23;
-	@!%p24 bra 	BB84_19;
-	bra.uni 	BB84_18;
-
-BB84_18:
-	sub.f32 	%f50, %f50, %f4;
-
-BB84_19:
-	mov.b32 	 %r18, %f1;
-	and.b32  	%r19, %r18, -2147483648;
-	mov.b32 	 %r20, %f50;
-	xor.b32  	%r21, %r20, %r19;
-	mov.b32 	 %f53, %r21;
-	bra.uni 	BB84_21;
-
-BB84_20:
-	add.f32 	%f53, %f1, %f3;
-
-BB84_21:
-	cvt.rzi.u32.f32	%r22, %f53;
-	and.b32  	%r23, %r22, 255;
-	st.param.b32	[funj_retval0+0], %r23;
+	ld.param.u8 	%rs1, [_Z3remIhET_S0_S0__param_1];
+	ld.param.u8 	%rs2, [_Z3remIhET_S0_S0__param_0];
+	rem.u16 	%rs3, %rs2, %rs1;
+	cvt.u32.u16	%r1, %rs3;
+	st.param.b32	[funj_retval0+0], %r1;
 	ret;
-
-BB84_22:
-	mov.u32 	%r24, 0;
-	bra.uni 	BB84_16;
 }
 
 .visible .func  (.param .b64 funj_retval0) ___remdd(
