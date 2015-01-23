@@ -15,8 +15,10 @@
 CAST(float, S)
 CAST(double, D)
 CAST(int, I)
+CAST(intl, X)
 CAST(uint, U)
 CAST(uchar, V)
+CAST(uintl, Y)
 
 CAST_BASIC_BOOL(___mkJ, char, float)
 CAST_BASIC_BOOL(___mkJ, char, double)
@@ -24,6 +26,8 @@ CAST_BASIC_BOOL(___mkJ, char, int)
 CAST_BASIC_BOOL(___mkJ, char, uint)
 CAST_BASIC_BOOL(___mkJ, char, char)
 CAST_BASIC_BOOL(___mkJ, char, uchar)
+CAST_BASIC_BOOL(___mkJ, char, intl)
+CAST_BASIC_BOOL(___mkJ, char, uintl)
 
 #define CPLX_BASIC(FN, To, Tr, Ti)              \
     __device__ To FN(Ti in)                     \
