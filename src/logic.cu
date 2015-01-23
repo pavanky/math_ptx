@@ -14,6 +14,8 @@
     LOGIC_BASIC(fn, op, uint)                       \
     LOGIC_BASIC(fn, op, char)                       \
     LOGIC_BASIC(fn, op, uchar)                      \
+    LOGIC_BASIC(fn, op, intl)                       \
+    LOGIC_BASIC(fn, op, uintl)                      \
                                                     \
     __device__ bool ___##fn(cfloat a, cfloat b)     \
     {                                               \
@@ -62,6 +64,8 @@ NOT_FN(int)
 NOT_FN(uint)
 NOT_FN(char)
 NOT_FN(uchar)
+NOT_FN(intl)
+NOT_FN(uintl)
 
 #define BIT_FN(T)                                               \
     __device__ T ___bitand (T lhs, T rhs) { return lhs & rhs; } \
@@ -70,8 +74,10 @@ NOT_FN(uchar)
 
 BIT_FN(int)
 BIT_FN(char)
+BIT_FN(intl)
 BIT_FN(uchar)
 BIT_FN(uint)
+BIT_FN(uintl)
 
 __device__ char ___isNaN(float in) { return isnan(in); }
 __device__ char ___isINF(float in) { return isinf(in); }

@@ -107,6 +107,36 @@
 	ret;
 }
 
+.visible .func  (.param .b64 funj_retval0) ___addxx(
+	.param .b64 ___addxx_param_0,
+	.param .b64 ___addxx_param_1
+)
+{
+	.reg .s64 	%rd<4>;
+
+
+	ld.param.u64 	%rd1, [___addxx_param_0];
+	ld.param.u64 	%rd2, [___addxx_param_1];
+	add.s64 	%rd3, %rd2, %rd1;
+	st.param.b64	[funj_retval0+0], %rd3;
+	ret;
+}
+
+.visible .func  (.param .b64 funj_retval0) ___addyy(
+	.param .b64 ___addyy_param_0,
+	.param .b64 ___addyy_param_1
+)
+{
+	.reg .s64 	%rd<4>;
+
+
+	ld.param.u64 	%rd1, [___addyy_param_0];
+	ld.param.u64 	%rd2, [___addyy_param_1];
+	add.s64 	%rd3, %rd2, %rd1;
+	st.param.b64	[funj_retval0+0], %rd3;
+	ret;
+}
+
 .visible .func  (.param .align 8 .b8 funj_retval0[8]) ___addcc(
 	.param .align 8 .b8 ___addcc_param_0[8],
 	.param .align 8 .b8 ___addcc_param_1[8]
@@ -243,6 +273,36 @@
 	ret;
 }
 
+.visible .func  (.param .b64 funj_retval0) ___subxx(
+	.param .b64 ___subxx_param_0,
+	.param .b64 ___subxx_param_1
+)
+{
+	.reg .s64 	%rd<4>;
+
+
+	ld.param.u64 	%rd1, [___subxx_param_0];
+	ld.param.u64 	%rd2, [___subxx_param_1];
+	sub.s64 	%rd3, %rd1, %rd2;
+	st.param.b64	[funj_retval0+0], %rd3;
+	ret;
+}
+
+.visible .func  (.param .b64 funj_retval0) ___subyy(
+	.param .b64 ___subyy_param_0,
+	.param .b64 ___subyy_param_1
+)
+{
+	.reg .s64 	%rd<4>;
+
+
+	ld.param.u64 	%rd1, [___subyy_param_0];
+	ld.param.u64 	%rd2, [___subyy_param_1];
+	sub.s64 	%rd3, %rd1, %rd2;
+	st.param.b64	[funj_retval0+0], %rd3;
+	ret;
+}
+
 .visible .func  (.param .align 8 .b8 funj_retval0[8]) ___subcc(
 	.param .align 8 .b8 ___subcc_param_0[8],
 	.param .align 8 .b8 ___subcc_param_1[8]
@@ -376,6 +436,36 @@
 	mul.lo.s32 	%r3, %r2, %r1;
 	and.b32  	%r4, %r3, 255;
 	st.param.b32	[funj_retval0+0], %r4;
+	ret;
+}
+
+.visible .func  (.param .b64 funj_retval0) ___mulxx(
+	.param .b64 ___mulxx_param_0,
+	.param .b64 ___mulxx_param_1
+)
+{
+	.reg .s64 	%rd<4>;
+
+
+	ld.param.u64 	%rd1, [___mulxx_param_0];
+	ld.param.u64 	%rd2, [___mulxx_param_1];
+	mul.lo.s64 	%rd3, %rd2, %rd1;
+	st.param.b64	[funj_retval0+0], %rd3;
+	ret;
+}
+
+.visible .func  (.param .b64 funj_retval0) ___mulyy(
+	.param .b64 ___mulyy_param_0,
+	.param .b64 ___mulyy_param_1
+)
+{
+	.reg .s64 	%rd<4>;
+
+
+	ld.param.u64 	%rd1, [___mulyy_param_0];
+	ld.param.u64 	%rd2, [___mulyy_param_1];
+	mul.lo.s64 	%rd3, %rd2, %rd1;
+	st.param.b64	[funj_retval0+0], %rd3;
 	ret;
 }
 
@@ -516,6 +606,36 @@
 	div.u16 	%rs3, %rs2, %rs1;
 	cvt.u32.u16	%r1, %rs3;
 	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b64 funj_retval0) ___divxx(
+	.param .b64 ___divxx_param_0,
+	.param .b64 ___divxx_param_1
+)
+{
+	.reg .s64 	%rd<4>;
+
+
+	ld.param.u64 	%rd1, [___divxx_param_0];
+	ld.param.u64 	%rd2, [___divxx_param_1];
+	div.s64 	%rd3, %rd1, %rd2;
+	st.param.b64	[funj_retval0+0], %rd3;
+	ret;
+}
+
+.visible .func  (.param .b64 funj_retval0) ___divyy(
+	.param .b64 ___divyy_param_0,
+	.param .b64 ___divyy_param_1
+)
+{
+	.reg .s64 	%rd<4>;
+
+
+	ld.param.u64 	%rd1, [___divyy_param_0];
+	ld.param.u64 	%rd2, [___divyy_param_1];
+	div.u64 	%rd3, %rd1, %rd2;
+	st.param.b64	[funj_retval0+0], %rd3;
 	ret;
 }
 
