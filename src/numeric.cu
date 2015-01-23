@@ -81,6 +81,8 @@ __device__ double mod(double a, double b) { return fmod(a, b); }
     MATH2_BASIC(fn, float)                          \
     MATH2_BASIC(fn, int)                            \
     MATH2_BASIC(fn, uint)                           \
+    MATH2_BASIC(fn, intl)                           \
+    MATH2_BASIC(fn, uintl)                          \
     MATH2_BASIC(fn, char)                           \
     MATH2_BASIC(fn, uchar)                          \
     __device__ double ___##fn(double a, double b)   \
