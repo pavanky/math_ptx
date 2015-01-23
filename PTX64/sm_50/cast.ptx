@@ -158,6 +158,34 @@
 	ret;
 }
 
+.visible .func  (.param .b32 funj_retval0) ___mkSx(
+	.param .b64 ___mkSx_param_0
+)
+{
+	.reg .f32 	%f<2>;
+	.reg .s64 	%rd<2>;
+
+
+	ld.param.u64 	%rd1, [___mkSx_param_0];
+	cvt.rn.f32.s64	%f1, %rd1;
+	st.param.f32	[funj_retval0+0], %f1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___mkSy(
+	.param .b64 ___mkSy_param_0
+)
+{
+	.reg .f32 	%f<2>;
+	.reg .s64 	%rd<2>;
+
+
+	ld.param.u64 	%rd1, [___mkSy_param_0];
+	cvt.rn.f32.u64	%f1, %rd1;
+	st.param.f32	[funj_retval0+0], %f1;
+	ret;
+}
+
 .visible .func  (.param .b64 funj_retval0) ___mkDs(
 	.param .b32 ___mkDs_param_0
 )
@@ -236,6 +264,34 @@
 
 	ld.param.u8 	%rs1, [___mkDv_param_0];
 	cvt.rn.f64.u16	%fd1, %rs1;
+	st.param.f64	[funj_retval0+0], %fd1;
+	ret;
+}
+
+.visible .func  (.param .b64 funj_retval0) ___mkDx(
+	.param .b64 ___mkDx_param_0
+)
+{
+	.reg .s64 	%rd<2>;
+	.reg .f64 	%fd<2>;
+
+
+	ld.param.u64 	%rd1, [___mkDx_param_0];
+	cvt.rn.f64.s64	%fd1, %rd1;
+	st.param.f64	[funj_retval0+0], %fd1;
+	ret;
+}
+
+.visible .func  (.param .b64 funj_retval0) ___mkDy(
+	.param .b64 ___mkDy_param_0
+)
+{
+	.reg .s64 	%rd<2>;
+	.reg .f64 	%fd<2>;
+
+
+	ld.param.u64 	%rd1, [___mkDy_param_0];
+	cvt.rn.f64.u64	%fd1, %rd1;
 	st.param.f64	[funj_retval0+0], %fd1;
 	ret;
 }
@@ -320,6 +376,30 @@
 	ret;
 }
 
+.visible .func  (.param .b32 funj_retval0) ___mkIx(
+	.param .b64 ___mkIx_param_0
+)
+{
+	.reg .s32 	%r<2>;
+
+
+	ld.param.u32 	%r1, [___mkIx_param_0];
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___mkIy(
+	.param .b64 ___mkIy_param_0
+)
+{
+	.reg .s32 	%r<2>;
+
+
+	ld.param.u32 	%r1, [___mkIy_param_0];
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
 .visible .func  (.param .b64 funj_retval0) ___mkXs(
 	.param .b32 ___mkXs_param_0
 )
@@ -400,6 +480,30 @@
 	ret;
 }
 
+.visible .func  (.param .b64 funj_retval0) ___mkXx(
+	.param .b64 ___mkXx_param_0
+)
+{
+	.reg .s64 	%rd<2>;
+
+
+	ld.param.u64 	%rd1, [___mkXx_param_0];
+	st.param.b64	[funj_retval0+0], %rd1;
+	ret;
+}
+
+.visible .func  (.param .b64 funj_retval0) ___mkXy(
+	.param .b64 ___mkXy_param_0
+)
+{
+	.reg .s64 	%rd<2>;
+
+
+	ld.param.u64 	%rd1, [___mkXy_param_0];
+	st.param.b64	[funj_retval0+0], %rd1;
+	ret;
+}
+
 .visible .func  (.param .b32 funj_retval0) ___mkUs(
 	.param .b32 ___mkUs_param_0
 )
@@ -476,6 +580,30 @@
 
 	ld.param.u8 	%rs1, [___mkUv_param_0];
 	cvt.u32.u16	%r1, %rs1;
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___mkUx(
+	.param .b64 ___mkUx_param_0
+)
+{
+	.reg .s32 	%r<2>;
+
+
+	ld.param.u32 	%r1, [___mkUx_param_0];
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___mkUy(
+	.param .b64 ___mkUy_param_0
+)
+{
+	.reg .s32 	%r<2>;
+
+
+	ld.param.u32 	%r1, [___mkUy_param_0];
 	st.param.b32	[funj_retval0+0], %r1;
 	ret;
 }
@@ -563,6 +691,30 @@
 	ret;
 }
 
+.visible .func  (.param .b32 funj_retval0) ___mkVx(
+	.param .b64 ___mkVx_param_0
+)
+{
+	.reg .s32 	%r<2>;
+
+
+	ld.param.u8 	%r1, [___mkVx_param_0];
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) ___mkVy(
+	.param .b64 ___mkVy_param_0
+)
+{
+	.reg .s32 	%r<2>;
+
+
+	ld.param.u8 	%r1, [___mkVy_param_0];
+	st.param.b32	[funj_retval0+0], %r1;
+	ret;
+}
+
 .visible .func  (.param .b64 funj_retval0) ___mkYs(
 	.param .b32 ___mkYs_param_0
 )
@@ -639,6 +791,30 @@
 
 	ld.param.u8 	%rs1, [___mkYv_param_0];
 	cvt.u64.u16	%rd1, %rs1;
+	st.param.b64	[funj_retval0+0], %rd1;
+	ret;
+}
+
+.visible .func  (.param .b64 funj_retval0) ___mkYx(
+	.param .b64 ___mkYx_param_0
+)
+{
+	.reg .s64 	%rd<2>;
+
+
+	ld.param.u64 	%rd1, [___mkYx_param_0];
+	st.param.b64	[funj_retval0+0], %rd1;
+	ret;
+}
+
+.visible .func  (.param .b64 funj_retval0) ___mkYy(
+	.param .b64 ___mkYy_param_0
+)
+{
+	.reg .s64 	%rd<2>;
+
+
+	ld.param.u64 	%rd1, [___mkYy_param_0];
 	st.param.b64	[funj_retval0+0], %rd1;
 	ret;
 }

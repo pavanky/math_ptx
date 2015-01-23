@@ -11,6 +11,8 @@
     CAST_BASIC(___mk##X, T, uint)               \
     CAST_BASIC(___mk##X, T, char)               \
     CAST_BASIC(___mk##X, T, uchar)              \
+    CAST_BASIC(___mk##X, T, intl)               \
+    CAST_BASIC(___mk##X, T, uintl)              \
 
 CAST(float, S)
 CAST(double, D)
