@@ -48,3 +48,6 @@ sed -i 's/7double2/z/g' $ptx
 
 # Fixing a false positive
 sed -i 's/erss/erfs/g' $ptx
+
+# Why did this pop out now?
+sed -i 's/_Z12___bit/___bit/g' $ptx
