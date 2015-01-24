@@ -1837,6 +1837,36 @@ BB80_3:
 	ret;
 }
 
+.visible .func  (.param .b32 funj_retval0) _Z12___bitshiftlii(
+	.param .b32 _Z12___bitshiftlii_param_0,
+	.param .b32 _Z12___bitshiftlii_param_1
+)
+{
+	.reg .s32 	%r<4>;
+
+
+	ld.param.u32 	%r1, [_Z12___bitshiftlii_param_0];
+	ld.param.u32 	%r2, [_Z12___bitshiftlii_param_1];
+	shl.b32 	%r3, %r1, %r2;
+	st.param.b32	[funj_retval0+0], %r3;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) _Z12___bitshiftrii(
+	.param .b32 _Z12___bitshiftrii_param_0,
+	.param .b32 _Z12___bitshiftrii_param_1
+)
+{
+	.reg .s32 	%r<4>;
+
+
+	ld.param.u32 	%r1, [_Z12___bitshiftrii_param_0];
+	ld.param.u32 	%r2, [_Z12___bitshiftrii_param_1];
+	shr.s32 	%r3, %r1, %r2;
+	st.param.b32	[funj_retval0+0], %r3;
+	ret;
+}
+
 .visible .func  (.param .b32 funj_retval0) ___bitandjj(
 	.param .b32 ___bitandjj_param_0,
 	.param .b32 ___bitandjj_param_1
@@ -1891,6 +1921,43 @@ BB80_3:
 	ret;
 }
 
+.visible .func  (.param .b32 funj_retval0) _Z12___bitshiftljj(
+	.param .b32 _Z12___bitshiftljj_param_0,
+	.param .b32 _Z12___bitshiftljj_param_1
+)
+{
+	.reg .s16 	%rs<3>;
+	.reg .s32 	%r<5>;
+
+
+	ld.param.s8 	%rs1, [_Z12___bitshiftljj_param_0];
+	ld.param.s8 	%rs2, [_Z12___bitshiftljj_param_1];
+	cvt.s32.s16	%r1, %rs1;
+	cvt.s32.s16	%r2, %rs2;
+	shl.b32 	%r3, %r1, %r2;
+	cvt.s32.s8 	%r4, %r3;
+	st.param.b32	[funj_retval0+0], %r4;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) _Z12___bitshiftrjj(
+	.param .b32 _Z12___bitshiftrjj_param_0,
+	.param .b32 _Z12___bitshiftrjj_param_1
+)
+{
+	.reg .s16 	%rs<3>;
+	.reg .s32 	%r<4>;
+
+
+	ld.param.s8 	%rs1, [_Z12___bitshiftrjj_param_0];
+	ld.param.s8 	%rs2, [_Z12___bitshiftrjj_param_1];
+	cvt.s32.s16	%r1, %rs1;
+	cvt.s32.s16	%r2, %rs2;
+	shr.s32 	%r3, %r1, %r2;
+	st.param.b32	[funj_retval0+0], %r3;
+	ret;
+}
+
 .visible .func  (.param .b64 funj_retval0) ___bitandxx(
 	.param .b64 ___bitandxx_param_0,
 	.param .b64 ___bitandxx_param_1
@@ -1933,6 +2000,38 @@ BB80_3:
 	ld.param.u64 	%rd2, [___bitxorxx_param_1];
 	xor.b64  	%rd3, %rd2, %rd1;
 	st.param.b64	[funj_retval0+0], %rd3;
+	ret;
+}
+
+.visible .func  (.param .b64 funj_retval0) _Z12___bitshiftlxx(
+	.param .b64 _Z12___bitshiftlxx_param_0,
+	.param .b64 _Z12___bitshiftlxx_param_1
+)
+{
+	.reg .s32 	%r<2>;
+	.reg .s64 	%rd<3>;
+
+
+	ld.param.u64 	%rd1, [_Z12___bitshiftlxx_param_0];
+	ld.param.u32 	%r1, [_Z12___bitshiftlxx_param_1];
+	shl.b64 	%rd2, %rd1, %r1;
+	st.param.b64	[funj_retval0+0], %rd2;
+	ret;
+}
+
+.visible .func  (.param .b64 funj_retval0) _Z12___bitshiftrxx(
+	.param .b64 _Z12___bitshiftrxx_param_0,
+	.param .b64 _Z12___bitshiftrxx_param_1
+)
+{
+	.reg .s32 	%r<2>;
+	.reg .s64 	%rd<3>;
+
+
+	ld.param.u64 	%rd1, [_Z12___bitshiftrxx_param_0];
+	ld.param.u32 	%r1, [_Z12___bitshiftrxx_param_1];
+	shr.s64 	%rd2, %rd1, %r1;
+	st.param.b64	[funj_retval0+0], %rd2;
 	ret;
 }
 
@@ -1987,6 +2086,44 @@ BB80_3:
 	ret;
 }
 
+.visible .func  (.param .b32 funj_retval0) _Z12___bitshiftlvv(
+	.param .b32 _Z12___bitshiftlvv_param_0,
+	.param .b32 _Z12___bitshiftlvv_param_1
+)
+{
+	.reg .s16 	%rs<3>;
+	.reg .s32 	%r<5>;
+
+
+	ld.param.u8 	%rs1, [_Z12___bitshiftlvv_param_0];
+	ld.param.u8 	%rs2, [_Z12___bitshiftlvv_param_1];
+	cvt.u32.u16	%r1, %rs2;
+	cvt.u32.u16	%r2, %rs1;
+	shl.b32 	%r3, %r2, %r1;
+	and.b32  	%r4, %r3, 255;
+	st.param.b32	[funj_retval0+0], %r4;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) _Z12___bitshiftrvv(
+	.param .b32 _Z12___bitshiftrvv_param_0,
+	.param .b32 _Z12___bitshiftrvv_param_1
+)
+{
+	.reg .s16 	%rs<3>;
+	.reg .s32 	%r<5>;
+
+
+	ld.param.u8 	%rs1, [_Z12___bitshiftrvv_param_0];
+	ld.param.u8 	%rs2, [_Z12___bitshiftrvv_param_1];
+	cvt.u32.u16	%r1, %rs2;
+	cvt.u32.u16	%r2, %rs1;
+	shr.u32 	%r3, %r2, %r1;
+	and.b32  	%r4, %r3, 255;
+	st.param.b32	[funj_retval0+0], %r4;
+	ret;
+}
+
 .visible .func  (.param .b32 funj_retval0) ___bitanduu(
 	.param .b32 ___bitanduu_param_0,
 	.param .b32 ___bitanduu_param_1
@@ -2028,6 +2165,36 @@ BB80_3:
 	ld.param.u32 	%r1, [___bitxoruu_param_0];
 	ld.param.u32 	%r2, [___bitxoruu_param_1];
 	xor.b32  	%r3, %r2, %r1;
+	st.param.b32	[funj_retval0+0], %r3;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) _Z12___bitshiftluu(
+	.param .b32 _Z12___bitshiftluu_param_0,
+	.param .b32 _Z12___bitshiftluu_param_1
+)
+{
+	.reg .s32 	%r<4>;
+
+
+	ld.param.u32 	%r1, [_Z12___bitshiftluu_param_0];
+	ld.param.u32 	%r2, [_Z12___bitshiftluu_param_1];
+	shl.b32 	%r3, %r1, %r2;
+	st.param.b32	[funj_retval0+0], %r3;
+	ret;
+}
+
+.visible .func  (.param .b32 funj_retval0) _Z12___bitshiftruu(
+	.param .b32 _Z12___bitshiftruu_param_0,
+	.param .b32 _Z12___bitshiftruu_param_1
+)
+{
+	.reg .s32 	%r<4>;
+
+
+	ld.param.u32 	%r1, [_Z12___bitshiftruu_param_0];
+	ld.param.u32 	%r2, [_Z12___bitshiftruu_param_1];
+	shr.u32 	%r3, %r1, %r2;
 	st.param.b32	[funj_retval0+0], %r3;
 	ret;
 }
@@ -2074,6 +2241,38 @@ BB80_3:
 	ld.param.u64 	%rd2, [___bitxoryy_param_1];
 	xor.b64  	%rd3, %rd2, %rd1;
 	st.param.b64	[funj_retval0+0], %rd3;
+	ret;
+}
+
+.visible .func  (.param .b64 funj_retval0) _Z12___bitshiftlyy(
+	.param .b64 _Z12___bitshiftlyy_param_0,
+	.param .b64 _Z12___bitshiftlyy_param_1
+)
+{
+	.reg .s32 	%r<2>;
+	.reg .s64 	%rd<3>;
+
+
+	ld.param.u64 	%rd1, [_Z12___bitshiftlyy_param_0];
+	ld.param.u32 	%r1, [_Z12___bitshiftlyy_param_1];
+	shl.b64 	%rd2, %rd1, %r1;
+	st.param.b64	[funj_retval0+0], %rd2;
+	ret;
+}
+
+.visible .func  (.param .b64 funj_retval0) _Z12___bitshiftryy(
+	.param .b64 _Z12___bitshiftryy_param_0,
+	.param .b64 _Z12___bitshiftryy_param_1
+)
+{
+	.reg .s32 	%r<2>;
+	.reg .s64 	%rd<3>;
+
+
+	ld.param.u64 	%rd1, [_Z12___bitshiftryy_param_0];
+	ld.param.u32 	%r1, [_Z12___bitshiftryy_param_1];
+	shr.u64 	%rd2, %rd1, %r1;
+	st.param.b64	[funj_retval0+0], %rd2;
 	ret;
 }
 

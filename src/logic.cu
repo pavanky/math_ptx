@@ -67,10 +67,12 @@ NOT_FN(uchar)
 NOT_FN(intl)
 NOT_FN(uintl)
 
-#define BIT_FN(T)                                               \
-    __device__ T ___bitand (T lhs, T rhs) { return lhs & rhs; } \
-    __device__ T ___bitor  (T lhs, T rhs) { return lhs | rhs; } \
-    __device__ T ___bitxor (T lhs, T rhs) { return lhs ^ rhs; } \
+#define BIT_FN(T)                                                   \
+    __device__ T ___bitand   (T lhs, T rhs) { return lhs &  rhs; }  \
+    __device__ T ___bitor    (T lhs, T rhs) { return lhs |  rhs; }  \
+    __device__ T ___bitxor   (T lhs, T rhs) { return lhs ^  rhs; }  \
+    __device__ T ___bitshiftl(T lhs, T rhs) { return lhs << rhs; }  \
+    __device__ T ___bitshiftr(T lhs, T rhs) { return lhs >> rhs; }  \
 
 BIT_FN(int)
 BIT_FN(char)
